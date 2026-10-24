@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "space",
+    "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+    "trace_sha256": "ba705988eb5a9024afbf58aadc714878e082e21deb3d7c7ecc6e0523f03fd5d2",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "«Орбита щенка» и film-03#plot выбраны верно. В recommendations.reason (часть готового ответа) прямо описан требуемый механизм: щенок узнаёт знакомую мелодию в радиопередаче, благодаря чему робот определяет направление домой. Это смысловая причинная связь из карточки, а не просто совпавшее слово; пропуск A устранён."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

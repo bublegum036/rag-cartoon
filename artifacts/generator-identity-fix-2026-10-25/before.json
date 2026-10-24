@@ -1,0 +1,12 @@
+{
+  "actual": {
+    "generator_model": "custom-model",
+    "prompt_version": "grounded-ru-v1",
+    "max_output_tokens": 128
+  },
+  "reported": {
+    "generator_model": "gemini-3.1-flash-lite",
+    "prompt_version": "grounded-ru-v2",
+    "max_output_tokens": 2048
+  }
+}

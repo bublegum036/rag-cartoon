@@ -1,0 +1,58 @@
+{
+  "label": "B",
+  "created_at": "2026-10-24T22:42:57.042232+00:00",
+  "state": "completed",
+  "case_ids": [
+    "sea-short",
+    "whale",
+    "robot",
+    "space",
+    "library",
+    "dragon",
+    "no-match",
+    "unknown",
+    "ambiguous",
+    "marine-long"
+  ],
+  "case_set_sha256": "382e4c2350f25509e69934f6b43ff704b88f2338d1b0397dda5efcf28319b611",
+  "recall_k": 3,
+  "delay_seconds": 10.0,
+  "implementation_sha256": {
+    "application.py": "7ed0aeefd04a1c2a7eed145348213eba2813efa349a514cfe454c21ab5f0128a",
+    "bootstrap.py": "d2b6cdc33076b03eb3ec539f374cef07d806d15037325e9d1084a59381405cd7",
+    "evaluation.py": "d9940ddce83596452f15a966bf3cfe86f8f735b7691a494ed17b328d9e7c4cd6",
+    "experiments.py": "ded0cad04b9aba536b33439187ac84aa1155352468f351132ab42b4a81244896",
+    "adapters/rule_planner.py": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+    "adapters/gemini.py": "0df551eca323db5f38b9e788b5f837e44deec08e81d8504d1cd9d278870b07de",
+    "adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607"
+  },
+  "runtime": {
+    "snapshot_id": "cartoons__1be73f172727467ab7927befe66300f5",
+    "generator_model": "gemini-3.1-flash-lite",
+    "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+    "retrieval_k": 10,
+    "index_name": "cartoons",
+    "max_output_tokens": 2048,
+    "context_movies": 3,
+    "embedding": {
+      "provider": "fastembed",
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+      "dimensions": 384,
+      "implementation_version": "0.9.0",
+      "encoding": "e5-query-passage-v1"
+    },
+    "prompt_version": "grounded-ru-v2",
+    "planner_version": "ru-rules-v1.1"
+  },
+  "finished_at": "2026-10-24T22:45:07.744440+00:00",
+  "scoring": {
+    "scored_at": "2026-10-24T22:50:34.650663+00:00",
+    "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+    "reviews_sha256": "1fc5ee8b334cac5fa363e0f24cf4d6f3ffca6c4d07080a6e943d929d36bc8ea2",
+    "source_sha256": {
+      "evaluation.py": "d9940ddce83596452f15a966bf3cfe86f8f735b7691a494ed17b328d9e7c4cd6",
+      "experiments.py": "82348ecec054e504d4e3c726f9278a883990926044eeb43f1e93d44e7e0ea3c6"
+    }
+  }
+}

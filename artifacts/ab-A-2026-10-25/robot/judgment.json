@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "robot",
+    "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+    "trace_sha256": "47ae4ba70d292fa1a94a13cb0e4fbbb8a2d457ed8cbb06142231d79806aa7ef3",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "«Робот и сад», 2024 год, сохранённый росток и выращивание сада с соседскими детьми соответствуют film-05#plot. Обоснование рекомендации подтверждено этой карточкой, чужих свойств не добавлено."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

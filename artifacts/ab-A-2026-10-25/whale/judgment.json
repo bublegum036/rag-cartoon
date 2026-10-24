@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "whale",
+    "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+    "trace_sha256": "c78b4f58c10395c4ffa954fe27802c2a0a604c58dee1d50dd86d38d57f295cfc",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Ответ определяет именно «Маяк для кита», а не островной сюжет film-11. Спасение кита, мастерская, запасная линза и ремонт маяка подтверждены film-01#plot; ссылка поддерживает название и события."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

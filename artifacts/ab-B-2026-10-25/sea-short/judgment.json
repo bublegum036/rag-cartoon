@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "sea-short",
+    "case_sha256": "4e71e7fe0c83e1f025a26af986abb5391160eba4e208ec7c754abae0b4063082",
+    "trace_sha256": "1338024c125876d3c81de1f3c1fe0e88630d75427afd3232361e7d5a93c9fbfe",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "«Маяк для кита», 78 минут, тема моря и дружба Ники с китом соответствуют film-01#plot. В reason сохранена причинная деталь: кит помогает добраться до затопленной мастерской за линзой, затем герои чинят маяк. Все retrieved-карточки проходят < 90; длинная «Коралловая почта» не предложена."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

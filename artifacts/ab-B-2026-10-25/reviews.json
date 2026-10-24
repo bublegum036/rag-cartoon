@@ -1,0 +1,105 @@
+{
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "decisions": [
+    {
+      "case_id": "sea-short",
+      "case_sha256": "4e71e7fe0c83e1f025a26af986abb5391160eba4e208ec7c754abae0b4063082",
+      "trace_sha256": "1338024c125876d3c81de1f3c1fe0e88630d75427afd3232361e7d5a93c9fbfe",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "«Маяк для кита», 78 минут, тема моря и дружба Ники с китом соответствуют film-01#plot. В reason сохранена причинная деталь: кит помогает добраться до затопленной мастерской за линзой, затем герои чинят маяк. Все retrieved-карточки проходят < 90; длинная «Коралловая почта» не предложена."
+    },
+    {
+      "case_id": "whale",
+      "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+      "trace_sha256": "437f3484db78377db8ad6deb6f7b174ac5dfe8e41b85caf8ee9794efae28d2ed",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Назван именно «Маяк для кита», указан совместный ремонт с помощью линзы из затопленной мастерской. И text, и reason опираются на film-01#plot, без подмены на film-11 и без придуманных фактов."
+    },
+    {
+      "case_id": "robot",
+      "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+      "trace_sha256": "80488ef53f14e5ec54f611e7d93a8b6919e4ca5402994c5de251d8f470d5a28f",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Робот-уборщик сохраняет росток, ухаживает за ним, дети приносят семена, пустырь становится садом. Эти действия и механизм выращивания подтверждены film-05#plot; название, статус и источники корректны."
+    },
+    {
+      "case_id": "space",
+      "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+      "trace_sha256": "ba705988eb5a9024afbf58aadc714878e082e21deb3d7c7ecc6e0523f03fd5d2",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "«Орбита щенка» и film-03#plot выбраны верно. В recommendations.reason (часть готового ответа) прямо описан требуемый механизм: щенок узнаёт знакомую мелодию в радиопередаче, благодаря чему робот определяет направление домой. Это смысловая причинная связь из карточки, а не просто совпавшее слово; пропуск A устранён."
+    },
+    {
+      "case_id": "library",
+      "case_sha256": "84b24bc101d8174dee20fb4a32422225b7be3e1e1a9c293736bda989290d88a6",
+      "trace_sha256": "40d4364af6ef6a979b3a746fedfc82dc47b555fbd1b82f1c8b0644b2673335c8",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "«Библиотека облаков», библиотекарь, забытые истории в облаках, сбор разнесённых ветром историй на воздушном велосипеде и восстановление каталога/поиск автора есть в film-04#plot. Критерий хранения историй в облаках выполнен; неизвестное имя автора не выдумано."
+    },
+    {
+      "case_id": "dragon",
+      "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+      "trace_sha256": "6c7ed98c36192d3d8b6635681e54fc9d55745fe9c07860170c79e0f6d7ac77d7",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Описано, как дракон заменяет сломанную печь собственным дыханием и выпекает последнюю партию хлеба. Этот конкретный способ помощи есть в film-10#plot; источники и объяснение поддержаны карточкой."
+    },
+    {
+      "case_id": "no-match",
+      "case_sha256": "1a4e05ab01fc0f1504cc21619ff4700572fc61055f77b8d5c7fbdbaff57d6b9c",
+      "trace_sha256": "d4cc875b0a6ce16d6a00fb4899a08d5d854660acd996072483db1b221b096e83",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Тот же смысловой критерий, что в A: insufficient без рекомендаций и без ослабления < 40. Общая фраза об отсутствии подтверждения этому запросу допустима; буквальное повторение числа не обязательно. В полном исходном каталоге все фильмы длятся минимум 52 минуты, так что подходящих под предел действительно нет."
+    },
+    {
+      "case_id": "unknown",
+      "case_sha256": "98e8b3adf1ab7e5391f1cdc43931d7c2f94c1a3b13eac4544ff3b8fe4fff6fad",
+      "trace_sha256": "53eac44fb676be71d2388014546889345bb27762c99cb82ca21b58152f8e5d63",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "insufficient сообщает об отсутствии сведений об актёрах озвучивания. Такие данные отсутствуют в схеме каталога; ни актёр, ни голос по памяти не добавлены, ссылки и рекомендации пусты."
+    },
+    {
+      "case_id": "ambiguous",
+      "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+      "trace_sha256": "070364fc1213828e3f67ce7cf559193b5c9f2e2a86432ce29f360028ac0ec774",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "clarify просит указать фильм при отсутствии выбранной карточки. Значение длительности не угадывается; источники и рекомендации не придуманы."
+    },
+    {
+      "case_id": "marine-long",
+      "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+      "trace_sha256": "e8ef494a753c2a949ba9bd74b56d0ce48106e935599f48bae022f81f48f53b8c",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Ответ говорит, что 96 минут превышают бюджет 90 на 6 и фильм не подходит. Числа согласуются с вычисленным ExactResult и film-02#plot; источник правильный, рекомендаций нет."
+    }
+  ]
+}

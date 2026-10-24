@@ -1,0 +1,107 @@
+test_early_answers_work_without_env_or_providers_and_save_trace (test_rag_snapshots.AskCLITest.test_early_answers_work_without_env_or_providers_and_save_trace) ... ok
+test_model_error_has_no_answer_status_or_trace (test_rag_snapshots.AskCLITest.test_model_error_has_no_answer_status_or_trace) ... ok
+test_alias_switch_cannot_change_collection_after_binding (test_rag_snapshots.SnapshotTest.test_alias_switch_cannot_change_collection_after_binding) ... ok
+test_bound_metadata_is_rechecked_before_model_inference (test_rag_snapshots.SnapshotTest.test_bound_metadata_is_rechecked_before_model_inference) ... ok
+test_builtin_generator_identity_matches_owned_configuration (test_rag_snapshots.SnapshotTest.test_builtin_generator_identity_matches_owned_configuration) ... ok
+test_catalog_hash_matches_existing_published_format_and_ignores_record_order (test_rag_snapshots.SnapshotTest.test_catalog_hash_matches_existing_published_format_and_ignores_record_order) ... ok
+test_composition_checks_catalog_before_exact_generation_too (test_rag_snapshots.SnapshotTest.test_composition_checks_catalog_before_exact_generation_too) ... ERROR
+test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) ...
+  test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) (fields=['generator_identity']) ... ERROR
+  test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) (fields=['generator', 'generator_identity', 'prompt_version']) ... ERROR
+  test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) (fields=['generator', 'generator_identity']) ... ERROR
+test_injected_generator_identity_is_preserved_in_run_manifest (test_rag_snapshots.SnapshotTest.test_injected_generator_identity_is_preserved_in_run_manifest) ... ERROR
+test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers) ...
+  test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers) (builder='build_rag') ... FAIL
+  test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers) (builder='build_rag_runtime') ... FAIL
+test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers) ... FAIL
+test_wrong_or_missing_hash_fails_before_embedding_and_query (test_rag_snapshots.SnapshotTest.test_wrong_or_missing_hash_fails_before_embedding_and_query) ... ok
+
+======================================================================
+ERROR: test_composition_checks_catalog_before_exact_generation_too (test_rag_snapshots.SnapshotTest.test_composition_checks_catalog_before_exact_generation_too)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 89, in test_composition_checks_catalog_before_exact_generation_too
+    service = build_rag(self.films, Settings(), generator=generator, generator_identity=identity)
+TypeError: build_rag() got an unexpected keyword argument 'generator_identity'
+
+======================================================================
+ERROR: test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) (fields=['generator_identity'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 138, in test_conflicting_or_unused_generator_identity_is_rejected
+    build_rag_runtime(self.films, Settings(), **kwargs)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: build_rag_runtime() got an unexpected keyword argument 'generator_identity'
+
+======================================================================
+ERROR: test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) (fields=['generator', 'generator_identity', 'prompt_version'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 138, in test_conflicting_or_unused_generator_identity_is_rejected
+    build_rag_runtime(self.films, Settings(), **kwargs)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: build_rag_runtime() got an unexpected keyword argument 'generator_identity'
+
+======================================================================
+ERROR: test_conflicting_or_unused_generator_identity_is_rejected (test_rag_snapshots.SnapshotTest.test_conflicting_or_unused_generator_identity_is_rejected) (fields=['generator', 'generator_identity'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 138, in test_conflicting_or_unused_generator_identity_is_rejected
+    build_rag_runtime(self.films, Settings(), **kwargs)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: build_rag_runtime() got an unexpected keyword argument 'generator_identity'
+
+======================================================================
+ERROR: test_injected_generator_identity_is_preserved_in_run_manifest (test_rag_snapshots.SnapshotTest.test_injected_generator_identity_is_preserved_in_run_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 121, in test_injected_generator_identity_is_preserved_in_run_manifest
+    self.assertEqual(manifest["runtime"]["generator_model"], "custom-model")
+                     ~~~~~~~~^^^^^^^^^^^
+KeyError: 'runtime'
+
+======================================================================
+FAIL: test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers) (builder='build_rag')
+----------------------------------------------------------------------
+ValueError: not enough values to unpack (expected 2, got 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 100, in test_injected_generator_requires_identity_before_building_providers
+    with self.subTest(builder=builder.__name__), self.assertRaisesRegex(ValueError, "generator_identity"):
+                                                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "generator_identity" does not match "not enough values to unpack (expected 2, got 0)"
+
+======================================================================
+FAIL: test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers) (builder='build_rag_runtime')
+----------------------------------------------------------------------
+ValueError: not enough values to unpack (expected 2, got 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 100, in test_injected_generator_requires_identity_before_building_providers
+    with self.subTest(builder=builder.__name__), self.assertRaisesRegex(ValueError, "generator_identity"):
+                                                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "generator_identity" does not match "not enough values to unpack (expected 2, got 0)"
+
+======================================================================
+FAIL: test_injected_generator_requires_identity_before_building_providers (test_rag_snapshots.SnapshotTest.test_injected_generator_requires_identity_before_building_providers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_rag_snapshots.py", line 102, in test_injected_generator_requires_identity_before_building_providers
+    provider.assert_not_called()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 940, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'build_search' to not have been called. Called 2 times.
+Calls: [call(Settings(qdrant_url='http://127.0.0.1:6333', qdrant_alias='cartoons', timeout_seconds=10.0, model_revision='fd1525a9fd15316a2d503bf26ab031a61d056e98', model_cache=PosixPath('.cache/models'), embedding_threads=2, chunk_chars=1200, gemini_model='gemini-3.1-flash-lite', generation_timeout_seconds=30.0, generation_max_output_tokens=2048)),
+ call().__iter__(),
+ call(Settings(qdrant_url='http://127.0.0.1:6333', qdrant_alias='cartoons', timeout_seconds=10.0, model_revision='fd1525a9fd15316a2d503bf26ab031a61d056e98', model_cache=PosixPath('.cache/models'), embedding_threads=2, chunk_chars=1200, gemini_model='gemini-3.1-flash-lite', generation_timeout_seconds=30.0, generation_max_output_tokens=2048)),
+ call().__iter__()].
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.009s
+
+FAILED (failures=3, errors=5)

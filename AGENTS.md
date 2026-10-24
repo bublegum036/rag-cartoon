@@ -14,10 +14,20 @@ Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
 JsonExactCatalog and offline `exact` CLI implement lookup, full filtered counts
 and signed duration comparisons. `ask` composes these with Gemini structured generation
 and a Qdrant collection pinned to the same catalog fingerprint.
-Latest checks after the Gemini HTTP truncation fix: 105 passed, 3 integration tests skipped
+Latest generator identity fix: 124 tests passed, 3 integration tests skipped;
+providers were not rerun (artifacts/generator-identity-fix-2026-10-25).
+Injected generators require explicit GeneratorIdentity; never infer their metadata from Settings.
+Previously after evaluate/A-B: all 123 tests passed with real Qdrant/E5;
+local checks passed 120 and skipped 3. All 10 supplied cases ran for A and B
+with 14 Gemini generation requests total. Codex semantic review accepted 9/10
+in A and 10/10 in B; Recall@3 and strict-filter compliance were 100% in both.
+Only the generator prompt changed; v2 is now default, v1 remains replayable.
+See docs/ab-report.md and docs/evaluation.md. Reviews are explicit decisions
+bound to case/trace hashes, not automatic text-matching judgments.
+Previously after the Gemini HTTP truncation fix: 105 passed, 3 integration tests skipped
 (artifacts/gemini-http-fix-2026-10-25). Real providers were not rerun after this fix.
 Previously, 106 tests passed with real Qdrant/E5, plus two live Gemini smoke answers
-(artifacts/rag-verification-2026-10-25). Full 10-case answer evaluation and A/B are still pending.
+(artifacts/rag-verification-2026-10-25).
 Gemini uses a Free Tier project key in `.env`; never enable billing, switch models
 as a fallback, retry quota errors automatically, or log keys. Unit tests mock Gemini;
 real Gemini calls must be explicitly authorized (as in the current implementation session).

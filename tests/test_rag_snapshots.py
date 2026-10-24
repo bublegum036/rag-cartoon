@@ -8,11 +8,14 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 from cartoon_rag.adapters.qdrant import QdrantIndex
-from cartoon_rag.bootstrap import build_rag
+from cartoon_rag.adapters.gemini import GeminiAnswerGenerator
+from cartoon_rag.bootstrap import build_rag, build_rag_runtime
 from cartoon_rag.cli import main
 from cartoon_rag.domain import (
-    Answer, EmbeddingIdentity, GenerationUnavailable, QueryPlan, SnapshotMismatch, Status,
+    Answer, EmbeddingIdentity, GenerationUnavailable, GeneratorIdentity, QueryPlan, SnapshotMismatch, Status,
 )
+from cartoon_rag.evaluation import Case
+from cartoon_rag.experiments import run_evaluation
 from cartoon_rag.ingestion import load_catalog
 from cartoon_rag.settings import Settings
 from cartoon_rag.snapshots import catalog_fingerprint
@@ -82,13 +85,68 @@ class SnapshotTest(unittest.TestCase):
         generator.generate.return_value = Answer(Status.ANSWERED, "12 фильмов.",
                                                 tuple(f.source_id for f in self.films))
         with patch("cartoon_rag.bootstrap.build_search", return_value=(self.embedder, self.index)):
-            service = build_rag(self.films, Settings(), generator=generator)
+            identity = GeneratorIdentity("test-only", "test", 64)
+            service = build_rag(self.films, Settings(), generator=generator, generator_identity=identity)
             trace = service.ask("Сколько фильмов в каталоге?")
             self.assertEqual(trace.exact_result.value, 12)
             self.metadata["catalog_sha256"] = "0" * 64
             with self.assertRaises(SnapshotMismatch):
-                build_rag(self.films, Settings(), generator=generator)
+                build_rag(self.films, Settings(), generator=generator, generator_identity=identity)
         self.assertEqual(generator.generate.call_count, 1)
+
+    def test_injected_generator_requires_identity_before_building_providers(self):
+        with patch("cartoon_rag.bootstrap.build_search") as provider:
+            for builder in (build_rag, build_rag_runtime):
+                with self.subTest(builder=builder.__name__), self.assertRaisesRegex(ValueError, "generator_identity"):
+                    builder(self.films, Settings(), generator=Mock())
+            provider.assert_not_called()
+
+    def test_injected_generator_identity_is_preserved_in_run_manifest(self):
+        film = self.films[0]
+        transport = Mock()
+        transport.generate.return_value = {"candidates": [{"finishReason": "STOP", "content": {
+            "parts": [{"text": json.dumps({"status": "answered", "text": "78 минут.",
+                        "source_ids": [film.source_id], "recommendations": []})}],
+        }}]}
+        generator = GeminiAnswerGenerator(transport, prompt_version="grounded-ru-v1", max_output_tokens=128)
+        identity = GeneratorIdentity("custom-model", "grounded-ru-v1", 128)
+        question = "Сколько минут длится «Маяк для кита»?"
+        case = Case("duration", question, Status.ANSWERED, (film.source_id,), QueryPlan("").filters, "78 минут")
+        with tempfile.TemporaryDirectory() as directory, \
+                patch("cartoon_rag.bootstrap.build_search", return_value=(self.embedder, self.index)):
+            output = Path(directory) / "run"
+            run_evaluation((case,), lambda: build_rag_runtime(
+                self.films, Settings(), generator=generator, generator_identity=identity), output, label="test")
+            manifest = json.loads((output / "manifest.json").read_text())
+        self.assertEqual(manifest["runtime"]["generator_model"], "custom-model")
+        self.assertEqual(manifest["runtime"]["prompt_version"], generator.prompt_version)
+        self.assertEqual(manifest["runtime"]["max_output_tokens"], generator.max_output_tokens)
+        body = transport.generate.call_args.args[0]
+        self.assertEqual(body["generationConfig"]["maxOutputTokens"], 128)
+        transport.generate.assert_called_once()
+
+    def test_conflicting_or_unused_generator_identity_is_rejected(self):
+        identity = GeneratorIdentity("custom", "v1", 128)
+        variants = (
+            {"generator_identity": identity},
+            {"generator": Mock(), "generator_identity": identity, "prompt_version": "grounded-ru-v2"},
+            {"generator": Mock(), "generator_identity": {"api_key": "private-key"}},
+        )
+        with patch("cartoon_rag.bootstrap.build_search") as provider:
+            for kwargs in variants:
+                with self.subTest(fields=list(kwargs)), self.assertRaises(ValueError):
+                    build_rag_runtime(self.films, Settings(), **kwargs)
+            provider.assert_not_called()
+
+    def test_builtin_generator_identity_matches_owned_configuration(self):
+        settings = Settings(gemini_api_key="private-key", gemini_model="test-model",
+                            generation_max_output_tokens=128)
+        with patch("cartoon_rag.bootstrap.build_search", return_value=(self.embedder, self.index)):
+            service, identity = build_rag_runtime(self.films, settings, prompt_version="grounded-ru-v1")
+        self.assertEqual(identity["generator_model"], settings.gemini_model)
+        self.assertEqual(identity["prompt_version"], service.generator.prompt_version)
+        self.assertEqual(identity["max_output_tokens"], service.generator.max_output_tokens)
+        self.assertNotIn("private-key", json.dumps(identity))
 
 
 class AskCLITest(unittest.TestCase):

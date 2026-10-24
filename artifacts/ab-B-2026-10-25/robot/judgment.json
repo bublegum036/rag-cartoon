@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "robot",
+    "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+    "trace_sha256": "80488ef53f14e5ec54f611e7d93a8b6919e4ca5402994c5de251d8f470d5a28f",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Робот-уборщик сохраняет росток, ухаживает за ним, дети приносят семена, пустырь становится садом. Эти действия и механизм выращивания подтверждены film-05#plot; название, статус и источники корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

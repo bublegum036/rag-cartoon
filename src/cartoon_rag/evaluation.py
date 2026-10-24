@@ -1,11 +1,16 @@
 """Evaluation keeps retrieval metrics separate from semantic answer acceptance."""
 
 import json
+import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Protocol
 
-from cartoon_rag.domain import Filters, Intent, Status, Trace
+from cartoon_rag.domain import (
+    Answer, Chunk, Evidence, ExactResult, Film, Filters, Hit, Intent, QueryPlan,
+    Recommendation, Status, Trace,
+)
+from cartoon_rag.snapshots import fingerprint
 
 
 @dataclass(frozen=True)
@@ -69,14 +74,95 @@ def retrieval_filters_compliant(case: Case, trace: Trace) -> bool:
 def accepted(case: Case, trace: Trace, judge: SemanticJudge) -> bool:
     if trace.answer.status is not case.expected_status:
         return False
+    if not strict_filters_compliant(case, trace):
+        return False
+    # Judge also checks constraints for prose answers without recommendations.
+    return judge.accepts(case, trace)
+
+
+def strict_filters_compliant(case: Case, trace: Trace) -> bool:
     if not retrieval_filters_compliant(case, trace):
         return False
     recommended = {item.movie_id for item in trace.answer.recommendations}
-    for evidence in trace.context:
-        if evidence.film.movie_id in recommended and not case.filters.matches(evidence.film):
+    cited = set(trace.answer.source_ids)
+    for item in trace.context:
+        own = {item.film.source_id, *(chunk.chunk_id for chunk in item.chunks)}
+        if (item.film.movie_id in recommended or cited & own) and not case.filters.matches(item.film):
             return False
-    # Judge also checks constraints for prose answers without recommendations.
-    return judge.accepts(case, trace)
+    return True
+
+
+def case_from_dict(row: dict) -> Case:
+    filters = dict(row["filters"])
+    filters["movie_ids"] = tuple(filters.get("movie_ids", ()))
+    return Case(row["id"], row["question"], Status(row["expected_status"]),
+                tuple(row["relevant_source_ids"]), Filters(**filters), row["rubric"])
+
+
+def trace_from_dict(row: dict) -> Trace:
+    def film(data):
+        return Film(**{**data, "tags": tuple(data.get("tags", ()))})
+
+    def chunk(data):
+        return Chunk(data["chunk_id"], film(data["film"]), data["text"])
+
+    raw_plan = row["plan"]
+    filters = {**raw_plan["filters"], "movie_ids": tuple(raw_plan["filters"]["movie_ids"])}
+    plan = QueryPlan(raw_plan["semantic_query"], Intent(raw_plan["intent"]), Filters(**filters),
+                     raw_plan["time_budget_minutes"],
+                     Status(raw_plan["early_status"]) if raw_plan["early_status"] is not None else None,
+                     raw_plan["early_text"])
+    raw_exact, raw_answer = row["exact_result"], row["answer"]
+    exact = ExactResult(raw_exact["value"], raw_exact["unit"], tuple(raw_exact["source_ids"])) if raw_exact else None
+    answer = Answer(Status(raw_answer["status"]), raw_answer["text"], tuple(raw_answer["source_ids"]), tuple(
+        Recommendation(item["movie_id"], item["title"], item["reason"], tuple(item["source_ids"]))
+        for item in raw_answer["recommendations"]
+    ))
+    return Trace(row["question"], plan,
+                 tuple(Hit(chunk(item["chunk"]), item["score"]) for item in row["retrieved"]),
+                 tuple(Evidence(film(item["film"]), tuple(chunk(c) for c in item["chunks"]))
+                       for item in row["context"]), exact, answer)
+
+
+class ReviewedSemanticJudge:
+    """Explicit semantic decisions, bound to the exact case and generated trace.
+
+    A reviewer reads the rubric and source facts. This class checks the decision
+    format and provenance; it does not replace semantic review with text matching.
+    """
+
+    checks = ("rubric_passed", "facts_supported", "constraints_passed", "references_supported")
+
+    def __init__(self, document: dict) -> None:
+        if not isinstance(document.get("reviewer"), str) or not document["reviewer"].strip():
+            raise ValueError("Semantic reviews require a named reviewer")
+        if not isinstance(document.get("decisions"), list):
+            raise ValueError("Semantic reviews require a decisions array")
+        self.document = document
+        self.decisions = {}
+        required = {"case_id", "case_sha256", "trace_sha256", "explanation", *self.checks}
+        for decision in document["decisions"]:
+            if not isinstance(decision, dict) or set(decision) != required:
+                raise ValueError("Invalid semantic review fields")
+            if any(type(decision[name]) is not bool for name in self.checks):
+                raise ValueError("Semantic review checks must be booleans")
+            if not isinstance(decision["explanation"], str) or not decision["explanation"].strip():
+                raise ValueError("Semantic review requires an explanation")
+            if (not isinstance(decision["case_id"], str)
+                    or any(not isinstance(decision[name], str) or not re.fullmatch(r"[0-9a-f]{64}", decision[name])
+                           for name in ("case_sha256", "trace_sha256"))):
+                raise ValueError("Semantic review requires a case ID and SHA-256 bindings")
+            if decision["case_id"] in self.decisions:
+                raise ValueError("Duplicate semantic review")
+            self.decisions[decision["case_id"]] = decision
+
+    def accepts(self, case: Case, trace: Trace) -> bool:
+        decision = self.decisions[case.id]
+        if decision["case_sha256"] != fingerprint(asdict(case)):
+            raise ValueError("Semantic review belongs to another case/rubric")
+        if decision["trace_sha256"] != fingerprint(asdict(trace)):
+            raise ValueError("Semantic review belongs to another generated trace")
+        return all(decision[name] for name in self.checks)
 
 
 def save_trace(path: Path, trace: Trace) -> None:

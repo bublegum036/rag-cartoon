@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "ambiguous",
+    "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+    "trace_sha256": "070364fc1213828e3f67ce7cf559193b5c9f2e2a86432ce29f360028ac0ec774",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "clarify просит указать фильм: в истории нет выбранной карточки. Длительность не угадывается, источников и рекомендаций нет."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

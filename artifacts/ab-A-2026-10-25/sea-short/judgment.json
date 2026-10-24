@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "sea-short",
+    "case_sha256": "4e71e7fe0c83e1f025a26af986abb5391160eba4e208ec7c754abae0b4063082",
+    "trace_sha256": "6ffa2ba3598ae65c8cde60c81774198067a84aa7102cf301db48c6fb2ac4e359",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Назван «Маяк для кита», 78 минут, дружба Ники и кита и совместный ремонт маяка. Всё подтверждено film-01#plot (включая 2021 год). Все найденные карточки проходят < 90; «Коралловая почта» не рекомендована. Статус и ссылки корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

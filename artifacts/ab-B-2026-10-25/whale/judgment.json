@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "whale",
+    "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+    "trace_sha256": "437f3484db78377db8ad6deb6f7b174ac5dfe8e41b85caf8ee9794efae28d2ed",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Назван именно «Маяк для кита», указан совместный ремонт с помощью линзы из затопленной мастерской. И text, и reason опираются на film-01#plot, без подмены на film-11 и без придуманных фактов."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

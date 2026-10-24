@@ -1,0 +1,12 @@
+{
+  "id": "ambiguous",
+  "question": "Сколько он длится?",
+  "expected_status": "clarify",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "В истории диалога нет выбранного фильма. Уточнить название."
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "marine-long",
+    "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+    "trace_sha256": "eb0e9e611d40ca7e255168ff9f319124515cc6d385ccee58ed62d6b7166df999",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Ответ отказывает по бюджету и указывает 96 минут, превышение на 6 относительно 90. Это согласуется с film-02#plot и вычисленным ExactResult +6. Источник относится к сравниваемой карточке, рекомендаций нет."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

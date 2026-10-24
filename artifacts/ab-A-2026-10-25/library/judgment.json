@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "library",
+    "case_sha256": "84b24bc101d8174dee20fb4a32422225b7be3e1e1a9c293736bda989290d88a6",
+    "trace_sha256": "32770879422c5a500cc8ce7a3d9fb17a548c3525ce2965278f629da4c9e9d8ce",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Ответ о «Библиотеке облаков» содержит библиотекаря, забытые истории в облаках, разнесённые ветром страницы, воздушный велосипед и восстановление каталога. Эти утверждения есть в film-04#plot, обязательный критерий хранения историй в облаках выполнен."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -4,12 +4,16 @@ from typing import Protocol, Sequence
 
 from cartoon_rag.domain import (
     Answer, Chunk, EmbeddingBatch, EmbeddingIdentity, Evidence, ExactResult, Hit,
-    PublicationResult, QueryPlan,
+    PublicationResult, QueryPlan, Trace,
 )
 
 
 class QueryPlanner(Protocol):
     def plan(self, question: str) -> QueryPlan: ...
+
+
+class QuestionAnswerer(Protocol):
+    def ask(self, question: str) -> Trace: ...
 
 
 class Embedder(Protocol):

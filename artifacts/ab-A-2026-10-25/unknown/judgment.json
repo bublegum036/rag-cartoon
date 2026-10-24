@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "unknown",
+    "case_sha256": "98e8b3adf1ab7e5391f1cdc43931d7c2f94c1a3b13eac4544ff3b8fe4fff6fad",
+    "trace_sha256": "53eac44fb676be71d2388014546889345bb27762c99cb82ca21b58152f8e5d63",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "insufficient явно объясняет отсутствие сведений об актёрах озвучивания. Таких полей нет в каталоге; актёр или голос не выдуман, ссылки и рекомендации пусты."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

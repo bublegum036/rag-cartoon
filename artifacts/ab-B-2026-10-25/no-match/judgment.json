@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "no-match",
+    "case_sha256": "1a4e05ab01fc0f1504cc21619ff4700572fc61055f77b8d5c7fbdbaff57d6b9c",
+    "trace_sha256": "d4cc875b0a6ce16d6a00fb4899a08d5d854660acd996072483db1b221b096e83",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Тот же смысловой критерий, что в A: insufficient без рекомендаций и без ослабления < 40. Общая фраза об отсутствии подтверждения этому запросу допустима; буквальное повторение числа не обязательно. В полном исходном каталоге все фильмы длятся минимум 52 минуты, так что подходящих под предел действительно нет."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

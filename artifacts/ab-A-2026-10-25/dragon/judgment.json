@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: manual semantic review of each answer against rubric and catalog cards",
+  "semantic": {
+    "case_id": "dragon",
+    "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+    "trace_sha256": "82f2f323c383a4b87bdc8e21d81e958beaca6c77d5a5488acdc18b54550eb919",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Объяснено действие после поломки печи: последняя партия хлеба испечена дыханием дракона. Это ключевой факт film-10#plot; не ограничивается названием или общей темой пекарни. Статус и ссылка корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

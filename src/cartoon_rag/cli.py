@@ -37,6 +37,21 @@ def main() -> None:
     ask.add_argument("question")
     ask.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     ask.add_argument("--trace", type=Path, help="Save retrieval, context, exact result and answer separately")
+    evaluate = commands.add_parser("evaluate", help="Run cases or score an archived run with semantic reviews")
+    evaluation_commands = evaluate.add_subparsers(dest="evaluation_command", required=True)
+    run = evaluation_commands.add_parser("run", help="Generate artifacts; acceptance stays pending until review")
+    run.add_argument("--questions", type=Path, default=Path("questions.jsonl"))
+    run.add_argument("--catalog", type=Path, default=Path("catalog.json"))
+    run.add_argument("--output", type=Path, required=True)
+    run.add_argument("--label", required=True)
+    run.add_argument("--k", type=positive_int, default=3)
+    run.add_argument("--retrieval-k", type=positive_int, default=10)
+    run.add_argument("--context-movies", type=positive_int, default=3)
+    run.add_argument("--delay-seconds", type=float, default=10)
+    run.add_argument("--prompt-version", choices=("grounded-ru-v1", "grounded-ru-v2"), default=None)
+    score = evaluation_commands.add_parser("score", help="Check review provenance and calculate final metrics")
+    score.add_argument("--run-dir", type=Path, required=True)
+    score.add_argument("--reviews", type=Path, required=True)
     index = commands.add_parser("index", help="Publish a complete active catalog snapshot")
     index.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     search = commands.add_parser("search", help="Retrieve chunks; does not generate an answer")
@@ -47,7 +62,25 @@ def main() -> None:
     search.add_argument("--movie-id", action="append", default=[])
     args = parser.parse_args()
     try:
-        if args.command == "validate-data":
+        if args.command == "evaluate":
+            from cartoon_rag.experiments import run_evaluation, score_run
+
+            if args.evaluation_command == "score":
+                output = score_run(args.run_dir, args.reviews)
+            else:
+                from cartoon_rag.bootstrap import build_rag_runtime
+
+                films = load_catalog(args.catalog)
+                cases = load_cases(args.questions)
+                settings = Settings.load(args.env_file)
+                output = run_evaluation(
+                    cases, lambda: build_rag_runtime(films, settings, retrieval_k=args.retrieval_k,
+                                                     context_movies=args.context_movies,
+                                                     prompt_version=args.prompt_version),
+                    args.output, label=args.label, k=args.k, delay_seconds=args.delay_seconds,
+                    progress=lambda case_id, state: print(f"{case_id}: {state}", file=sys.stderr),
+                )
+        elif args.command == "validate-data":
             films = active_snapshot(load_catalog(args.catalog))
             cases = load_cases(args.questions)
             known = {film.source_id for film in films}
@@ -95,6 +128,9 @@ def main() -> None:
                 ))
                 output = asdict(RetrievalService(store).search(plan, limit=args.limit))
         print(json.dumps(output, ensure_ascii=False, indent=2))
+        if (args.command == "evaluate" and args.evaluation_command == "run"
+                and (output["technical_errors"] or output["not_executed"])):
+            raise SystemExit(1)
     except (EmbeddingUnavailable, RetrievalUnavailable, GenerationUnavailable, ValueError, OSError) as exc:
         print(json.dumps({"error": {"type": type(exc).__name__, "message": str(exc)}},
                          ensure_ascii=False), file=sys.stderr)

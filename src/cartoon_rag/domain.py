@@ -106,6 +106,21 @@ class EmbeddingIdentity:
 
 
 @dataclass(frozen=True)
+class GeneratorIdentity:
+    """Explicit, non-secret provenance supplied by the owner of a generator."""
+
+    model: str
+    prompt_version: str
+    max_output_tokens: int
+
+    def __post_init__(self) -> None:
+        if any(not isinstance(value, str) or not value.strip() for value in (self.model, self.prompt_version)):
+            raise ValueError("Generator identity requires nonempty model and prompt identifiers")
+        if type(self.max_output_tokens) is not int or self.max_output_tokens < 1:
+            raise ValueError("Generator identity requires a positive integer output token limit")
+
+
+@dataclass(frozen=True)
 class EmbeddingBatch:
     identity: EmbeddingIdentity
     vectors: tuple[tuple[float, ...], ...]
@@ -207,6 +222,10 @@ class SnapshotMismatch(ValueError):
 
 class GenerationUnavailable(RuntimeError):
     """Model API, quota or incomplete-output failure; never evidence of missing film facts."""
+
+    def __init__(self, message: str, *, http_status: int | None = None) -> None:
+        super().__init__(message)
+        self.http_status = http_status
 
 
 class GroundingError(ValueError):
