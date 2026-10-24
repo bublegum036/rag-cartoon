@@ -1,0 +1,52 @@
+{
+  "question": "Подойдёт ли «Коралловая почта», если у меня только 90 минут?",
+  "plan": {
+    "semantic_query": "Подойдёт ли «Коралловая почта», если у меня только 90 минут?",
+    "intent": "compare_duration",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": [
+        "film-02"
+      ]
+    },
+    "time_budget_minutes": 90,
+    "early_status": null,
+    "early_text": ""
+  },
+  "retrieved": [],
+  "context": [
+    {
+      "film": {
+        "movie_id": "film-02",
+        "title": "Коралловая почта",
+        "year": 2023,
+        "duration_minutes": 96,
+        "version": 1,
+        "active": true,
+        "source_id": "film-02#plot",
+        "synopsis": "Рыбка-почтальон теряет сумку с письмами на коралловом рифе. Застенчивый осьминог предлагает помочь найти адресатов. Они обходят подводные города, знакомятся с их жителями и узнают, почему соседние поселения перестали общаться. Друзья организуют общую почтовую службу и снова связывают риф маршрутами.",
+        "tags": [
+          "море",
+          "дружба"
+        ]
+      },
+      "chunks": []
+    }
+  ],
+  "exact_result": {
+    "value": 6,
+    "unit": "minutes",
+    "source_ids": [
+      "film-02#plot"
+    ]
+  },
+  "answer": {
+    "status": "answered",
+    "text": "Мультфильм «Коралловая почта» длится 96 минут, что на 6 минут превышает ваш бюджет в 90 минут. Он вам не подойдёт.",
+    "source_ids": [
+      "film-02#plot"
+    ],
+    "recommendations": []
+  }
+}

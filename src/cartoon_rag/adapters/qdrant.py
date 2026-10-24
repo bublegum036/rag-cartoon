@@ -1,10 +1,10 @@
 """Qdrant REST adapter: immutable collections, atomic alias publication."""
 
-import hashlib
 import json
 import math
+import re
 from collections.abc import Sequence
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 from typing import Any, Protocol
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
@@ -13,9 +13,10 @@ from uuid import NAMESPACE_URL, uuid4, uuid5
 
 from cartoon_rag.domain import (
     Chunk, EmbeddingBatch, Film, Filters, GroundingError, Hit,
-    PublicationResult, QueryPlan, RetrievalUnavailable,
+    PublicationResult, QueryPlan, RetrievalUnavailable, SnapshotMismatch,
 )
 from cartoon_rag.ports import QueryEmbedder
+from cartoon_rag.snapshots import catalog_fingerprint, fingerprint
 
 
 class Transport(Protocol):
@@ -42,11 +43,6 @@ class QdrantHTTP:
             raise RetrievalUnavailable(f"Qdrant returned HTTP {exc.code} for {method} {path}") from exc
         except (URLError, OSError, TimeoutError, ValueError, KeyError) as exc:
             raise RetrievalUnavailable(f"Qdrant request failed: {method} {path}") from exc
-
-
-def fingerprint(value: Any) -> str:
-    raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
-    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
 def qdrant_filter(filters: Filters) -> dict:
@@ -108,10 +104,9 @@ class QdrantIndex:
                 "id": str(uuid5(NAMESPACE_URL, f"{film.version}:{chunk.chunk_id}")),
                 "vector": self._vector(vector), "payload": payload,
             })
-        catalog = sorted((asdict(film) for film in cards.values()), key=lambda row: row["movie_id"])
         manifest = {
             "schema_version": 1, "embedding": asdict(batch.identity),
-            "catalog_sha256": fingerprint(catalog),
+            "catalog_sha256": catalog_fingerprint(tuple(cards.values())),
             "chunks_sha256": fingerprint([point["payload"] for point in points]),
             "movies": len(cards), "chunks": len(chunks),
         }
@@ -143,18 +138,38 @@ class QdrantIndex:
             movies=len(cards), chunks=len(chunks),
         )
 
+    def _validate_metadata(self, collection: str, expected_catalog_sha256: str | None = None) -> None:
+        config = self.transport.request("GET", self._collection_path(collection))["config"]
+        metadata = config.get("metadata", {})
+        if metadata.get("embedding") != asdict(self.embedder.identity):
+            raise ValueError("Index embedding identity differs from the current model; reindex")
+        if expected_catalog_sha256 is not None and metadata.get("catalog_sha256") != expected_catalog_sha256:
+            raise SnapshotMismatch("JSON catalog differs from the published index; reindex before asking")
+
+    def bind_snapshot(self, expected_catalog_sha256: str) -> "PinnedQdrantRetriever":
+        """Bind retrieval to the same immutable catalog used by exact operations."""
+        if not re.fullmatch(r"[0-9a-f]{64}", expected_catalog_sha256):
+            raise ValueError("Expected catalog fingerprint must be a SHA-256 hex string")
+        collection = self._resolve()
+        self._validate_metadata(collection, expected_catalog_sha256)
+        return PinnedQdrantRetriever(self, collection, expected_catalog_sha256)
+
     def search(self, plan: QueryPlan, *, limit: int) -> tuple[Hit, ...]:
+        return self._search(plan, limit=limit)
+
+    def _search(
+        self, plan: QueryPlan, *, limit: int, collection: str | None = None,
+        expected_catalog_sha256: str | None = None,
+    ) -> tuple[Hit, ...]:
         if limit < 1:
             raise ValueError("Search limit must be positive")
         if not plan.semantic_query.strip():
             raise ValueError("Search query must be nonempty")
         # Resolve once: metadata validation and querying must use the same snapshot
         # even if another process publishes an updated alias in between.
-        collection = self._resolve()
+        collection = collection if collection is not None else self._resolve()
         path = self._collection_path(collection)
-        config = self.transport.request("GET", path)["config"]
-        if config.get("metadata", {}).get("embedding") != asdict(self.embedder.identity):
-            raise ValueError("Index embedding identity differs from the current model; reindex")
+        self._validate_metadata(collection, expected_catalog_sha256)
         response = self.transport.request("POST", path + "/points/query", {
             "query": self._vector(self.embedder.embed_query(plan.semantic_query)),
             "filter": qdrant_filter(plan.filters), "limit": limit,
@@ -171,3 +186,16 @@ class QdrantIndex:
                 raise GroundingError("Qdrant returned a hit violating strict filters")
             hits.append(Hit(Chunk(payload["chunk_id"], film, payload["text"]), float(point["score"])))
         return tuple(hits)
+
+
+@dataclass(frozen=True)
+class PinnedQdrantRetriever:
+    """Alias updates cannot switch the collection beneath a composed RAG service."""
+
+    index: QdrantIndex
+    collection: str
+    catalog_sha256: str
+
+    def search(self, plan: QueryPlan, *, limit: int) -> tuple[Hit, ...]:
+        return self.index._search(plan, limit=limit, collection=self.collection,
+                                  expected_catalog_sha256=self.catalog_sha256)

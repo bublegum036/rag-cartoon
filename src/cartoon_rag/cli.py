@@ -6,9 +6,9 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from cartoon_rag.application import RetrievalService, execute_exact
-from cartoon_rag.evaluation import load_cases
-from cartoon_rag.domain import EmbeddingUnavailable, Filters, QueryPlan, RetrievalUnavailable
+from cartoon_rag.application import RetrievalService, early_trace, execute_exact
+from cartoon_rag.evaluation import load_cases, save_trace
+from cartoon_rag.domain import EmbeddingUnavailable, Filters, GenerationUnavailable, QueryPlan, RetrievalUnavailable
 from cartoon_rag.ingestion import SentenceChunker, active_snapshot, index_catalog, load_catalog
 from cartoon_rag.settings import Settings
 
@@ -33,6 +33,10 @@ def main() -> None:
     exact = commands.add_parser("exact", help="Execute exact operations; does not generate an answer")
     exact.add_argument("question")
     exact.add_argument("--catalog", type=Path, default=Path("catalog.json"))
+    ask = commands.add_parser("ask", help="Answer with Gemini using checked catalog evidence")
+    ask.add_argument("question")
+    ask.add_argument("--catalog", type=Path, default=Path("catalog.json"))
+    ask.add_argument("--trace", type=Path, help="Save retrieval, context, exact result and answer separately")
     index = commands.add_parser("index", help="Publish a complete active catalog snapshot")
     index.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     search = commands.add_parser("search", help="Retrieve chunks; does not generate an answer")
@@ -62,6 +66,17 @@ def main() -> None:
             films = load_catalog(args.catalog)
             plan = build_planner(films).plan(args.question)
             output = asdict(execute_exact(build_exact_catalog(films), plan))
+        elif args.command == "ask":
+            from cartoon_rag.bootstrap import build_planner, build_rag
+
+            films = load_catalog(args.catalog)
+            plan = build_planner(films).plan(args.question)
+            trace = early_trace(args.question, plan)
+            if trace is None:
+                trace = build_rag(films, Settings.load(args.env_file)).execute_plan(args.question, plan)
+            if args.trace is not None:
+                save_trace(args.trace, trace)
+            output = asdict(trace.answer)
         else:
             from cartoon_rag.bootstrap import build_search
 
@@ -80,7 +95,7 @@ def main() -> None:
                 ))
                 output = asdict(RetrievalService(store).search(plan, limit=args.limit))
         print(json.dumps(output, ensure_ascii=False, indent=2))
-    except (EmbeddingUnavailable, RetrievalUnavailable, ValueError, OSError) as exc:
+    except (EmbeddingUnavailable, RetrievalUnavailable, GenerationUnavailable, ValueError, OSError) as exc:
         print(json.dumps({"error": {"type": type(exc).__name__, "message": str(exc)}},
                          ensure_ascii=False), file=sys.stderr)
         raise SystemExit(1) from exc

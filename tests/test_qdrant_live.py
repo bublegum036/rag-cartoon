@@ -7,8 +7,9 @@ from pathlib import Path
 from uuid import uuid4
 
 from cartoon_rag.adapters.qdrant import QdrantHTTP, QdrantIndex
-from cartoon_rag.domain import EmbeddingBatch, EmbeddingIdentity, Filters, QueryPlan, RetrievalUnavailable
+from cartoon_rag.domain import EmbeddingBatch, EmbeddingIdentity, Filters, QueryPlan, RetrievalUnavailable, SnapshotMismatch
 from cartoon_rag.ingestion import SentenceChunker, WholeSynopsis, index_catalog, load_catalog
+from cartoon_rag.snapshots import catalog_fingerprint
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +63,7 @@ class QdrantLiveTest(unittest.TestCase):
         self.assertEqual(self.store.search(QueryPlan("море", filters=Filters(duration_minutes_lt=78)), limit=5), ())
         self.assertEqual(len(self.store.search(QueryPlan("море", filters=Filters(duration_minutes_lte=78)), limit=5)), 1)
         publication = index_catalog((short, long), WholeSynopsis(), FixedEmbedder(), self.store)
+        pinned = self.store.bind_snapshot(catalog_fingerprint((short, long)))
         self.assertEqual(len(self.store.search(plan, limit=10)), 1)
         old_collection = publication.snapshot_id
         updated_publication = index_catalog(
@@ -72,6 +74,11 @@ class QdrantLiveTest(unittest.TestCase):
         updated = self.store.search(QueryPlan("кит", filters=Filters(movie_ids=("film-01",))), limit=10)
         self.assertEqual([(hit.chunk.film.version, hit.chunk.film.duration_minutes) for hit in updated], [(2, 92)])
         self.assertNotEqual(updated_publication.snapshot_id, old_collection)
+        self.assertEqual(pinned.search(plan, limit=10)[0].chunk.film.duration_minutes, 78)
+        with self.assertRaises(SnapshotMismatch):
+            self.store.bind_snapshot(catalog_fingerprint((short, long)))
+        current = self.store.bind_snapshot(catalog_fingerprint((replace(short, version=2, duration_minutes=92), long)))
+        self.assertEqual(current.search(plan, limit=10), ())
 
     def test_failed_upload_preserves_readable_snapshot_and_empty_snapshot_retires_it(self):
         film = self.films[0]

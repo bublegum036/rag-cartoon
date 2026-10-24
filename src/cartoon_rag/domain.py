@@ -201,5 +201,13 @@ class EmbeddingUnavailable(RuntimeError):
     """Embedding dependency, weight download or inference failed."""
 
 
+class SnapshotMismatch(ValueError):
+    """Local exact evidence and published vector evidence describe different catalogs."""
+
+
+class GenerationUnavailable(RuntimeError):
+    """Model API, quota or incomplete-output failure; never evidence of missing film facts."""
+
+
 class GroundingError(ValueError):
     """Generated references or retrieved metadata violate the contract."""

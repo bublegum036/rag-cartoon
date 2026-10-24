@@ -41,6 +41,10 @@ class Settings:
     model_cache: Path = Path(".cache/models")
     embedding_threads: int = 2
     chunk_chars: int = 1200
+    gemini_api_key: str = field(default="", repr=False)
+    gemini_model: str = "gemini-3.1-flash-lite"
+    generation_timeout_seconds: float = 30.0
+    generation_max_output_tokens: int = 2048
 
     def __post_init__(self) -> None:
         url = urlsplit(self.qdrant_url)
@@ -56,6 +60,12 @@ class Settings:
             raise ValueError("Thread count and chunk size must be positive")
         if not re.fullmatch(r"[0-9a-f]{40}", self.model_revision):
             raise ValueError("EMBEDDING_REVISION must be an immutable 40-character commit SHA")
+        if not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9._-]{0,100}", self.gemini_model):
+            raise ValueError("GEMINI_MODEL must be a model ID without a URL or path")
+        if not math.isfinite(self.generation_timeout_seconds) or self.generation_timeout_seconds <= 0:
+            raise ValueError("GENERATION_TIMEOUT_SECONDS must be positive and finite")
+        if type(self.generation_max_output_tokens) is not int or self.generation_max_output_tokens < 1:
+            raise ValueError("GENERATION_MAX_OUTPUT_TOKENS must be a positive integer")
 
     @classmethod
     def load(cls, env_file: Path = Path(".env")) -> "Settings":
@@ -69,4 +79,8 @@ class Settings:
             model_cache=Path(values.get("MODEL_CACHE", ".cache/models")),
             embedding_threads=int(values.get("EMBEDDING_THREADS", "2")),
             chunk_chars=int(values.get("CHUNK_CHARS", "1200")),
+            gemini_api_key=values.get("GEMINI_API_KEY", ""),
+            gemini_model=values.get("GEMINI_MODEL", "gemini-3.1-flash-lite"),
+            generation_timeout_seconds=float(values.get("GENERATION_TIMEOUT_SECONDS", "30")),
+            generation_max_output_tokens=int(values.get("GENERATION_MAX_OUTPUT_TOKENS", "2048")),
         )

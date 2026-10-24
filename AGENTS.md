@@ -12,8 +12,15 @@ The rule-based Russian planner and offline `plan` CLI are implemented.
 Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
 64 local tests passed, 3 integration tests skipped after these fixes (artifacts/planner-fixes-2026-10-25).
 JsonExactCatalog and offline `exact` CLI implement lookup, full filtered counts
-and signed duration comparisons. Full RAG composition and the generator are not yet implemented.
-Latest local checks: 85 passed, 3 integration tests skipped (artifacts/exact-verification-2026-10-25).
+and signed duration comparisons. `ask` composes these with Gemini structured generation
+and a Qdrant collection pinned to the same catalog fingerprint.
+Latest checks after the Gemini HTTP truncation fix: 105 passed, 3 integration tests skipped
+(artifacts/gemini-http-fix-2026-10-25). Real providers were not rerun after this fix.
+Previously, 106 tests passed with real Qdrant/E5, plus two live Gemini smoke answers
+(artifacts/rag-verification-2026-10-25). Full 10-case answer evaluation and A/B are still pending.
+Gemini uses a Free Tier project key in `.env`; never enable billing, switch models
+as a fallback, retry quota errors automatically, or log keys. Unit tests mock Gemini;
+real Gemini calls must be explicitly authorized (as in the current implementation session).
 For CPython 3.13 on macOS arm64, use requirements/search-macos-arm64-py313.lock
 and the installation steps in requirements/README.md. A clean install and all
 41 tests passed (artifacts/lock-verification-2026-10-25); other lock targets are unverified.

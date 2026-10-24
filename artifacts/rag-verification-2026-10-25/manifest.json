@@ -1,0 +1,17 @@
+{
+  "stage": "rag-gemini-smoke",
+  "python": "3.13.15",
+  "gemini_model": "gemini-3.1-flash-lite",
+  "prompt_version": "grounded-ru-v1",
+  "max_output_tokens": 2048,
+  "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+  "catalog_file_sha256": "a9610f135de263230576a20d294db7a2b0713fe55c8509b7422997c8e6624c9b",
+  "questions_file_sha256": "a9e9d2e961788edec9182d175437aca15cb8cbc14bd4748558eeddfe7d2d8f64",
+  "gemini_live_requests": 2,
+  "full_ab_evaluation": false,
+  "source_sha256": {
+    "src/cartoon_rag/adapters/gemini.py": "4d6cf1e68f32205e9a888ced83d33755da071390774082c38d789d8cf132c767",
+    "src/cartoon_rag/adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607",
+    "src/cartoon_rag/snapshots.py": "6489965e29c7508a66b428af216abb366ce3e8b13c3dbf29de0e9129f4b165ef"
+  }
+}

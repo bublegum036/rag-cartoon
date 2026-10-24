@@ -7,6 +7,13 @@ from cartoon_rag.domain import (
 from cartoon_rag.ports import AnswerGenerator, ExactCatalog, QueryPlanner, Retriever
 
 
+def early_trace(question: str, plan: QueryPlan) -> Trace | None:
+    """Resolve early replies before initializing database/model providers."""
+    if plan.early_status is None:
+        return None
+    return Trace(question, plan, (), (), None, Answer(plan.early_status, plan.early_text))
+
+
 def execute_exact(catalog: ExactCatalog, plan: QueryPlan) -> ExactExecution:
     """Shared exact use case for CLI and RAG; never route semantic search here."""
     if plan.early_status is not None:
@@ -95,10 +102,12 @@ class SearchService:
         self.context_movies = context_movies
 
     def ask(self, question: str) -> Trace:
-        plan = self.planner.plan(question)
-        if plan.early_status is not None:
-            answer = Answer(plan.early_status, plan.early_text)
-            return Trace(question, plan, (), (), None, answer)
+        return self.execute_plan(question, self.planner.plan(question))
+
+    def execute_plan(self, question: str, plan: QueryPlan) -> Trace:
+        early = early_trace(question, plan)
+        if early is not None:
+            return early
 
         hits = ()
         exact = None
