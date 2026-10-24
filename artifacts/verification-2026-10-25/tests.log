@@ -1,0 +1,47 @@
+test_catalog_accepts_boolean_active (test_contracts.ContractsTest.test_catalog_accepts_boolean_active) ... ok
+test_catalog_rejects_non_boolean_active (test_contracts.ContractsTest.test_catalog_rejects_non_boolean_active) ... ok
+test_clarification_does_not_query_database (test_contracts.ContractsTest.test_clarification_does_not_query_database) ... ok
+test_evaluation_checks_all_retrieved_hits_against_reference_filters (test_contracts.ContractsTest.test_evaluation_checks_all_retrieved_hits_against_reference_filters) ... ok
+test_grouping_and_chunk_parent_recall (test_contracts.ContractsTest.test_grouping_and_chunk_parent_recall) ... ok
+test_index_embeds_title_and_publishes_only_latest_revision (test_contracts.ContractsTest.test_index_embeds_title_and_publishes_only_latest_revision) ... ok
+test_invalid_retrieval_filter_is_not_silently_hidden (test_contracts.ContractsTest.test_invalid_retrieval_filter_is_not_silently_hidden) ... ok
+test_missing_results_are_insufficient (test_contracts.ContractsTest.test_missing_results_are_insufficient) ... ok
+test_new_revision_and_deactivation (test_contracts.ContractsTest.test_new_revision_and_deactivation) ... ok
+test_shared_retrieval_deduplicates_chunks_and_matches_rag_context (test_contracts.ContractsTest.test_shared_retrieval_deduplicates_chunks_and_matches_rag_context) ... ok
+test_shared_retrieval_rejects_mixed_revisions (test_contracts.ContractsTest.test_shared_retrieval_rejects_mixed_revisions) ... ok
+test_strict_duration_boundary (test_contracts.ContractsTest.test_strict_duration_boundary) ... ok
+test_supplied_dataset (test_contracts.ContractsTest.test_supplied_dataset) ... ok
+test_timeout_is_not_insufficient (test_contracts.ContractsTest.test_timeout_is_not_insufficient) ... ok
+test_unknown_generated_sources_are_rejected (test_contracts.ContractsTest.test_unknown_generated_sources_are_rejected) ... ok
+test_failed_upload_preserves_readable_snapshot_and_empty_snapshot_retires_it (test_qdrant_live.QdrantLiveTest.test_failed_upload_preserves_readable_snapshot_and_empty_snapshot_retires_it) ... ok
+test_prefilter_before_top_k_repeat_and_version_update (test_qdrant_live.QdrantLiveTest.test_prefilter_before_top_k_repeat_and_version_update) ... ok
+test_real_embeddings_find_whale_and_robot (test_qdrant_live.QdrantLiveTest.test_real_embeddings_find_whale_and_robot) ... Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 3790.60it/s]
+ok
+test_database_failure_exits_nonzero_without_insufficient_result (test_search_adapters.CLITest.test_database_failure_exits_nonzero_without_insufficient_result) ... ok
+test_index_serializes_result_from_provider_independent_writer (test_search_adapters.CLITest.test_index_serializes_result_from_provider_independent_writer) ... ok
+test_search_outputs_chunks_and_unique_movies_with_explicit_filters (test_search_adapters.CLITest.test_search_outputs_chunks_and_unique_movies_with_explicit_filters) ... ok
+test_e5_prefixes_and_token_overflow (test_search_adapters.ChunkAndSettingsTest.test_e5_prefixes_and_token_overflow) ... ok
+test_environment_overrides_file_without_interpolation (test_search_adapters.ChunkAndSettingsTest.test_environment_overrides_file_without_interpolation) ... ok
+test_invalid_env_line_has_line_number_without_value (test_search_adapters.ChunkAndSettingsTest.test_invalid_env_line_has_line_number_without_value) ... ok
+test_invalid_settings_rejected (test_search_adapters.ChunkAndSettingsTest.test_invalid_settings_rejected) ... ok
+test_sentence_split_retains_parent_and_embedding_title (test_search_adapters.ChunkAndSettingsTest.test_sentence_split_retains_parent_and_embedding_title) ... ok
+test_short_catalog_cards_remain_whole (test_search_adapters.ChunkAndSettingsTest.test_short_catalog_cards_remain_whole) ... ok
+test_active_filter_always_present (test_search_adapters.SearchAdapterTest.test_active_filter_always_present) ... ok
+test_ambiguous_alias_timeout_does_not_delete_potentially_active_snapshot (test_search_adapters.SearchAdapterTest.test_ambiguous_alias_timeout_does_not_delete_potentially_active_snapshot) ... ok
+test_empty_snapshot_can_replace_existing_catalog (test_search_adapters.SearchAdapterTest.test_empty_snapshot_can_replace_existing_catalog) ... ok
+test_failed_upload_does_not_publish_or_delete_previous_snapshot (test_search_adapters.SearchAdapterTest.test_failed_upload_does_not_publish_or_delete_previous_snapshot) ... ok
+test_filter_violation_in_server_response_is_rejected (test_search_adapters.SearchAdapterTest.test_filter_violation_in_server_response_is_rejected) ... ok
+test_http_failure_keeps_status_and_hides_key (test_search_adapters.SearchAdapterTest.test_http_failure_keeps_status_and_hides_key) ... ok
+test_http_serializes_json_and_extracts_result (test_search_adapters.SearchAdapterTest.test_http_serializes_json_and_extracts_result) ... ok
+test_indexing_rejects_foreign_model_identity_before_any_db_request (test_search_adapters.SearchAdapterTest.test_indexing_rejects_foreign_model_identity_before_any_db_request) ... ok
+test_invalid_vectors_fail_before_mutating_storage (test_search_adapters.SearchAdapterTest.test_invalid_vectors_fail_before_mutating_storage) ... ok
+test_missing_index_is_an_error (test_search_adapters.SearchAdapterTest.test_missing_index_is_an_error) ... ok
+test_payload_roundtrip (test_search_adapters.SearchAdapterTest.test_payload_roundtrip) ... ok
+test_prefilter_sent_in_same_request_as_limit_and_vector (test_search_adapters.SearchAdapterTest.test_prefilter_sent_in_same_request_as_limit_and_vector) ... ok
+test_publication_follows_completed_upload_and_count (test_search_adapters.SearchAdapterTest.test_publication_follows_completed_upload_and_count) ... ok
+test_query_model_mismatch_fails_before_vector_query (test_search_adapters.SearchAdapterTest.test_query_model_mismatch_fails_before_vector_query) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 1.538s
+
+OK

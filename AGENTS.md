@@ -6,8 +6,14 @@ This directory contains a Russian-language RAG assignment and a Python 3.11+
 architecture with Qdrant REST and local FastEmbed E5 search adapters. Read
 `README.txt` for the assignment, `README.md` for commands and verification limits,
 and `docs/architecture.md` for boundaries and next steps. Provider integration
-tests are opt-in and have not yet run successfully in this environment.
+tests are opt-in; Qdrant 1.17.0 and real E5 checks passed on 2026-10-25
+with Python 3.13.15 on macOS arm64 (see artifacts/verification-2026-10-25).
 An end-to-end RAG system (planner, exact operations and generator) is not yet implemented.
+
+Learning notes live in `docs/rag-learning-notes.md`. Update them after meaningful
+implementation stages, review fixes or experiments: explain the RAG principle,
+how it applies here, what was verified and what remains unverified. Keep the
+current status accurate and never present planned or skipped checks as passed.
 
 - `catalog.json`: 12 fictional film cards; the sole source of film facts.
 - `questions.jsonl`: 10 evaluation cases with expected statuses, source IDs,
