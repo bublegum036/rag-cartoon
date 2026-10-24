@@ -1,4 +1,4 @@
-"""Data validation, standalone planning, publication and explicit-filter search."""
+"""Offline planning/exact operations, data validation and explicit-filter search."""
 
 import argparse
 import json
@@ -6,7 +6,7 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from cartoon_rag.application import RetrievalService
+from cartoon_rag.application import RetrievalService, execute_exact
 from cartoon_rag.evaluation import load_cases
 from cartoon_rag.domain import EmbeddingUnavailable, Filters, QueryPlan, RetrievalUnavailable
 from cartoon_rag.ingestion import SentenceChunker, active_snapshot, index_catalog, load_catalog
@@ -30,6 +30,9 @@ def main() -> None:
     plan = commands.add_parser("plan", help="Parse a question without retrieval or answer generation")
     plan.add_argument("question")
     plan.add_argument("--catalog", type=Path, default=Path("catalog.json"))
+    exact = commands.add_parser("exact", help="Execute exact operations; does not generate an answer")
+    exact.add_argument("question")
+    exact.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     index = commands.add_parser("index", help="Publish a complete active catalog snapshot")
     index.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     search = commands.add_parser("search", help="Retrieve chunks; does not generate an answer")
@@ -52,6 +55,13 @@ def main() -> None:
             from cartoon_rag.bootstrap import build_planner
 
             output = asdict(build_planner(load_catalog(args.catalog)).plan(args.question))
+        elif args.command == "exact":
+            from cartoon_rag.bootstrap import build_exact_catalog, build_planner
+
+            # Load once so planner references and exact evidence share revisions.
+            films = load_catalog(args.catalog)
+            plan = build_planner(films).plan(args.question)
+            output = asdict(execute_exact(build_exact_catalog(films), plan))
         else:
             from cartoon_rag.bootstrap import build_search
 

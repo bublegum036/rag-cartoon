@@ -59,6 +59,11 @@ class ExactCatalog(Protocol):
         Counts use the complete filtered catalog, not vector top-k. A comparison
         returns duration minus budget (positive means the film is too long).
         References must resolve to catalog cards. Missing films return ([], None).
+        A zero count returns ExactResult(0, "movies", ()), not a missing result.
+        Lookup/comparison require one ID. Comparison must not filter out its card
+        by duration; invalid or early plans must be rejected by the adapter.
+        Use an immutable active snapshot; full RAG composition must ensure its
+        catalog revision agrees with the retriever's published index.
         """
         ...
 

@@ -159,6 +159,15 @@ class ExactResult:
 
 
 @dataclass(frozen=True)
+class ExactExecution:
+    """An exact plan, its full-card evidence and optional computed value."""
+
+    plan: QueryPlan
+    context: tuple[Evidence, ...]
+    exact_result: ExactResult | None
+
+
+@dataclass(frozen=True)
 class Recommendation:
     movie_id: str
     title: str

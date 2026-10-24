@@ -1,0 +1,20 @@
+{
+  "plan": {
+    "semantic_query": "Сколько фильмов короче 40 минут?",
+    "intent": "count",
+    "filters": {
+      "duration_minutes_lt": 40,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": null,
+    "early_text": ""
+  },
+  "context": [],
+  "exact_result": {
+    "value": 0,
+    "unit": "movies",
+    "source_ids": []
+  }
+}

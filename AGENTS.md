@@ -11,7 +11,9 @@ with Python 3.13.15 on macOS arm64 (see artifacts/verification-2026-10-25).
 The rule-based Russian planner and offline `plan` CLI are implemented.
 Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
 64 local tests passed, 3 integration tests skipped after these fixes (artifacts/planner-fixes-2026-10-25).
-An end-to-end RAG system (exact operations and generator) is not yet implemented.
+JsonExactCatalog and offline `exact` CLI implement lookup, full filtered counts
+and signed duration comparisons. Full RAG composition and the generator are not yet implemented.
+Latest local checks: 85 passed, 3 integration tests skipped (artifacts/exact-verification-2026-10-25).
 For CPython 3.13 on macOS arm64, use requirements/search-macos-arm64-py313.lock
 and the installation steps in requirements/README.md. A clean install and all
 41 tests passed (artifacts/lock-verification-2026-10-25); other lock targets are unverified.

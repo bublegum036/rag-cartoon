@@ -1,0 +1,15 @@
+{
+  "stage": "exact-catalog",
+  "python": "3.13.15",
+  "catalog_file_sha256": "a9610f135de263230576a20d294db7a2b0713fe55c8509b7422997c8e6624c9b",
+  "questions_file_sha256": "a9e9d2e961788edec9182d175437aca15cb8cbc14bd4748558eeddfe7d2d8f64",
+  "adapter_sha256": "138650c64ea8c2e73acdb098a68c2c45107039bc16abe5a0fb70ca2052456302",
+  "qdrant_e5_retested": false,
+  "runnable_rag_or_ab": false,
+  "verified_values": {
+    "all_movies": 12,
+    "duration_lt_90": 9,
+    "duration_lt_40": 0,
+    "film_02_minus_90_minutes": 6
+  }
+}

@@ -1,10 +1,27 @@
 """Orchestration: plan → retrieve/compute → group → generate → validate."""
 
 from cartoon_rag.domain import (
-    Answer, Chunk, Evidence, ExactResult, GroundingError, Intent, MovieMatch,
+    Answer, Chunk, Evidence, ExactExecution, ExactResult, GroundingError, Intent, MovieMatch,
     QueryPlan, RetrievalResult, Status, Trace,
 )
 from cartoon_rag.ports import AnswerGenerator, ExactCatalog, QueryPlanner, Retriever
+
+
+def execute_exact(catalog: ExactCatalog, plan: QueryPlan) -> ExactExecution:
+    """Shared exact use case for CLI and RAG; never route semantic search here."""
+    if plan.early_status is not None:
+        return ExactExecution(plan, (), None)
+    if plan.intent not in (Intent.LOOKUP, Intent.COUNT, Intent.COMPARE_DURATION):
+        raise ValueError("This plan requires semantic search, not an exact catalog operation")
+    evidence, exact = catalog.execute(plan)
+    context = tuple(evidence)
+    if any(not plan.filters.matches(item.film) for item in context):
+        raise GroundingError("Catalog violated strict filters")
+    if len({item.film.movie_id for item in context}) != len(context):
+        raise GroundingError("Exact catalog returned duplicate movies")
+    if exact and not set(exact.source_ids) <= {item.film.source_id for item in context}:
+        raise GroundingError("Exact result cites sources outside its context")
+    return ExactExecution(plan, context, exact)
 
 
 def validate_answer(
@@ -90,12 +107,8 @@ class SearchService:
             hits = result.retrieved
             context = result.context[:self.context_movies]
         else:
-            evidence, exact = self.catalog.execute(plan)
-            context = tuple(evidence)
-            if any(not plan.filters.matches(item.film) for item in context):
-                raise GroundingError("Catalog violated strict filters")
-            if exact and not set(exact.source_ids) <= {item.film.source_id for item in context}:
-                raise GroundingError("Exact result cites sources outside its context")
+            result = execute_exact(self.catalog, plan)
+            context, exact = result.context, result.exact_result
 
         if not context and exact is None:
             answer = Answer(Status.INSUFFICIENT, "В каталоге нет подтверждения по этому запросу.")
