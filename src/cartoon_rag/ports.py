@@ -3,7 +3,8 @@
 from typing import Protocol, Sequence
 
 from cartoon_rag.domain import (
-    Answer, Chunk, Evidence, ExactResult, Hit, QueryPlan,
+    Answer, Chunk, EmbeddingBatch, EmbeddingIdentity, Evidence, ExactResult, Hit,
+    PublicationResult, QueryPlan,
 )
 
 
@@ -12,7 +13,16 @@ class QueryPlanner(Protocol):
 
 
 class Embedder(Protocol):
-    def embed(self, texts: Sequence[str]) -> Sequence[Sequence[float]]: ...
+    def embed(self, texts: Sequence[str]) -> EmbeddingBatch:
+        """Return vectors with their producer identity, including an empty batch."""
+        ...
+
+
+class QueryEmbedder(Protocol):
+    @property
+    def identity(self) -> EmbeddingIdentity: ...
+
+    def embed_query(self, text: str) -> Sequence[float]: ...
 
 
 class Chunker(Protocol):
@@ -21,12 +31,13 @@ class Chunker(Protocol):
 
 class IndexWriter(Protocol):
     def replace_snapshot(
-        self, chunks: Sequence[Chunk], vectors: Sequence[Sequence[float]],
-    ) -> None:
+        self, chunks: Sequence[Chunk], batch: EmbeddingBatch,
+    ) -> PublicationResult:
         """Atomically publish a complete active snapshot, retiring stale chunks.
 
         On failure leave the previous snapshot readable. Adapters must validate
-        vector dimensions and translate provider failures to infrastructure errors.
+        producer identity and vector dimensions before mutation, and translate
+        provider failures to infrastructure errors. Return the published snapshot.
         """
         ...
 

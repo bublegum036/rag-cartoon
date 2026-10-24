@@ -4,9 +4,10 @@ import unittest
 from dataclasses import replace
 from pathlib import Path
 
-from cartoon_rag.application import SearchService
+from cartoon_rag.application import RetrievalService, SearchService
 from cartoon_rag.domain import (
-    Answer, Chunk, Filters, GroundingError, Hit, QueryPlan, RetrievalUnavailable, Status,
+    Answer, Chunk, EmbeddingBatch, EmbeddingIdentity, Filters, GroundingError, Hit,
+    PublicationResult, QueryPlan, RetrievalUnavailable, Status,
 )
 from cartoon_rag.evaluation import accepted, load_cases, recall_at_k, save_trace
 from cartoon_rag.ingestion import WholeSynopsis, active_snapshot, index_catalog, load_catalog
@@ -117,18 +118,23 @@ class ContractsTest(unittest.TestCase):
 
     def test_index_embeds_title_and_publishes_only_latest_revision(self):
         captured = {}
+        identity = EmbeddingIdentity("test", "test-model", "v1", 1)
+        publication = PublicationResult("fake", "snapshot", identity, "catalog", "parts", 1, 1)
 
         class Embed:
             def embed(self, texts):
                 captured["texts"] = texts
-                return [[1.0] for _ in texts]
+                return EmbeddingBatch(identity, tuple((1.0,) for _ in texts))
 
         class Writer:
-            def replace_snapshot(self, chunks, vectors):
+            def replace_snapshot(self, chunks, batch):
                 captured["chunks"] = chunks
+                captured["batch"] = batch
+                return publication
 
         updated = replace(self.film, version=2, duration_minutes=92)
-        self.assertEqual(index_catalog((self.film, updated), WholeSynopsis(), Embed(), Writer()), 1)
+        self.assertIs(index_catalog((self.film, updated), WholeSynopsis(), Embed(), Writer()), publication)
+        self.assertEqual(captured["batch"].identity, identity)
         self.assertIn(self.film.title, captured["texts"][0])
         self.assertIn(self.film.synopsis, captured["texts"][0])
         self.assertEqual(captured["chunks"][0].film.version, 2)
@@ -153,6 +159,25 @@ class ContractsTest(unittest.TestCase):
         )
         with self.assertRaises(GroundingError):
             service.ask("короче 40")
+
+    def test_shared_retrieval_deduplicates_chunks_and_matches_rag_context(self):
+        first = replace(self.chunk, chunk_id="film-01#plot:part-1")
+        second = replace(self.chunk, chunk_id="film-01#plot:part-2")
+        other = self.films[1]
+        retrieval = Retrieval((Hit(first, 0.9), Hit(second, 0.8), Hit(second, 0.8),
+                               Hit(Chunk(other.source_id, other, other.synopsis), 0.7)))
+        result = RetrievalService(retrieval).search(QueryPlan("кит"), limit=10)
+        self.assertEqual(len(result.retrieved), 4)
+        self.assertEqual([movie.film.movie_id for movie in result.movies], ["film-01", "film-02"])
+        self.assertEqual(result.movies[0].chunks, (first, second))
+        self.assertEqual(result.movies[0].score, 0.9)
+        self.assertEqual(self.service(retrieval).ask("кит").context, result.context)
+
+    def test_shared_retrieval_rejects_mixed_revisions(self):
+        newer = replace(self.chunk, film=replace(self.film, version=2, duration_minutes=92))
+        retrieval = Retrieval((Hit(self.chunk, 0.9), Hit(newer, 0.8)))
+        with self.assertRaisesRegex(GroundingError, "Mixed movie revisions"):
+            RetrievalService(retrieval).search(QueryPlan("кит"), limit=10)
 
     def test_timeout_is_not_insufficient(self):
         with self.assertRaises(RetrievalUnavailable):

@@ -1,7 +1,8 @@
 """Orchestration: plan → retrieve/compute → group → generate → validate."""
 
 from cartoon_rag.domain import (
-    Answer, Chunk, Evidence, ExactResult, GroundingError, Intent, Status, Trace,
+    Answer, Chunk, Evidence, ExactResult, GroundingError, Intent, MovieMatch,
+    QueryPlan, RetrievalResult, Status, Trace,
 )
 from cartoon_rag.ports import AnswerGenerator, ExactCatalog, QueryPlanner, Retriever
 
@@ -34,6 +35,34 @@ def validate_answer(
             raise GroundingError("Recommendation requires its own supporting sources")
 
 
+class RetrievalService:
+    """Shared retrieval use case for CLI, APIs, evaluation and answer generation."""
+
+    def __init__(self, retriever: Retriever) -> None:
+        self.retriever = retriever
+
+    def search(self, plan: QueryPlan, *, limit: int) -> RetrievalResult:
+        if limit < 1:
+            raise ValueError("Retrieval limit must be positive")
+        hits = tuple(self.retriever.search(plan, limit=limit))
+        groups: dict[str, list[Chunk]] = {}
+        scores: dict[str, float] = {}
+        for hit in hits:
+            film = hit.chunk.film
+            # Fail loudly: postfiltering cannot recover lost top-k candidates.
+            if not plan.filters.matches(film):
+                raise GroundingError("Retriever violated strict filters")
+            group = groups.setdefault(film.movie_id, [])
+            if group and group[0].film != film:
+                raise GroundingError("Mixed movie revisions in retrieval")
+            if hit.chunk.chunk_id not in {chunk.chunk_id for chunk in group}:
+                group.append(hit.chunk)
+            scores[film.movie_id] = max(scores.get(film.movie_id, hit.score), hit.score)
+        movies = tuple(MovieMatch(chunks[0].film, tuple(chunks), scores[movie_id])
+                       for movie_id, chunks in groups.items())
+        return RetrievalResult(plan, hits, movies)
+
+
 class SearchService:
     def __init__(
         self, planner: QueryPlanner, retriever: Retriever, catalog: ExactCatalog,
@@ -42,7 +71,7 @@ class SearchService:
         if retrieval_k < 1 or context_movies < 1:
             raise ValueError("Retrieval and context limits must be positive")
         self.planner = planner
-        self.retriever = retriever
+        self.retrieval = RetrievalService(retriever)
         self.catalog = catalog
         self.generator = generator
         self.retrieval_k = retrieval_k
@@ -57,23 +86,9 @@ class SearchService:
         hits = ()
         exact = None
         if plan.intent is Intent.SEARCH:
-            hits = tuple(self.retriever.search(plan, limit=self.retrieval_k))
-            groups: dict[str, list[Chunk]] = {}
-            for hit in hits:
-                film = hit.chunk.film
-                # Fail loudly if an adapter violates prefiltering; postfiltering
-                # would silently hide lost top-k candidates.
-                if not plan.filters.matches(film):
-                    raise GroundingError("Retriever violated strict filters")
-                group = groups.setdefault(film.movie_id, [])
-                if group and group[0].film != film:
-                    raise GroundingError("Mixed movie revisions in retrieval")
-                if hit.chunk.chunk_id not in {chunk.chunk_id for chunk in group}:
-                    group.append(hit.chunk)
-            context = tuple(
-                Evidence(chunks[0].film, tuple(chunks))
-                for chunks in list(groups.values())[:self.context_movies]
-            )
+            result = self.retrieval.search(plan, limit=self.retrieval_k)
+            hits = result.retrieved
+            context = result.context[:self.context_movies]
         else:
             evidence, exact = self.catalog.execute(plan)
             context = tuple(evidence)

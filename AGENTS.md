@@ -3,10 +3,11 @@
 ## Current state
 
 This directory contains a Russian-language RAG assignment and a Python 3.11+
-architecture scaffold. Read `README.txt` for the assignment, `README.md` for
-verified commands, and `docs/architecture.md` for boundaries and next steps.
-Domain types and protocols live in `src/cartoon_rag`; external provider adapters
-and a working end-to-end RAG system are not yet implemented.
+architecture with Qdrant REST and local FastEmbed E5 search adapters. Read
+`README.txt` for the assignment, `README.md` for commands and verification limits,
+and `docs/architecture.md` for boundaries and next steps. Provider integration
+tests are opt-in and have not yet run successfully in this environment.
+An end-to-end RAG system (planner, exact operations and generator) is not yet implemented.
 
 - `catalog.json`: 12 fictional film cards; the sole source of film facts.
 - `questions.jsonl`: 10 evaluation cases with expected statuses, source IDs,
@@ -21,12 +22,19 @@ Run scaffold checks from the project root:
 `PYTHONPATH=src python3 -m cartoon_rag.cli validate-data`.
 Keep SDK imports in adapters and compose services through the protocols in
 `ports.py`. Do not present scaffold tests as completed A/B experiments.
+Use `.venv` for Python dependencies and `.env` for local settings. Do not commit
+either directory/file, model caches or API keys. `search` currently accepts
+explicit CLI filters; do not claim natural-language constraint parsing exists.
+Live checks require `QDRANT_INTEGRATION_URL`; semantic checks additionally require
+`RUN_SEMANTIC_SMOKE=1`. They use random test aliases and must preserve the main index.
 
 ## Agent profiles
 
 Reusable role instructions live in `agents/`; see `agents/README.md`.
 For code review requests, read and follow `agents/code-reviewer.md` before
-reviewing changes. Use the profile in the current session; it does not require
+reviewing changes. Every review includes both Python architect and Senior Python
+developer perspectives, with confirmed defects separated from design suggestions.
+Use the profile in the current session; it does not require
 spawning a separate agent. Apply it only to review work, not implementation.
 
 ## Commit convention

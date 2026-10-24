@@ -92,11 +92,61 @@ class Hit:
 
 
 @dataclass(frozen=True)
+class EmbeddingIdentity:
+    provider: str
+    model: str
+    revision: str
+    dimensions: int
+    implementation_version: str = ""
+    encoding: str = ""
+
+    def __post_init__(self) -> None:
+        if not all((self.provider, self.model, self.revision)) or self.dimensions < 1:
+            raise ValueError("Embedding identity requires provider, model, revision and positive dimensions")
+
+
+@dataclass(frozen=True)
+class EmbeddingBatch:
+    identity: EmbeddingIdentity
+    vectors: tuple[tuple[float, ...], ...]
+
+
+@dataclass(frozen=True)
+class PublicationResult:
+    index_name: str
+    snapshot_id: str
+    embedding: EmbeddingIdentity
+    catalog_sha256: str
+    chunks_sha256: str
+    movies: int
+    chunks: int
+    schema_version: int = 1
+
+
+@dataclass(frozen=True)
 class Evidence:
     """Selected chunks grouped into one card per movie."""
 
     film: Film
     chunks: tuple[Chunk, ...]
+
+
+@dataclass(frozen=True)
+class MovieMatch:
+    film: Film
+    chunks: tuple[Chunk, ...]
+    score: float
+
+
+@dataclass(frozen=True)
+class RetrievalResult:
+    plan: QueryPlan
+    retrieved: tuple[Hit, ...]
+    movies: tuple[MovieMatch, ...]
+
+    @property
+    def context(self) -> tuple[Evidence, ...]:
+        return tuple(Evidence(movie.film, movie.chunks) for movie in self.movies)
 
 
 @dataclass(frozen=True)
@@ -136,6 +186,10 @@ class Trace:
 
 class RetrievalUnavailable(RuntimeError):
     """Infrastructure failure; must not become an insufficient answer."""
+
+
+class EmbeddingUnavailable(RuntimeError):
+    """Embedding dependency, weight download or inference failed."""
 
 
 class GroundingError(ValueError):
