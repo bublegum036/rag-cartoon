@@ -110,6 +110,14 @@ class QdrantLiveTest(unittest.TestCase):
         hits = store.search(QueryPlan("море и дружба", filters=Filters(duration_minutes_lt=90)), limit=5)
         self.assertIn("film-01", {hit.chunk.film.movie_id for hit in hits})
         self.assertTrue(all(hit.chunk.film.duration_minutes < 90 for hit in hits))
+        from cartoon_rag.bootstrap import build_planner
+
+        plan = build_planner(self.films).plan("Хочу мультфильм про море и дружбу, короче 90 минут.")
+        self.assertIsNone(plan.early_status)
+        self.assertEqual(plan.filters.duration_minutes_lt, 90)
+        hits = store.search(plan, limit=5)
+        self.assertIn("film-01", {hit.chunk.film.movie_id for hit in hits})
+        self.assertTrue(all(hit.chunk.film.duration_minutes < 90 for hit in hits))
 
 
 if __name__ == "__main__":

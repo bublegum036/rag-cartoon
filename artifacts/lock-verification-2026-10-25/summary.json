@@ -1,0 +1,15 @@
+{
+  "lock_sha256": "f06a4c1d6df1d0c9e1d478d648a342113e3cbbb3e21c30ade05169f8174b9d3b",
+  "locked_packages": 29,
+  "locked_versions_match": true,
+  "prior_search_versions_preserved": true,
+  "source_import_without_pythonpath": true,
+  "search_filters_passed": true,
+  "search_movie_ids": [
+    "film-01",
+    "film-07",
+    "film-11",
+    "film-09",
+    "film-03"
+  ]
+}

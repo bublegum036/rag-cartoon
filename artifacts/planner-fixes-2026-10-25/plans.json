@@ -1,0 +1,34 @@
+[
+  {
+    "question": "Сколько минут длится „Маяк для кита“?",
+    "plan": {
+      "semantic_query": "Сколько минут длится „Маяк для кита“?",
+      "intent": "lookup",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": [
+          "film-01"
+        ]
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "question": "Посоветуй фильм про дружбу героев разного возраста",
+    "plan": {
+      "semantic_query": "Посоветуй фильм про дружбу героев разного возраста",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  }
+]

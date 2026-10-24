@@ -1,0 +1,123 @@
+test_age_story_topic_reaches_search_and_generator (test_planner.PlannerIntegrationTest.test_age_story_topic_reaches_search_and_generator) ... FAIL
+test_cli_plan_is_offline_and_does_not_load_env_or_embeddings (test_planner.PlannerIntegrationTest.test_cli_plan_is_offline_and_does_not_load_env_or_embeddings) ... ok
+test_comparison_keeps_long_film_for_exact_operation (test_planner.PlannerIntegrationTest.test_comparison_keeps_long_film_for_exact_operation) ... ok
+test_duration_fact_with_units_reaches_catalog (test_planner.PlannerIntegrationTest.test_duration_fact_with_units_reaches_catalog) ... FAIL
+test_early_routes_do_not_access_retrieval_catalog_or_generator (test_planner.PlannerIntegrationTest.test_early_routes_do_not_access_retrieval_catalog_or_generator) ... ok
+test_natural_language_filter_is_forwarded_to_retrieval (test_planner.PlannerIntegrationTest.test_natural_language_filter_is_forwarded_to_retrieval) ... ok
+test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) ... 
+  test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Посоветуй фильм про дружбу героев разного возраста') ... FAIL
+  test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Ищу мультфильм про возраст и взросление') ... FAIL
+  test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Нужна история о разнице в возрасте героев') ... FAIL
+test_ambiguous_or_multiple_titles_require_clarification (test_planner.PlannerTest.test_ambiguous_or_multiple_titles_require_clarification) ... ok
+test_budget_for_open_recommendation_is_inclusive (test_planner.PlannerTest.test_budget_for_open_recommendation_is_inclusive) ... ok
+test_budget_is_comparison_evidence_selection_not_retrieval_filter (test_planner.PlannerTest.test_budget_is_comparison_evidence_selection_not_retrieval_filter) ... ok
+test_composition_uses_only_latest_active_title_references (test_planner.PlannerTest.test_composition_uses_only_latest_active_title_references) ... ok
+test_conjoined_bounds_are_intersected (test_planner.PlannerTest.test_conjoined_bounds_are_intersected) ... ok
+test_count_uses_only_exact_catalog_predicates (test_planner.PlannerTest.test_count_uses_only_exact_catalog_predicates) ... ok
+test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) ... 
+  test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут длится «Маяк для кита»?') ... FAIL
+  test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут длится „Маяк для кита“?') ... FAIL
+  test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут идёт "Робот и сад"?') ... FAIL
+  test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Какова продолжительность в минутах «Робот и сад»?') ... FAIL
+test_duration_paraphrases_and_boundaries (test_planner.PlannerTest.test_duration_paraphrases_and_boundaries) ... ok
+test_empty_or_unresolved_reference_requires_clarification (test_planner.PlannerTest.test_empty_or_unresolved_reference_requires_clarification) ... ok
+test_filter_only_search_has_nonempty_embedding_text (test_planner.PlannerTest.test_filter_only_search_has_nonempty_embedding_text) ... ok
+test_missing_facts_are_not_guessed (test_planner.PlannerTest.test_missing_facts_are_not_guessed) ... ok
+test_named_lookup_and_title_normalization (test_planner.PlannerTest.test_named_lookup_and_title_normalization) ... ok
+test_plan_is_not_answer_or_catalog_existence_check (test_planner.PlannerTest.test_plan_is_not_answer_or_catalog_existence_check) ... ok
+test_story_time_and_negated_budget_are_not_treated_as_viewing_limits (test_planner.PlannerTest.test_story_time_and_negated_budget_are_not_treated_as_viewing_limits) ... ok
+test_supplied_questions_plan_routes_without_using_answers (test_planner.PlannerTest.test_supplied_questions_plan_routes_without_using_answers) ... ok
+test_title_words_are_not_treated_as_fact_requests_or_constraints (test_planner.PlannerTest.test_title_words_are_not_treated_as_fact_requests_or_constraints) ... ok
+test_unknown_partial_or_declined_quoted_title_requires_clarification (test_planner.PlannerTest.test_unknown_partial_or_declined_quoted_title_requires_clarification) ... ok
+test_unquoted_title_is_not_a_partial_word (test_planner.PlannerTest.test_unquoted_title_is_not_a_partial_word) ... ok
+test_unrepresentable_constraints_are_never_silently_dropped (test_planner.PlannerTest.test_unrepresentable_constraints_are_never_silently_dropped) ... ok
+
+======================================================================
+FAIL: test_age_story_topic_reaches_search_and_generator (test_planner.PlannerIntegrationTest.test_age_story_topic_reaches_search_and_generator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 299, in test_age_story_topic_reaches_search_and_generator
+    retriever.search.assert_called_once_with(trace.plan, limit=10)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 990, in assert_called_once_with
+    raise AssertionError(msg)
+AssertionError: Expected 'search' to be called once. Called 0 times.
+
+======================================================================
+FAIL: test_duration_fact_with_units_reaches_catalog (test_planner.PlannerIntegrationTest.test_duration_fact_with_units_reaches_catalog)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 283, in test_duration_fact_with_units_reaches_catalog
+    catalog.execute.assert_called_once_with(trace.plan)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 990, in assert_called_once_with
+    raise AssertionError(msg)
+AssertionError: Expected 'execute' to be called once. Called 0 times.
+
+======================================================================
+FAIL: test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Посоветуй фильм про дружбу героев разного возраста')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 118, in test_age_as_story_topic_does_not_request_age_restrictions
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.INSUFFICIENT: 'insufficient'> is not None
+
+======================================================================
+FAIL: test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Ищу мультфильм про возраст и взросление')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 118, in test_age_as_story_topic_does_not_request_age_restrictions
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.INSUFFICIENT: 'insufficient'> is not None
+
+======================================================================
+FAIL: test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Нужна история о разнице в возрасте героев')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 118, in test_age_as_story_topic_does_not_request_age_restrictions
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.INSUFFICIENT: 'insufficient'> is not None
+
+======================================================================
+FAIL: test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут длится «Маяк для кита»?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 101, in test_duration_fact_units_are_not_duration_constraints
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.CLARIFY: 'clarify'> is not None
+
+======================================================================
+FAIL: test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут длится „Маяк для кита“?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 101, in test_duration_fact_units_are_not_duration_constraints
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.CLARIFY: 'clarify'> is not None
+
+======================================================================
+FAIL: test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут идёт "Робот и сад"?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 101, in test_duration_fact_units_are_not_duration_constraints
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.CLARIFY: 'clarify'> is not None
+
+======================================================================
+FAIL: test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Какова продолжительность в минутах «Робот и сад»?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_planner.py", line 101, in test_duration_fact_units_are_not_duration_constraints
+    self.assertIsNone(plan.early_status)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: <Status.CLARIFY: 'clarify'> is not None
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.008s
+
+FAILED (failures=9)

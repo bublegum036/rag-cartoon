@@ -1,0 +1,13 @@
+Obtaining file:///Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: cartoon-rag
+  Building editable for cartoon-rag (pyproject.toml): started
+  Building editable for cartoon-rag (pyproject.toml): finished with status 'done'
+  Created wheel for cartoon-rag: filename=cartoon_rag-0.1.0-0.editable-py3-none-any.whl size=1631 sha256=931eaefb8e7a46894dcb4ef33e74b68e7e2d31db0cd681ac35d6fa9f63259594
+  Stored in directory: /private/var/folders/_d/4hf7tqfd5n96m74h6hy94l8h0000gn/T/pip-ephem-wheel-cache-s9r8r78u/wheels/ba/d6/df/f0716ad63bcca315c4050a6611e8d972e122d9e3797a60cf5e
+Successfully built cartoon-rag
+Installing collected packages: cartoon-rag
+Successfully installed cartoon-rag-0.1.0

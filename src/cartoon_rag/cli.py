@@ -1,4 +1,4 @@
-"""Data validation, index publication and explicit-filter semantic search."""
+"""Data validation, standalone planning, publication and explicit-filter search."""
 
 import argparse
 import json
@@ -27,6 +27,9 @@ def main() -> None:
     validate = commands.add_parser("validate-data", help="Validate catalog and evaluation cases")
     validate.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     validate.add_argument("--questions", type=Path, default=Path("questions.jsonl"))
+    plan = commands.add_parser("plan", help="Parse a question without retrieval or answer generation")
+    plan.add_argument("question")
+    plan.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     index = commands.add_parser("index", help="Publish a complete active catalog snapshot")
     index.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     search = commands.add_parser("search", help="Retrieve chunks; does not generate an answer")
@@ -45,6 +48,10 @@ def main() -> None:
                 if not set(case.relevant_source_ids) <= known:
                     raise ValueError(f"Unknown reference source in case {case.id}")
             output = {"active_films": len(films), "evaluation_cases": len(cases)}
+        elif args.command == "plan":
+            from cartoon_rag.bootstrap import build_planner
+
+            output = asdict(build_planner(load_catalog(args.catalog)).plan(args.question))
         else:
             from cartoon_rag.bootstrap import build_search
 

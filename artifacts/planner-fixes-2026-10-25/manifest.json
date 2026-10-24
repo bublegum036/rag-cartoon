@@ -1,0 +1,8 @@
+{
+  "stage": "planner-review-fixes",
+  "planner": "ru-rules-v1.1",
+  "python": "3.13.15",
+  "planner_source_sha256": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+  "original_10_plans_unchanged": true,
+  "qdrant_e5_retested": false
+}

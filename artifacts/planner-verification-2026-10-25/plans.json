@@ -1,0 +1,164 @@
+[
+  {
+    "id": "sea-short",
+    "question": "Хочу мультфильм про море и дружбу, короче 90 минут.",
+    "plan": {
+      "semantic_query": "Хочу мультфильм про море и дружбу",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": 90,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "whale",
+    "question": "Как называется мультфильм, где девочка и кит чинят маяк?",
+    "plan": {
+      "semantic_query": "Как называется мультфильм, где девочка и кит чинят маяк",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "robot",
+    "question": "Ищу мультфильм про робота, который выращивает сад.",
+    "plan": {
+      "semantic_query": "Ищу мультфильм про робота, который выращивает сад",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "space",
+    "question": "Что посмотреть про щенка в космосе?",
+    "plan": {
+      "semantic_query": "Что посмотреть про щенка в космосе",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "library",
+    "question": "Есть история про библиотекаря и забытые истории?",
+    "plan": {
+      "semantic_query": "Есть история про библиотекаря и забытые истории",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "dragon",
+    "question": "Как дракон помог пекарю, когда сломалась печь?",
+    "plan": {
+      "semantic_query": "Как дракон помог пекарю, когда сломалась печь",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "no-match",
+    "question": "Нужен мультфильм про море короче 40 минут.",
+    "plan": {
+      "semantic_query": "Нужен мультфильм про море",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": 40,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    }
+  },
+  {
+    "id": "unknown",
+    "question": "Кто озвучивает девочку в «Маяке для кита»?",
+    "plan": {
+      "semantic_query": "Кто озвучивает девочку в «Маяке для кита»?",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": "insufficient",
+      "early_text": "В каталоге нет сведений о актёрах озвучивания."
+    }
+  },
+  {
+    "id": "ambiguous",
+    "question": "Сколько он длится?",
+    "plan": {
+      "semantic_query": "Сколько он длится?",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": "clarify",
+      "early_text": "О каком фильме идёт речь? Укажите название."
+    }
+  },
+  {
+    "id": "marine-long",
+    "question": "Подойдёт ли «Коралловая почта», если у меня только 90 минут?",
+    "plan": {
+      "semantic_query": "Подойдёт ли «Коралловая почта», если у меня только 90 минут?",
+      "intent": "compare_duration",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": [
+          "film-02"
+        ]
+      },
+      "time_budget_minutes": 90,
+      "early_status": null,
+      "early_text": ""
+    }
+  }
+]

@@ -8,7 +8,13 @@ architecture with Qdrant REST and local FastEmbed E5 search adapters. Read
 and `docs/architecture.md` for boundaries and next steps. Provider integration
 tests are opt-in; Qdrant 1.17.0 and real E5 checks passed on 2026-10-25
 with Python 3.13.15 on macOS arm64 (see artifacts/verification-2026-10-25).
-An end-to-end RAG system (planner, exact operations and generator) is not yet implemented.
+The rule-based Russian planner and offline `plan` CLI are implemented.
+Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
+64 local tests passed, 3 integration tests skipped after these fixes (artifacts/planner-fixes-2026-10-25).
+An end-to-end RAG system (exact operations and generator) is not yet implemented.
+For CPython 3.13 on macOS arm64, use requirements/search-macos-arm64-py313.lock
+and the installation steps in requirements/README.md. A clean install and all
+41 tests passed (artifacts/lock-verification-2026-10-25); other lock targets are unverified.
 
 Learning notes live in `docs/rag-learning-notes.md`. Update them after meaningful
 implementation stages, review fixes or experiments: explain the RAG principle,
@@ -30,7 +36,9 @@ Keep SDK imports in adapters and compose services through the protocols in
 `ports.py`. Do not present scaffold tests as completed A/B experiments.
 Use `.venv` for Python dependencies and `.env` for local settings. Do not commit
 either directory/file, model caches or API keys. `search` currently accepts
-explicit CLI filters; do not claim natural-language constraint parsing exists.
+explicit CLI filters and does not call the planner. `plan` supports a limited
+Russian grammar; do not present it as a universal natural-language parser.
+The planner receives only active movie IDs/titles, never evaluation labels or film facts.
 Live checks require `QDRANT_INTEGRATION_URL`; semantic checks additionally require
 `RUN_SEMANTIC_SMOKE=1`. They use random test aliases and must preserve the main index.
 

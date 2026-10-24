@@ -1,0 +1,14 @@
+{
+  "semantic_query": "Сколько минут длится „Маяк для кита“?",
+  "intent": "lookup",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [
+      "film-01"
+    ]
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}
