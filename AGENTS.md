@@ -2,9 +2,11 @@
 
 ## Current state
 
-This directory contains a Russian-language RAG assignment, not an implemented
-application. Read `README.txt` for the full requirements. There is currently no
-dependency manifest, application code, or test runner.
+This directory contains a Russian-language RAG assignment and a Python 3.11+
+architecture scaffold. Read `README.txt` for the assignment, `README.md` for
+verified commands, and `docs/architecture.md` for boundaries and next steps.
+Domain types and protocols live in `src/cartoon_rag`; external provider adapters
+and a working end-to-end RAG system are not yet implemented.
 
 - `catalog.json`: 12 fictional film cards; the sole source of film facts.
 - `questions.jsonl`: 10 evaluation cases with expected statuses, source IDs,
@@ -13,6 +15,33 @@ dependency manifest, application code, or test runner.
 Do not claim installation, launch, or test commands exist before implementing
 and verifying them. Preserve the supplied catalog and evaluation cases unless
 the user requests changes.
+
+Run scaffold checks from the project root:
+`PYTHONPATH=src python3 -m unittest discover -s tests -v` and
+`PYTHONPATH=src python3 -m cartoon_rag.cli validate-data`.
+Keep SDK imports in adapters and compose services through the protocols in
+`ports.py`. Do not present scaffold tests as completed A/B experiments.
+
+## Agent profiles
+
+Reusable role instructions live in `agents/`; see `agents/README.md`.
+For code review requests, read and follow `agents/code-reviewer.md` before
+reviewing changes. Use the profile in the current session; it does not require
+spawning a separate agent. Apply it only to review work, not implementation.
+
+## Commit convention
+
+Use Conventional Commits 1.0.0 for all new commits:
+https://www.conventionalcommits.org/ru/v1.0.0/
+
+- Format: `<type>[optional scope][!]: <description>`.
+- Use `feat` for new functionality and `fix` for bug fixes. Other appropriate
+  types include `docs`, `refactor`, `test`, `build`, `ci`, and `chore`.
+- Use lowercase types consistently. Scope is optional and names the affected
+  component, for example `feat(search): add strict duration filters`.
+- Mark breaking changes with `!` before the colon or a `BREAKING CHANGE:` footer.
+- Separate an optional body and footers from the preceding section by a blank line.
+- Keep commits focused. Do not rewrite existing commit history unless requested.
 
 ## Implementation requirements
 
