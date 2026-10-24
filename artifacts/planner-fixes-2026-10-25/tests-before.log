@@ -4,7 +4,7 @@ test_comparison_keeps_long_film_for_exact_operation (test_planner.PlannerIntegra
 test_duration_fact_with_units_reaches_catalog (test_planner.PlannerIntegrationTest.test_duration_fact_with_units_reaches_catalog) ... FAIL
 test_early_routes_do_not_access_retrieval_catalog_or_generator (test_planner.PlannerIntegrationTest.test_early_routes_do_not_access_retrieval_catalog_or_generator) ... ok
 test_natural_language_filter_is_forwarded_to_retrieval (test_planner.PlannerIntegrationTest.test_natural_language_filter_is_forwarded_to_retrieval) ... ok
-test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) ... 
+test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) ...
   test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Посоветуй фильм про дружбу героев разного возраста') ... FAIL
   test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Ищу мультфильм про возраст и взросление') ... FAIL
   test_age_as_story_topic_does_not_request_age_restrictions (test_planner.PlannerTest.test_age_as_story_topic_does_not_request_age_restrictions) (question='Нужна история о разнице в возрасте героев') ... FAIL
@@ -14,7 +14,7 @@ test_budget_is_comparison_evidence_selection_not_retrieval_filter (test_planner.
 test_composition_uses_only_latest_active_title_references (test_planner.PlannerTest.test_composition_uses_only_latest_active_title_references) ... ok
 test_conjoined_bounds_are_intersected (test_planner.PlannerTest.test_conjoined_bounds_are_intersected) ... ok
 test_count_uses_only_exact_catalog_predicates (test_planner.PlannerTest.test_count_uses_only_exact_catalog_predicates) ... ok
-test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) ... 
+test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) ...
   test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут длится «Маяк для кита»?') ... FAIL
   test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут длится „Маяк для кита“?') ... FAIL
   test_duration_fact_units_are_not_duration_constraints (test_planner.PlannerTest.test_duration_fact_units_are_not_duration_constraints) (question='Сколько минут идёт "Робот и сад"?') ... FAIL
