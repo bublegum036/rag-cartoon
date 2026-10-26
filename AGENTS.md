@@ -14,7 +14,11 @@ Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
 JsonExactCatalog and offline `exact` CLI implement lookup, full filtered counts
 and signed duration comparisons. `ask` composes these with Gemini structured generation
 and a Qdrant collection pinned to the same catalog fingerprint.
-Latest generator identity fix: 124 tests passed, 3 integration tests skipped;
+Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
+the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
+Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;
+no provider calls (artifacts/semantic-recheck-2026-10-26).
+Previous generator identity fix: 124 tests passed, 3 integration tests skipped;
 providers were not rerun (artifacts/generator-identity-fix-2026-10-25).
 Injected generators require explicit GeneratorIdentity; never infer their metadata from Settings.
 Previously after evaluate/A-B: all 123 tests passed with real Qdrant/E5;
