@@ -1,0 +1,14 @@
+{
+  "id": "space",
+  "question": "Что посмотреть про щенка в космосе?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-03#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Орбита щенка; домой помогает вернуться радиопередача."
+}

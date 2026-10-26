@@ -73,13 +73,15 @@ class GeminiTest(unittest.TestCase):
 
     def test_prompt_versions_change_only_system_instruction(self):
         requests = []
-        for version in ("grounded-ru-v1", "grounded-ru-v2"):
+        for version in PROMPTS:
             generator = GeminiAnswerGenerator(self.transport, prompt_version=version)
             generator.generate("море", QueryPlan("море"), self.context, None)
             body = self.transport.generate.call_args.args[0]
             self.assertEqual(body["systemInstruction"]["parts"][0]["text"], PROMPTS[version])
             requests.append({key: value for key, value in body.items() if key != "systemInstruction"})
-        self.assertEqual(requests[0], requests[1])
+        self.assertTrue(all(request == requests[0] for request in requests))
+        self.assertEqual(PROMPTS["grounded-ru-v2"],
+                         (ROOT / "artifacts/expanded-retry-v2-2026-10-26/prompt.txt").read_text())
         with self.assertRaises(ValueError):
             GeminiAnswerGenerator(self.transport, prompt_version="unknown")
 

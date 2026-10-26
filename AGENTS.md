@@ -25,6 +25,11 @@ Separate manual rerun of the four expanded technical failures used schema 2:
 mechanical-whale omits the required use of measurements for safe boat passage.
 Original 16/20 run unchanged; do not merge attempts into a one-pass score.
 See artifacts/expanded-retry-v2-2026-10-26 and data/questions-expanded-retry.jsonl.
+Experimental grounded-ru-v3 adds a generic full causal-chain instruction; CLI
+evaluate run can select it. On the same four cases, mechanical-whale was fixed
+but sea-short omitted 78 minutes (and added an unsupported gratitude motive).
+Acceptance stayed 3/4, no technical failures. v2 remains default; do not claim
+overall improvement or a full 20-case v3 evaluation. See artifacts/expanded-retry-v3-2026-10-26.
 Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
 the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
 Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;

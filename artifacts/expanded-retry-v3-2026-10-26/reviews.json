@@ -1,0 +1,45 @@
+{
+  "reviewer": "Codex: ручная смысловая проверка prompt v3 на тех же четырёх случаях 2026-10-26; не независимый и не слепой оценщик",
+  "decisions": [
+    {
+      "case_id": "sea-short",
+      "case_sha256": "612f6259cadaa2543e0bf0e43fb941ded5d26a3ee991218837d0dd47d4f75ac5",
+      "trace_sha256": "d98a6669d4353f2006f481c3661b7a33b1c8ad6a07f6fad1c462b5eebc4862c3",
+      "rubric_passed": false,
+      "facts_supported": false,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Название «Маяк для кита», статус answered и источник film-01#plot верны. Рекомендованная карточка длится 78 минут и проходит <90, но ни text, ни recommendations.reason не указывают требуемые rubric 78 минут: ответ сосредоточен на сюжете. Дополнительно text приписывает киту мотив «в благодарность», который прямо не дан в карточке; последовательность спасения и помощи есть, мотив не зафиксирован. Поэтому rubric_passed=false и facts_supported=false. Фильтр и ссылки корректны; отсутствующую длительность нельзя подставить из metadata при оценке ответа."
+    },
+    {
+      "case_id": "space",
+      "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+      "trace_sha256": "85341f73c4022aa9876976a1fe6e47ac500804e9a1321b9af3bd5b14ab8ceb66",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Орбита щенка», узнавание знакомой мелодии в радиопередаче явно помогает роботу проложить курс и вернуться домой. Грузовой корабль, потеря курса и пояс астероидов подтверждены film-03#plot. Text и reason выполняют rubric, источник и рекомендация корректны."
+    },
+    {
+      "case_id": "mechanical-whale",
+      "case_sha256": "b9ba4b133b5ed51f427f0e142a51859255a44cdf75d45ec93766fa28a95386f4",
+      "trace_sha256": "d1962ee3a380f91be619f7d1feca82841861513c56c62f018b7c4691ced10b33",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Девочка и механический кит», аппарат для измерения глубины, застревание между сваями и освобождение рычагом/лебёдкой. В text явно указано дальнейшее применение данных: рыбаки определяют безопасный проход для лодок. Это требуемое звено rubric и факт film-37#plot; живой кит/маяк не подставлены. Пустой recommendations допустим для идентификации истории; источник корректен."
+    },
+    {
+      "case_id": "count-all",
+      "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+      "trace_sha256": "a9889c72c1f7b0d43f40e4282128479cbde11ae6b19dc27a71152c540df38ac3",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: названо 40 мультфильмов, совпадает с ExactResult=40 и полным числом активных карточек. Контекст и source_ids включают все 40 источников без повторов; семантический top-k не использовался для подсчёта. Рекомендации пусты, что допустимо."
+    }
+  ]
+}

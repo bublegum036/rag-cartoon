@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка prompt v3 на тех же четырёх случаях 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "sea-short",
+    "case_sha256": "612f6259cadaa2543e0bf0e43fb941ded5d26a3ee991218837d0dd47d4f75ac5",
+    "trace_sha256": "d98a6669d4353f2006f481c3661b7a33b1c8ad6a07f6fad1c462b5eebc4862c3",
+    "rubric_passed": false,
+    "facts_supported": false,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Название «Маяк для кита», статус answered и источник film-01#plot верны. Рекомендованная карточка длится 78 минут и проходит <90, но ни text, ни recommendations.reason не указывают требуемые rubric 78 минут: ответ сосредоточен на сюжете. Дополнительно text приписывает киту мотив «в благодарность», который прямо не дан в карточке; последовательность спасения и помощи есть, мотив не зафиксирован. Поэтому rubric_passed=false и facts_supported=false. Фильтр и ссылки корректны; отсутствующую длительность нельзя подставить из metadata при оценке ответа."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

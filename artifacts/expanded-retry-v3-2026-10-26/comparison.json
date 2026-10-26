@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-26",
+  "baseline_run": "artifacts/expanded-retry-v2-2026-10-26",
+  "candidate_run": "artifacts/expanded-retry-v3-2026-10-26",
+  "base_commit": "aaf5db8e502072103b7b9e3a56ecc808e0be01e1",
+  "controlled_runtime_changes": {
+    "prompt_version": {
+      "v2": "grounded-ru-v2",
+      "v3": "grounded-ru-v3"
+    }
+  },
+  "case_set_sha256": "47025e796359af95f39964504489e24371de35b8ff2749e05eff2547b8dbb1cc",
+  "review_protocol_identical": true,
+  "per_case": [
+    {
+      "case_id": "sea-short",
+      "preparation_identical": true,
+      "v2_accepted": true,
+      "v3_accepted": false
+    },
+    {
+      "case_id": "space",
+      "preparation_identical": true,
+      "v2_accepted": true,
+      "v3_accepted": true
+    },
+    {
+      "case_id": "mechanical-whale",
+      "preparation_identical": true,
+      "v2_accepted": false,
+      "v3_accepted": true
+    },
+    {
+      "case_id": "count-all",
+      "preparation_identical": true,
+      "v2_accepted": true,
+      "v3_accepted": true
+    }
+  ],
+  "v2_metrics": {
+    "cases": 4,
+    "completed": 4,
+    "technical_errors": 0,
+    "not_executed": 0,
+    "reference_cases": 3,
+    "recall_k": 3,
+    "recall_at_k": 1.0,
+    "recall_at_1": 1.0,
+    "strict_filter_cases": 1,
+    "strict_filter_compliant": 1,
+    "strict_filter_compliance": 1.0,
+    "reviewed_cases": 4,
+    "pending_reviews": 0,
+    "accepted_answers": 3,
+    "answer_acceptance_rate": 0.75,
+    "prepared_cases": 4
+  },
+  "v3_metrics": {
+    "cases": 4,
+    "completed": 4,
+    "technical_errors": 0,
+    "not_executed": 0,
+    "reference_cases": 3,
+    "recall_k": 3,
+    "recall_at_k": 1.0,
+    "recall_at_1": 1.0,
+    "strict_filter_cases": 1,
+    "strict_filter_compliant": 1,
+    "strict_filter_compliance": 1.0,
+    "reviewed_cases": 4,
+    "pending_reviews": 0,
+    "accepted_answers": 3,
+    "answer_acceptance_rate": 0.75,
+    "prepared_cases": 4
+  },
+  "fixed_cases": [
+    "mechanical-whale"
+  ],
+  "regressed_cases": [
+    "sea-short"
+  ],
+  "acceptance_delta": 0.0,
+  "default_prompt_after_experiment": "grounded-ru-v2",
+  "conclusion": "No overall acceptance improvement on four selected cases; v3 remains experimental",
+  "generation_requests_in_candidate_run": 4,
+  "automatic_retries": 0,
+  "original_data_and_archives_unchanged": true,
+  "independent_review": false,
+  "blind_review": false,
+  "prompt_sha256": {
+    "grounded-ru-v2": "c4340b91eac24e13844ec070fcff6d3360d60941b06f4d813757c5aa91cc4b6c",
+    "grounded-ru-v3": "3be58d0a2d37fb9a486360780e45ea0e7ed7ef68913d0c1f0473400cfce825d4"
+  }
+}

@@ -217,7 +217,7 @@ class ExperimentTest(unittest.TestCase):
         out, err = io.StringIO(), io.StringIO()
         with patch("sys.argv", ["cartoon-rag", "evaluate", "run", "--questions", str(questions),
                                  "--output", str(self.output), "--label", "test", "--delay-seconds", "0",
-                                 "--prompt-version", "grounded-ru-v1"]), \
+                                 "--prompt-version", "grounded-ru-v3"]), \
                 patch.object(Settings, "load", return_value=Settings()), \
                 patch("cartoon_rag.bootstrap.build_rag_runtime", return_value=(self.service, {})) as factory, \
                 redirect_stdout(out), redirect_stderr(err), self.assertRaises(SystemExit) as caught:
@@ -228,7 +228,7 @@ class ExperimentTest(unittest.TestCase):
         self.assertEqual(summary["not_executed"], 1)
         self.service.prepare.assert_called_once_with(self.cases[0].question)
         self.service.answer.assert_called_once()
-        self.assertEqual(factory.call_args.kwargs["prompt_version"], "grounded-ru-v1")
+        self.assertEqual(factory.call_args.kwargs["prompt_version"], "grounded-ru-v3")
 
     def test_generation_failure_keeps_evidence_written_before_model_call(self):
         for intent in (Intent.SEARCH, Intent.COUNT):

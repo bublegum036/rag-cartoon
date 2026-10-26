@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка prompt v3 на тех же четырёх случаях 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "count-all",
+    "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+    "trace_sha256": "a9889c72c1f7b0d43f40e4282128479cbde11ae6b19dc27a71152c540df38ac3",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: названо 40 мультфильмов, совпадает с ExactResult=40 и полным числом активных карточек. Контекст и source_ids включают все 40 источников без повторов; семантический top-k не использовался для подсчёта. Рекомендации пусты, что допустимо."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}
