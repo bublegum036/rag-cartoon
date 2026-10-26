@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "reef-budget90",
+    "case_sha256": "a6026234ba7c211dd121495cca02941dcce5e19f2945cd8d2a3c8e224d050879",
+    "trace_sha256": "d600afe9cb688bffd45fa85b50321132a3d2ebf0dd14d5916e68eafc6c30ed52",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Риф без красок», 90 минут ровно укладываются в бюджет 90, разница 0. Вывод подходит и film-26#plot корректны. Граница бюджета не перепутана со строгим <90."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

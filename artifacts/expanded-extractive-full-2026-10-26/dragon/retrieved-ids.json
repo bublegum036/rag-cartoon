@@ -1,0 +1,72 @@
+[
+  {
+    "rank": 1,
+    "chunk_id": "film-10#plot",
+    "source_id": "film-10#plot",
+    "movie_id": "film-10",
+    "score": 0.90034354
+  },
+  {
+    "rank": 2,
+    "chunk_id": "film-35#plot",
+    "source_id": "film-35#plot",
+    "movie_id": "film-35",
+    "score": 0.8617432
+  },
+  {
+    "rank": 3,
+    "chunk_id": "film-23#plot",
+    "source_id": "film-23#plot",
+    "movie_id": "film-23",
+    "score": 0.8156583
+  },
+  {
+    "rank": 4,
+    "chunk_id": "film-01#plot",
+    "source_id": "film-01#plot",
+    "movie_id": "film-01",
+    "score": 0.81244767
+  },
+  {
+    "rank": 5,
+    "chunk_id": "film-20#plot",
+    "source_id": "film-20#plot",
+    "movie_id": "film-20",
+    "score": 0.80787396
+  },
+  {
+    "rank": 6,
+    "chunk_id": "film-37#plot",
+    "source_id": "film-37#plot",
+    "movie_id": "film-37",
+    "score": 0.80508107
+  },
+  {
+    "rank": 7,
+    "chunk_id": "film-07#plot",
+    "source_id": "film-07#plot",
+    "movie_id": "film-07",
+    "score": 0.8041564
+  },
+  {
+    "rank": 8,
+    "chunk_id": "film-27#plot",
+    "source_id": "film-27#plot",
+    "movie_id": "film-27",
+    "score": 0.8029411
+  },
+  {
+    "rank": 9,
+    "chunk_id": "film-17#plot",
+    "source_id": "film-17#plot",
+    "movie_id": "film-17",
+    "score": 0.7994518
+  },
+  {
+    "rank": 10,
+    "chunk_id": "film-13#plot",
+    "source_id": "film-13#plot",
+    "movie_id": "film-13",
+    "score": 0.7979789
+  }
+]

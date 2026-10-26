@@ -1,0 +1,12 @@
+{
+  "id": "count-under90",
+  "question": "Сколько фильмов короче 90 минут?",
+  "expected_status": "answered",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": 90,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Точный подсчёт 30 фильмов по всему каталогу, длительность строго <90. «Риф без красок» (90 минут) исключён. Поддерживающие ссылки относятся только к посчитанным карточкам."
+}

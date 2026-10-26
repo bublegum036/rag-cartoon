@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "turtle-duration",
+    "case_sha256": "851e176c273bfe5bbbcba43021cfd9a4bc804d332de4c450ac3f29c4a3be281c",
+    "trace_sha256": "f8ef3f2148345a5f901d1133a97b2fbb88fd6e2f5668a9024d3b8705876b33f1",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Парус для черепахи», 24 минуты по film-13#plot, год 1970 корректен. Приложенная полная цитата дословно соответствует synopsis карточки и не добавляет фактов; вопрос о длительности не превращён в clarify. Грамматическая форма «24 минут» не меняет числового факта. Источник корректен."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -28,6 +28,11 @@ metadata because named-film LOOKUP includes plot questions, not only facts.
 145 tests passed, 3 skipped; new end-to-end offline test covers three named
 plot queries. No providers rerun; old renderer source retained to match historical
 v1 run hashes (artifacts/extractive-lookup-fix-2026-10-26).
+Full 20-case extractive renderer-v2 run: 9 accepted answers without LLM,
+11 Gemini requests all HTTP 503, 20 preparations retained. Overall acceptance
+45%; Recall@1/@3 and filters 100% use prepared evidence. No successful model
+selection in this run, so semantic selection quality is unmeasured. Code/data
+and prior archives unchanged, grounded/v2 still default. See artifacts/expanded-extractive-full-2026-10-26.
 Latest implementation: evaluation artifact schema 2 saves PreparedQuery before
 generation; QuestionAnswerer factories now provide prepare(question)/answer(prepared).
 Verified preparation survives generation failure and supports Recall/filter checks

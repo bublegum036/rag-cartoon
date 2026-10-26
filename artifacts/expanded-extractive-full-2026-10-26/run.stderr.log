@@ -1,0 +1,21 @@
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 3530.06it/s]
+sea-short: error
+whale: error
+robot: error
+space: error
+library: error
+dragon: error
+no-match-under19: ok
+unknown: ok
+ambiguous: ok
+marine-long: ok
+sea-under40: error
+robot-violin: error
+puppy-airship: error
+library-roots: error
+mechanical-whale: error
+reef-budget90: ok
+reef-budget89: ok
+count-all: ok
+count-under90: ok
+turtle-duration: ok

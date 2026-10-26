@@ -1,0 +1,14 @@
+{
+  "semantic_query": "Сколько минут длится «Парус для черепахи»?",
+  "intent": "lookup",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [
+      "film-13"
+    ]
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

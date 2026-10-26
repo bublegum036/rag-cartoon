@@ -1,0 +1,18 @@
+{
+  "question": "Нужен мультфильм про море короче 19 минут.",
+  "plan": {
+    "semantic_query": "Нужен мультфильм про море",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": 19,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": null,
+    "early_text": ""
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null
+}

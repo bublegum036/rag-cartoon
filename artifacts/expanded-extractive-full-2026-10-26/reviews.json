@@ -1,0 +1,95 @@
+{
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "decisions": [
+    {
+      "case_id": "no-match-under19",
+      "case_sha256": "538ce67f53ddf0f9f88316adb19299dffcc82e7f24582cfb346fc1b95a45546c",
+      "trace_sha256": "b051686e3c2f62ee2dfee7820ac6db5f476add59eede09e80bea2794a9d0e4a3",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "insufficient, рекомендаций и источников нет; сохранён фильтр строго <19, hits и контекст пусты. Полный каталог отдельно подтверждает минимум 19 минут и отсутствие совпадений. Общая фраза об отсутствии подтверждения принята по прежнему протоколу; условие не ослаблено."
+    },
+    {
+      "case_id": "unknown",
+      "case_sha256": "98e8b3adf1ab7e5391f1cdc43931d7c2f94c1a3b13eac4544ff3b8fe4fff6fad",
+      "trace_sha256": "53eac44fb676be71d2388014546889345bb27762c99cb82ca21b58152f8e5d63",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "insufficient прямо сообщает об отсутствии данных об актёрах озвучивания. Таких полей нет в каталоге, актёры не выдуманы; источники и рекомендации пусты."
+    },
+    {
+      "case_id": "ambiguous",
+      "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+      "trace_sha256": "070364fc1213828e3f67ce7cf559193b5c9f2e2a86432ce29f360028ac0ec774",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "clarify запрашивает название фильма. Во входе нет выбранного фильма или истории диалога. Длительность не угадывается, источников и рекомендаций нет."
+    },
+    {
+      "case_id": "marine-long",
+      "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+      "trace_sha256": "1039814fe8bb607bb9afa4a7545aaec194e6d8739c04a9f6bd7431e4a08e8d15",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Коралловая почта», 96 минут, бюджет 90, фильм не подходит с превышением +6. Совпадает с film-02#plot и ExactResult. Источник допустим для метаданных; лишних рекомендаций нет."
+    },
+    {
+      "case_id": "reef-budget90",
+      "case_sha256": "a6026234ba7c211dd121495cca02941dcce5e19f2945cd8d2a3c8e224d050879",
+      "trace_sha256": "d600afe9cb688bffd45fa85b50321132a3d2ebf0dd14d5916e68eafc6c30ed52",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Риф без красок», 90 минут ровно укладываются в бюджет 90, разница 0. Вывод подходит и film-26#plot корректны. Граница бюджета не перепутана со строгим <90."
+    },
+    {
+      "case_id": "reef-budget89",
+      "case_sha256": "46483e01d4223ee800153438afc74f521419b9aec0b127b8baf4a3006834c519",
+      "trace_sha256": "3096d2859d797b5f434f967e04db1648343a170f232b7beddf10a49a9707d875",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: фильм длится 90 минут, бюджет 89, превышение +1, вывод не подходит. Все числа и film-26#plot корректны. Грамматическая форма «1 минут» шероховата, но не меняет факта и результата сравнения."
+    },
+    {
+      "case_id": "count-all",
+      "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+      "trace_sha256": "1b821f4f3813e4d6d4463334db3942de3e96fbebc58714836ebed4b5cc774f24",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: 40 фильмов, ExactResult=40, полный контекст 40 активных карточек и все 40 источников без повторов. Это подсчёт кодом, не семантический top-k; модель не вызывалась."
+    },
+    {
+      "case_id": "count-under90",
+      "case_sha256": "055b22a7f5f1be632e1c9b0778a2a6e01602a71867ef15c2a76c2cbae83dc267",
+      "trace_sha256": "dd69d0c3f060d93d4adff87b986b645d2e989509472d0221d38e8c2dc5fb8e9c",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: 30 фильмов, явно указано строго <90. ExactResult и полный контекст подтверждают 30; source_ids содержит все и только посчитанные карточки, film-26 длиной ровно 90 исключён. Модель не вызывалась."
+    },
+    {
+      "case_id": "turtle-duration",
+      "case_sha256": "851e176c273bfe5bbbcba43021cfd9a4bc804d332de4c450ac3f29c4a3be281c",
+      "trace_sha256": "f8ef3f2148345a5f901d1133a97b2fbb88fd6e2f5668a9024d3b8705876b33f1",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Парус для черепахи», 24 минуты по film-13#plot, год 1970 корректен. Приложенная полная цитата дословно соответствует synopsis карточки и не добавляет фактов; вопрос о длительности не превращён в clarify. Грамматическая форма «24 минут» не меняет числового факта. Источник корректен."
+    }
+  ]
+}

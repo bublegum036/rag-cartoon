@@ -1,0 +1,12 @@
+{
+  "semantic_query": "Хочу мультфильм про море и дружбу девочки с живым китом",
+  "intent": "search",
+  "filters": {
+    "duration_minutes_lt": 90,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

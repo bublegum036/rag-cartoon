@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-26",
+  "code_commit": "db0780b8a3f598f2c81a1d3f0acb8714766cdf34",
+  "cases": 20,
+  "prepared_cases": 20,
+  "saved_answers": 9,
+  "accepted_answers": 9,
+  "answer_acceptance_rate": 0.45,
+  "technical_errors": 11,
+  "all_errors_http_503": true,
+  "gemini_requests": 11,
+  "successful_gemini_selections": 0,
+  "answers_without_gemini": 9,
+  "not_executed": 0,
+  "routes": {
+    "semantic": 12,
+    "early": 2,
+    "exact": 6
+  },
+  "recall_at_1": 1.0,
+  "recall_at_3": 1.0,
+  "strict_filter_cases_passed": 4,
+  "strict_filter_cases": 4,
+  "preparations_identical_to_independent_retrieval_run": true,
+  "count_40_and_30_all_sources_verified": true,
+  "default_mode_unchanged": "grounded",
+  "default_prompt_unchanged": "grounded-ru-v2",
+  "code_unchanged": true,
+  "original_data_and_archives_unchanged": true,
+  "automatic_retries": 0,
+  "independent_review": false,
+  "blind_review": false
+}

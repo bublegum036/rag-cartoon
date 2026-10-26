@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "reef-budget89",
+    "case_sha256": "46483e01d4223ee800153438afc74f521419b9aec0b127b8baf4a3006834c519",
+    "trace_sha256": "3096d2859d797b5f434f967e04db1648343a170f232b7beddf10a49a9707d875",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: фильм длится 90 минут, бюджет 89, превышение +1, вывод не подходит. Все числа и film-26#plot корректны. Грамматическая форма «1 минут» шероховата, но не меняет факта и результата сравнения."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "sea-under40",
+  "question": "Нужен мультфильм про черепаху, краба и чайку на море короче 40 минут.",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-13#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": 40,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "«Парус для черепахи», 24 минуты: краб и чайка делают плот и парус, при смене ветра друзья гребут ракушками в бухту. Не возвращать прежний insufficient для набора из 12 фильмов."
+}

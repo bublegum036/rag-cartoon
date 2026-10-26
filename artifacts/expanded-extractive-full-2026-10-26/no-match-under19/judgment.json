@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "no-match-under19",
+    "case_sha256": "538ce67f53ddf0f9f88316adb19299dffcc82e7f24582cfb346fc1b95a45546c",
+    "trace_sha256": "b051686e3c2f62ee2dfee7820ac6db5f476add59eede09e80bea2794a9d0e4a3",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "insufficient, рекомендаций и источников нет; сохранён фильтр строго <19, hits и контекст пусты. Полный каталог отдельно подтверждает минимум 19 минут и отсутствие совпадений. Общая фраза об отсутствии подтверждения принята по прежнему протоколу; условие не ослаблено."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

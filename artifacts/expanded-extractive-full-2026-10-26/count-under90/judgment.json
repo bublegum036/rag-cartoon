@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "count-under90",
+    "case_sha256": "055b22a7f5f1be632e1c9b0778a2a6e01602a71867ef15c2a76c2cbae83dc267",
+    "trace_sha256": "dd69d0c3f060d93d4adff87b986b645d2e989509472d0221d38e8c2dc5fb8e9c",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: 30 фильмов, явно указано строго <90. ExactResult и полный контекст подтверждают 30; source_ids содержит все и только посчитанные карточки, film-26 длиной ровно 90 исключён. Модель не вызывалась."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "count-all",
+    "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+    "trace_sha256": "1b821f4f3813e4d6d4463334db3942de3e96fbebc58714836ebed4b5cc774f24",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: 40 фильмов, ExactResult=40, полный контекст 40 активных карточек и все 40 источников без повторов. Это подсчёт кодом, не семантический top-k; модель не вызывалась."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

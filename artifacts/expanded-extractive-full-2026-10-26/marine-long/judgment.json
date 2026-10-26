@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "marine-long",
+    "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+    "trace_sha256": "1039814fe8bb607bb9afa4a7545aaec194e6d8739c04a9f6bd7431e4a08e8d15",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Коралловая почта», 96 минут, бюджет 90, фильм не подходит с превышением +6. Совпадает с film-02#plot и ExactResult. Источник допустим для метаданных; лишних рекомендаций нет."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

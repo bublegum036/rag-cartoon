@@ -1,0 +1,5 @@
+{
+  "type": "GenerationUnavailable",
+  "message": "Gemini returned HTTP 503; check API access/quota",
+  "http_status": 503
+}

@@ -1,0 +1,75 @@
+{
+  "artifact_schema_version": 2,
+  "label": "extractive-full-20",
+  "created_at": "2026-10-26T18:20:41.245826+00:00",
+  "state": "completed_with_errors",
+  "case_ids": [
+    "sea-short",
+    "whale",
+    "robot",
+    "space",
+    "library",
+    "dragon",
+    "no-match-under19",
+    "unknown",
+    "ambiguous",
+    "marine-long",
+    "sea-under40",
+    "robot-violin",
+    "puppy-airship",
+    "library-roots",
+    "mechanical-whale",
+    "reef-budget90",
+    "reef-budget89",
+    "count-all",
+    "count-under90",
+    "turtle-duration"
+  ],
+  "case_set_sha256": "7e2551b4b36a26a135ebae39e88a26a9a18b0d39e1212b1a20e9317a60d7a86b",
+  "recall_k": 3,
+  "delay_seconds": 10.0,
+  "implementation_sha256": {
+    "application.py": "9809c51f1d2deeda7351ea95ce2ce5e6f5a864ce2f8d1c89c7273c92861808ae",
+    "bootstrap.py": "e66ada185915225d566ab6b8d729ff99b8eb084f037899e7bebc692b05b5b8c1",
+    "domain.py": "9717cf78245f3d88df8f992e82ce04d720d8f161367a162ab2adc8c057acff74",
+    "ports.py": "d4500e82a9b96328486c032aed1518e8e7ed6a6aea10e316c20b3db5b3405334",
+    "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+    "experiments.py": "5a1b8abf9927dc9906a3396f801078412ba15dc1c1f069701ea67884f1850763",
+    "extractive.py": "89c6b81e3389a2209d7a236ada75ca3b87a31479fc109e8c8473f614667d427a",
+    "adapters/rule_planner.py": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+    "adapters/gemini.py": "568fb52a2dd09894316ba9e52069d4b1bd62bf193c9fc86613966068b1aba6ff",
+    "adapters/gemini_extractive.py": "b2fe19b104d09bb2341e8d2032e8f250954bc27a4cd7641aad28865b19349c56",
+    "adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607"
+  },
+  "runtime": {
+    "generator_mode": "extractive",
+    "snapshot_id": "cartoons-expanded__e019d5eaa830452ca0bf54e0c520673b",
+    "retrieval_k": 10,
+    "context_movies": 3,
+    "generator_model": "gemini-3.1-flash-lite",
+    "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+    "embedding": {
+      "provider": "fastembed",
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+      "dimensions": 384,
+      "implementation_version": "0.9.0",
+      "encoding": "e5-query-passage-v1"
+    },
+    "index_name": "cartoons-expanded",
+    "max_output_tokens": 2048,
+    "renderer_version": "extractive-renderer-v2",
+    "prompt_version": "extractive-ru-v1",
+    "planner_version": "ru-rules-v1.1"
+  },
+  "finished_at": "2026-10-26T18:24:46.631939+00:00",
+  "scoring": {
+    "scored_at": "2026-10-26T18:26:06.764653+00:00",
+    "reviewer": "Codex: ручная смысловая проверка девяти сохранённых ответов полного extractive-прогона 2026-10-26; не независимый и не слепой оценщик",
+    "reviews_sha256": "3f48c0252da91952de4d32a80ee4005947143e78d3b4420d6449aec193f37049",
+    "source_sha256": {
+      "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+      "experiments.py": "5a1b8abf9927dc9906a3396f801078412ba15dc1c1f069701ea67884f1850763"
+    }
+  }
+}
