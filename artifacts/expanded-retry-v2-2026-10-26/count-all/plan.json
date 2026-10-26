@@ -1,0 +1,12 @@
+{
+  "semantic_query": "Сколько фильмов в каталоге?",
+  "intent": "count",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

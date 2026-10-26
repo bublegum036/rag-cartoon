@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка четырёх сохранённых ответов повторного прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "mechanical-whale",
+    "case_sha256": "b9ba4b133b5ed51f427f0e142a51859255a44cdf75d45ec93766fa28a95386f4",
+    "trace_sha256": "8f547c0d4e1d9484cd903bbd45fd57b095b3b6b752b179a22f18f602a6a1fffe",
+    "rubric_passed": false,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered и название «Девочка и механический кит» верны. Факты про назначение аппарата для измерения глубины, застревание, рычаг и лебёдку подтверждены film-37#plot, источник корректен. Но rubric дополнительно требует, что измерения помогают лодкам выбрать безопасный проход; этого нет ни в text, ни в recommendations.reason. Эта часть доступна в контексте, но не отражена в ответе. Поэтому rubric_passed=false; критерий после ответа не менялся."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

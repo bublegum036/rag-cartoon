@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка четырёх сохранённых ответов повторного прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "count-all",
+    "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+    "trace_sha256": "5ee85e0af8219600072f27442329d210ac5ccadf72295d395c84df42488052a3",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: названо 40 фильмов, что совпадает с ExactResult и независимым полным подсчётом активного каталога. Контекст содержит все 40 карточек; source_ids перечисляет все 40 исходных источников без повторов. Это не подсчёт семантического top-k; recommendations пуст, что допустимо."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

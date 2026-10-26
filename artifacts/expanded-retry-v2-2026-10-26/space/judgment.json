@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка четырёх сохранённых ответов повторного прогона 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "space",
+    "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+    "trace_sha256": "75e0a2eb75b5851cfd3ac5320df38e94e63ee45f86cacd4a99ee315d3b971ad3",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Орбита щенка», знакомая мелодия в радиопередаче явно названа в text и reason как способ найти путь домой. Это деталь film-03#plot; описание движения через пояс астероидов поддержано карточкой. Ссылка и рекомендация корректны, земной щенок на дирижабле не подставлен."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -1,0 +1,45 @@
+{
+  "reviewer": "Codex: ручная смысловая проверка четырёх сохранённых ответов повторного прогона 2026-10-26; не независимый и не слепой оценщик",
+  "decisions": [
+    {
+      "case_id": "sea-short",
+      "case_sha256": "612f6259cadaa2543e0bf0e43fb941ded5d26a3ee991218837d0dd47d4f75ac5",
+      "trace_sha256": "79c0624dbb612f401d86abc5b7d084bb5d2b6454a3239f03da37b601a6a439d7",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Маяк для кита», 78 минут <90, дружба Ники и живого кита подтверждена text и reason. В reason указан способ ремонта маяка: кит помогает добраться до затопленной мастерской за линзой. film-01#plot корректен; механический кит и неподходящие по длительности фильмы не рекомендованы."
+    },
+    {
+      "case_id": "space",
+      "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+      "trace_sha256": "75e0a2eb75b5851cfd3ac5320df38e94e63ee45f86cacd4a99ee315d3b971ad3",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: «Орбита щенка», знакомая мелодия в радиопередаче явно названа в text и reason как способ найти путь домой. Это деталь film-03#plot; описание движения через пояс астероидов поддержано карточкой. Ссылка и рекомендация корректны, земной щенок на дирижабле не подставлен."
+    },
+    {
+      "case_id": "mechanical-whale",
+      "case_sha256": "b9ba4b133b5ed51f427f0e142a51859255a44cdf75d45ec93766fa28a95386f4",
+      "trace_sha256": "8f547c0d4e1d9484cd903bbd45fd57b095b3b6b752b179a22f18f602a6a1fffe",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered и название «Девочка и механический кит» верны. Факты про назначение аппарата для измерения глубины, застревание, рычаг и лебёдку подтверждены film-37#plot, источник корректен. Но rubric дополнительно требует, что измерения помогают лодкам выбрать безопасный проход; этого нет ни в text, ни в recommendations.reason. Эта часть доступна в контексте, но не отражена в ответе. Поэтому rubric_passed=false; критерий после ответа не менялся."
+    },
+    {
+      "case_id": "count-all",
+      "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+      "trace_sha256": "5ee85e0af8219600072f27442329d210ac5ccadf72295d395c84df42488052a3",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "answered: названо 40 фильмов, что совпадает с ExactResult и независимым полным подсчётом активного каталога. Контекст содержит все 40 карточек; source_ids перечисляет все 40 исходных источников без повторов. Это не подсчёт семантического top-k; recommendations пуст, что допустимо."
+    }
+  ]
+}

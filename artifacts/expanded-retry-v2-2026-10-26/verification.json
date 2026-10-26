@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-26",
+  "code_commit": "8f4db195b40ae36a0933876983fd3650fafaf8e3",
+  "source_run": "artifacts/expanded-run-v2-2026-10-26",
+  "selection": "all and only original technical-error cases; case hashes unchanged",
+  "cases": 4,
+  "generation_requests": 4,
+  "technical_errors": 0,
+  "prepared_cases": 4,
+  "accepted_answers": 3,
+  "answer_acceptance_rate": 0.75,
+  "rejected_case": "mechanical-whale",
+  "rejection_reason": "Missing rubric detail: measurements help boats choose a safe passage",
+  "runtime_matches_original": true,
+  "generation_adapter_and_planner_unchanged": true,
+  "all_preparations_hashed_and_consistent_with_final_traces": true,
+  "count_all_exact_value": 40,
+  "count_all_source_ids": 40,
+  "original_data_and_archives_unchanged": true,
+  "source_run_acceptance_unchanged": 0.8,
+  "provider_retries_within_run": 0,
+  "independent_review": false,
+  "blind_review": false,
+  "input_sha256": {
+    "retry_questions": "27538b4f6743ed769eb4744b0a9cc744285989956232de730c6816d259802108",
+    "catalog": "213eb51e926d0655ff405ece3fc66cb8ca94f68d22a908a69f8978f3355fdf7b"
+  }
+}

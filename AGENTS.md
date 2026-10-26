@@ -20,6 +20,11 @@ Verified preparation survives generation failure and supports Recall/filter chec
 without a fake answer; answer acceptance still includes failures. Legacy schema 1
 metrics stay unchanged. 132 tests passed, 3 skipped; providers not rerun for this
 change (artifacts/pre-generation-evidence-2026-10-26).
+Separate manual rerun of the four expanded technical failures used schema 2:
+4 prepared queries and answers, no technical errors, Codex accepted 3/4.
+mechanical-whale omits the required use of measurements for safe boat passage.
+Original 16/20 run unchanged; do not merge attempts into a one-pass score.
+See artifacts/expanded-retry-v2-2026-10-26 and data/questions-expanded-retry.jsonl.
 Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
 the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
 Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;
