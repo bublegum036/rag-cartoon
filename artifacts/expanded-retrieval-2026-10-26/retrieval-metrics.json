@@ -1,0 +1,17 @@
+{
+  "cases": 20,
+  "reference_cases": 15,
+  "semantic_reference_cases": 11,
+  "recall_at_1": 1.0,
+  "recall_at_3": 1.0,
+  "semantic_recall_at_1": 1.0,
+  "semantic_recall_at_3": 1.0,
+  "strict_filter_cases": 4,
+  "strict_filter_compliant": 4,
+  "answer_acceptance_rate": null,
+  "gemini_calls": 0,
+  "primary_index_preserved": true,
+  "alias": "cartoons-expanded",
+  "snapshot_id": "cartoons-expanded__e019d5eaa830452ca0bf54e0c520673b",
+  "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7"
+}

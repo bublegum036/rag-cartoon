@@ -1,0 +1,12 @@
+{
+  "semantic_query": "Нужен мультфильм про черепаху, краба и чайку на море",
+  "intent": "search",
+  "filters": {
+    "duration_minutes_lt": 40,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

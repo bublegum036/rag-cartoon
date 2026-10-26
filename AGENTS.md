@@ -52,7 +52,10 @@ current status accurate and never present planned or skipped checks as passed.
   strict filters, and semantic acceptance rubrics.
 - `data/catalog-expanded.json`: optional 40-film catalog, preserving the original
   12 plus 28 fictional films dated 1970–2000. Offline validation/exact operations
-  passed; not indexed or evaluated with providers. Baseline no-match rubric is
+  passed; indexed separately as cartoons-expanded on 2026-10-26 with real E5/Qdrant.
+  data/questions-expanded.jsonl contains 20 cases; retrieval/exact checks passed,
+  semantic Recall@1/@3 = 100% on 11 reference cases. No Gemini answers generated
+  on expansion yet (artifacts/expanded-retrieval-2026-10-26). Baseline no-match rubric is
   invalid here: film-13 is a marine story lasting 24 minutes. Use separate cases
   and a separate Qdrant alias for expansion experiments; see data/README.md.
 

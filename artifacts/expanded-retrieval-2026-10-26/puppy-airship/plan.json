@@ -1,0 +1,12 @@
+{
+  "semantic_query": "Какой мультфильм про щенка на пристани дирижаблей, который ищет хозяина по перчатке",
+  "intent": "search",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-26",
+  "base_commit": "c3c7976c8548bff87d3525d41efb62a20ef45c9a",
+  "stage": "retrieval-and-exact-only",
+  "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+  "case_set_sha256": "7e2551b4b36a26a135ebae39e88a26a9a18b0d39e1212b1a20e9317a60d7a86b",
+  "routes": {
+    "semantic": 12,
+    "early": 2,
+    "exact": 6
+  },
+  "retrieval_k": 10,
+  "context_movies": 3,
+  "evaluation_k": [
+    1,
+    3
+  ],
+  "embedding": {
+    "provider": "fastembed",
+    "model": "intfloat/multilingual-e5-small",
+    "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+    "dimensions": 384,
+    "implementation_version": "0.9.0",
+    "encoding": "e5-query-passage-v1"
+  },
+  "gemini_calls": 0,
+  "new_dependencies": false,
+  "file_sha256": {
+    "data/questions-expanded.jsonl": "f31bb9109699bec7083d9b4f37075b4450f2bb890c52a3831a49b617383b77a6",
+    "data/catalog-expanded.json": "213eb51e926d0655ff405ece3fc66cb8ca94f68d22a908a69f8978f3355fdf7b",
+    "artifacts/expanded-retrieval-2026-10-26/verify_retrieval.py": "c4e2b87dcdf5f005a2a662279cdc371254f9763ba6debdd9ad4857e7a8c2d901",
+    "artifacts/expanded-retrieval-2026-10-26/plans-and-exact.json": "29aff4c3025946c858e07ac7d8244af9655e540cc7edb31ca7690e76fb1ebc9e",
+    "artifacts/expanded-retrieval-2026-10-26/retrieval-results.json": "1d71b3ddec3161959dde0250184f14acee9338be7b6e57f08cee150fb49d28b7",
+    "artifacts/expanded-retrieval-2026-10-26/duration-boundaries.json": "e741743b8c7af20895269f396bc3b4b8f8bcfb03d909ca0a321668e79b7ce155"
+  }
+}

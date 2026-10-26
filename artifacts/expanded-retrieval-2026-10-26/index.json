@@ -1,0 +1,17 @@
+{
+  "index_name": "cartoons-expanded",
+  "snapshot_id": "cartoons-expanded__e019d5eaa830452ca0bf54e0c520673b",
+  "embedding": {
+    "provider": "fastembed",
+    "model": "intfloat/multilingual-e5-small",
+    "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+    "dimensions": 384,
+    "implementation_version": "0.9.0",
+    "encoding": "e5-query-passage-v1"
+  },
+  "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+  "chunks_sha256": "a0f53957204e84afe5a8a5a92dd48e36d4e54d8a54e78e1fb10f8b28ec5e2bab",
+  "movies": 40,
+  "chunks": 40,
+  "schema_version": 1
+}

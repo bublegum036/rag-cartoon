@@ -1,0 +1,14 @@
+{
+  "id": "library-roots",
+  "question": "Как белка спасла книги с рецептами, когда ручей затопил библиотеку под дубом?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-36#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "«Библиотека под корнями»: с бобром построено сухое хранилище, книги подняты на подвесные полки. Не подменять облаками и воздушным велосипедом."
+}

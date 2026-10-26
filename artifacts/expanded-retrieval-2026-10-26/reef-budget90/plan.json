@@ -1,0 +1,14 @@
+{
+  "semantic_query": "Подойдёт ли «Риф без красок», если у меня только 90 минут?",
+  "intent": "compare_duration",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [
+      "film-26"
+    ]
+  },
+  "time_budget_minutes": 90,
+  "early_status": null,
+  "early_text": ""
+}

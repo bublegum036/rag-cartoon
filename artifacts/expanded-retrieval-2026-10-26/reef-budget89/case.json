@@ -1,0 +1,14 @@
+{
+  "id": "reef-budget89",
+  "question": "Подойдёт ли «Риф без красок», если у меня только 89 минут?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-26#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Нет: фильм длится 90 минут, превышает бюджет 89 на 1 минуту; источник film-26#plot."
+}
