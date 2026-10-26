@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка отдельного повтора sea-short/count-all с неизменным v4 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "sea-short",
+    "case_sha256": "612f6259cadaa2543e0bf0e43fb941ded5d26a3ee991218837d0dd47d4f75ac5",
+    "trace_sha256": "1c604e867c35444ec30cdf01f7d3f87c69e98a4849a776530fb2ed730d20c2dc",
+    "rubric_passed": true,
+    "facts_supported": false,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered и «Маяк для кита» верны; text явно сообщает 78 минут <90, reason подтверждает дружбу девочки и кита и совместный ремонт маяка. Исходный rubric теперь выполнен, ограничения и film-01#plot корректны. Но text утверждает «В благодарность кит помогает Нике»: карточка описывает спасение, затем помощь, не задавая мотив благодарности. Такой же неподтверждённый мотив ранее отклонялся у v3. Поэтому facts_supported=false и итог не принят; восстановление числа не отменяет требования фактической опоры."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

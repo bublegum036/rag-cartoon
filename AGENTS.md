@@ -33,8 +33,12 @@ overall improvement or a full 20-case v3 evaluation. See artifacts/expanded-retr
 Experimental v4 adds numeric-fact preservation and forbids inferred motives.
 Four-case gate returned 2 accepted answers and 2 HTTP 503 (sea-short/count-all):
 50% overall acceptance, all 4 preparations retained, Recall/filter checks 100%.
-Numeric-answer preservation remains unverified; conditional full 20-case v4 run
-was not started. v2 stays default; see artifacts/expanded-retry-v4-2026-10-26.
+At that stage numeric-answer preservation was unverified; conditional full 20-case
+v4 run was not started. See artifacts/expanded-retry-v4-2026-10-26.
+Separate v4 recovery of sea-short/count-all returned 2 answers without technical
+errors: 78 and 40 are explicit, but sea-short adds the unsupported gratitude motive
+already rejected in v3. Accepted 1/2; full-20 gate still not passed. v2 stays default.
+See artifacts/expanded-v4-recovery-2026-10-26 and data/questions-expanded-v4-recovery.jsonl.
 Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
 the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
 Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;

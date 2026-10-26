@@ -1,0 +1,12 @@
+{
+  "id": "count-all",
+  "question": "Сколько фильмов в каталоге?",
+  "expected_status": "answered",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Точный подсчёт 40 активных фильмов, выполненный кодом по всему снимку. Ссылки подтверждают полный подсчёт, не только семантический top-k."
+}
