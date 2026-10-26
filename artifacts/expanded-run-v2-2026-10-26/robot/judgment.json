@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "robot",
+    "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+    "trace_sha256": "2a362151011fbba9f5c6cfd4e67772e284f042b7895a05dc4c9197932d3a6617",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Робот и сад», сохранён найденный росток, дети приносят семена и помогают вырастить сад. Обучение ботанике в text принято как обобщение обучения различать растения из film-05#plot. Скрипка и орбитальная станция не приписаны этой карточке. Ссылка и рекомендации корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

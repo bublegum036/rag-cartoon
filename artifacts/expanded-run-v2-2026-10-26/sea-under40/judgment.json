@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "sea-under40",
+    "case_sha256": "809209efaf11bc37d346c93489adc4d89ee465f1f3666b936f47abba8eabade8",
+    "trace_sha256": "7a430068f484cadd1aff6e6291c02c7ad7c17ddf0ecf9df8d54e71d3c580d662",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Парус для черепахи», 24 минуты <40. В reason явно названы плот из коры, парус из ткани и гребля ракушками при смене ветра. Все детали из film-13#plot; морской сюжет и три персонажа подтверждены. Старый insufficient не перенесён на новый каталог."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

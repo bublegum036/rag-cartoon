@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "whale",
+    "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+    "trace_sha256": "4e57d93d2933f1355219c99f11ff33010571ba576a38f95432c4e5252b98b674",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: назван «Маяк для кита», Ника и кит совместно чинят маяк; затопленная мастерская и запасная линза подтверждены film-01#plot. Другие островные/механические сюжеты не предложены. Проверены text и reason; рекомендации и ссылки принадлежат правильной карточке."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "reef-budget90",
+    "case_sha256": "a6026234ba7c211dd121495cca02941dcce5e19f2945cd8d2a3c8e224d050879",
+    "trace_sha256": "4a1db093d1413471ce20fb5a58d28078cc8c413212e70ff75bc16a49203d91e3",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: фильм «Риф без красок» длится ровно 90 минут, бюджет 90, разница 0; вывод «подходит». Подтверждено film-26#plot и ExactResult=0, граница не перепутана со строгим <90."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

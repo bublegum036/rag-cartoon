@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "dragon",
+    "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+    "trace_sha256": "eab956de92af54e0b5ed3ba30e36dd798f493f0ac3750f471d1aa1441479b764",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: последнее выпекание после поломки печи выполняется собственным дыханием дракона. Причина и способ решения из film-10#plot явно есть в text; рекомендаций нет, что допустимо для ответа о событии. Ссылка корректна."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

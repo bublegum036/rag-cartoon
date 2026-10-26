@@ -1,0 +1,14 @@
+{
+  "id": "reef-budget90",
+  "question": "Подойдёт ли «Риф без красок», если у меня только 90 минут?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-26#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Да, 90 минут ровно укладываются в бюджет 90; разница 0. Источник film-26#plot; не смешивать бюджет <=90 со строгим <90."
+}

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "sea-short",
+    "case_sha256": "612f6259cadaa2543e0bf0e43fb941ded5d26a3ee991218837d0dd47d4f75ac5",
+    "state": "error",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini returned HTTP 503; check API access/quota",
+      "http_status": 503
+    }
+  },
+  {
+    "id": "whale",
+    "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+    "state": "ok",
+    "trace_sha256": "4e57d93d2933f1355219c99f11ff33010571ba576a38f95432c4e5252b98b674"
+  },
+  {
+    "id": "robot",
+    "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+    "state": "ok",
+    "trace_sha256": "2a362151011fbba9f5c6cfd4e67772e284f042b7895a05dc4c9197932d3a6617"
+  },
+  {
+    "id": "space",
+    "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+    "state": "error",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini returned HTTP 503; check API access/quota",
+      "http_status": 503
+    }
+  },
+  {
+    "id": "library",
+    "case_sha256": "84b24bc101d8174dee20fb4a32422225b7be3e1e1a9c293736bda989290d88a6",
+    "state": "ok",
+    "trace_sha256": "fb916a4ce1310d1c39f8c49e8322ce4df07d33d4624df75f8d6dccace085ed54"
+  },
+  {
+    "id": "dragon",
+    "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+    "state": "ok",
+    "trace_sha256": "eab956de92af54e0b5ed3ba30e36dd798f493f0ac3750f471d1aa1441479b764"
+  },
+  {
+    "id": "no-match-under19",
+    "case_sha256": "538ce67f53ddf0f9f88316adb19299dffcc82e7f24582cfb346fc1b95a45546c",
+    "state": "ok",
+    "trace_sha256": "b051686e3c2f62ee2dfee7820ac6db5f476add59eede09e80bea2794a9d0e4a3"
+  },
+  {
+    "id": "unknown",
+    "case_sha256": "98e8b3adf1ab7e5391f1cdc43931d7c2f94c1a3b13eac4544ff3b8fe4fff6fad",
+    "state": "ok",
+    "trace_sha256": "53eac44fb676be71d2388014546889345bb27762c99cb82ca21b58152f8e5d63"
+  },
+  {
+    "id": "ambiguous",
+    "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+    "state": "ok",
+    "trace_sha256": "070364fc1213828e3f67ce7cf559193b5c9f2e2a86432ce29f360028ac0ec774"
+  },
+  {
+    "id": "marine-long",
+    "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+    "state": "ok",
+    "trace_sha256": "e8ef494a753c2a949ba9bd74b56d0ce48106e935599f48bae022f81f48f53b8c"
+  },
+  {
+    "id": "sea-under40",
+    "case_sha256": "809209efaf11bc37d346c93489adc4d89ee465f1f3666b936f47abba8eabade8",
+    "state": "ok",
+    "trace_sha256": "7a430068f484cadd1aff6e6291c02c7ad7c17ddf0ecf9df8d54e71d3c580d662"
+  },
+  {
+    "id": "robot-violin",
+    "case_sha256": "cdaf6ca002d338b05056ba7f73119d16f7a092748003454bddc7078e114d68f0",
+    "state": "ok",
+    "trace_sha256": "57ca34942ae4c47b29c1dad213eb5ed62938faee06790ad9ef40cc5e4582055f"
+  },
+  {
+    "id": "puppy-airship",
+    "case_sha256": "8d3f871cf9e7a49bbdadea9d4b1f98943a76e8157254e2a01c22f0efd6afeed7",
+    "state": "ok",
+    "trace_sha256": "099147297d0f7deaf47c02600c415af57d18e7e7c62cfee7f2cece0e1b950674"
+  },
+  {
+    "id": "library-roots",
+    "case_sha256": "cd4bca1df616e9aa63a210eb971537900a6722f4e615db863bdbb5a82bb744ec",
+    "state": "ok",
+    "trace_sha256": "2f8e0476c6581dc8374c4f9866e142d75ee083f4e7042913534d883ab3ee626b"
+  },
+  {
+    "id": "mechanical-whale",
+    "case_sha256": "b9ba4b133b5ed51f427f0e142a51859255a44cdf75d45ec93766fa28a95386f4",
+    "state": "error",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini returned HTTP 503; check API access/quota",
+      "http_status": 503
+    }
+  },
+  {
+    "id": "reef-budget90",
+    "case_sha256": "a6026234ba7c211dd121495cca02941dcce5e19f2945cd8d2a3c8e224d050879",
+    "state": "ok",
+    "trace_sha256": "4a1db093d1413471ce20fb5a58d28078cc8c413212e70ff75bc16a49203d91e3"
+  },
+  {
+    "id": "reef-budget89",
+    "case_sha256": "46483e01d4223ee800153438afc74f521419b9aec0b127b8baf4a3006834c519",
+    "state": "ok",
+    "trace_sha256": "7650e323fa9c2d06d3626ae2f9c509ed5c0239a3923cd82ad891d57be4b2de14"
+  },
+  {
+    "id": "count-all",
+    "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+    "state": "error",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini request failed or returned invalid JSON",
+      "http_status": null
+    }
+  },
+  {
+    "id": "count-under90",
+    "case_sha256": "055b22a7f5f1be632e1c9b0778a2a6e01602a71867ef15c2a76c2cbae83dc267",
+    "state": "ok",
+    "trace_sha256": "c6e30ce22cd80fbd3dcd177588de3bcf7c5e28fea95fb12286a92f4f0ff72177"
+  },
+  {
+    "id": "turtle-duration",
+    "case_sha256": "851e176c273bfe5bbbcba43021cfd9a4bc804d332de4c450ac3f29c4a3be281c",
+    "state": "ok",
+    "trace_sha256": "489d0a31906e6a5805bb3813aa55968e2e5d63d5e63e48113e72d9f3cd826665"
+  }
+]

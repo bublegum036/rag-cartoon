@@ -1,0 +1,5 @@
+{
+  "type": "GenerationUnavailable",
+  "message": "Gemini request failed or returned invalid JSON",
+  "http_status": null
+}

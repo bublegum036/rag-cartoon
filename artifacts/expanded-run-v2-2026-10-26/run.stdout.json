@@ -1,0 +1,17 @@
+{
+  "cases": 20,
+  "completed": 16,
+  "technical_errors": 4,
+  "not_executed": 0,
+  "reference_cases": 15,
+  "recall_k": 3,
+  "recall_at_k": 0.8,
+  "recall_at_1": 0.8,
+  "strict_filter_cases": 4,
+  "strict_filter_compliant": 3,
+  "strict_filter_compliance": 0.75,
+  "reviewed_cases": 0,
+  "pending_reviews": 16,
+  "accepted_answers": 0,
+  "answer_acceptance_rate": null
+}

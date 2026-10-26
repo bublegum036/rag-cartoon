@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "marine-long",
+    "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+    "trace_sha256": "e8ef494a753c2a949ba9bd74b56d0ce48106e935599f48bae022f81f48f53b8c",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: 96 минут, на 6 больше бюджета 90, вывод «не подходит». Совпадает с длительностью film-02#plot и ExactResult=+6. Источник допустим для факта длительности, рекомендаций нет."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

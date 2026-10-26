@@ -54,8 +54,13 @@ current status accurate and never present planned or skipped checks as passed.
   12 plus 28 fictional films dated 1970–2000. Offline validation/exact operations
   passed; indexed separately as cartoons-expanded on 2026-10-26 with real E5/Qdrant.
   data/questions-expanded.jsonl contains 20 cases; retrieval/exact checks passed,
-  semantic Recall@1/@3 = 100% on 11 reference cases. No Gemini answers generated
-  on expansion yet (artifacts/expanded-retrieval-2026-10-26). Baseline no-match rubric is
+  semantic Recall@1/@3 = 100% on 11 reference cases (artifacts/expanded-retrieval-2026-10-26).
+  First expanded Gemini run saved 16 answers, all accepted by Codex; 4 technical
+  failures (3 HTTP 503, 1 request/JSON failure) remain in the denominator: 80%
+  acceptance. See artifacts/expanded-run-v2-2026-10-26. Missing traces after
+  generation errors lower run Recall/filter metrics; do not claim observed
+  retrieval regressions from those zeros. No automatic retries or fallback.
+  Baseline no-match rubric is
   invalid here: film-13 is a marine story lasting 24 minutes. Use separate cases
   and a separate Qdrant alias for expansion experiments; see data/README.md.
 

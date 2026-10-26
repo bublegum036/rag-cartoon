@@ -1,0 +1,14 @@
+{
+  "id": "robot-violin",
+  "question": "Ищу мультфильм про робота, который ремонтирует скрипку вместе с девочкой.",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-29#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "«Робот чинит скрипку»: металлический корпус даёт резкий звук; девочка показывает, как склеить деревянные части. Не подменять на «Робот и сад» или станцию с семенами."
+}

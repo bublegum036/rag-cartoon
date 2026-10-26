@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "turtle-duration",
+    "case_sha256": "851e176c273bfe5bbbcba43021cfd9a4bc804d332de4c450ac3f29c4a3be281c",
+    "trace_sha256": "489d0a31906e6a5805bb3813aa55968e2e5d63d5e63e48113e72d9f3cd826665",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Парус для черепахи» длится 24 минуты по film-13#plot; ссылка корректна. План lookup правильно запрашивает факт, не вводя фильтр по слову «минут». Рекомендаций нет."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

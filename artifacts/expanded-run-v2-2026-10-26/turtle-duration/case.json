@@ -1,0 +1,14 @@
+{
+  "id": "turtle-duration",
+  "question": "Сколько минут длится «Парус для черепахи»?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-13#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "24 минуты, источник film-13#plot. Слово «минут» в вопросе о факте не должно становиться фильтром или приводить к clarify."
+}

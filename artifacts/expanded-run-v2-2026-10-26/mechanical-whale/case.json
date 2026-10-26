@@ -1,0 +1,14 @@
+{
+  "id": "mechanical-whale",
+  "question": "Ищу историю про девочку, которая построила механического кита для измерения глубины залива.",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-37#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "«Девочка и механический кит»: аппарат освобождён из свай рычагом и лебёдкой, измерения помогают лодкам выбрать проход. Кит — машина; не переносить ремонт маяка из film-01."
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "library",
+    "case_sha256": "84b24bc101d8174dee20fb4a32422225b7be3e1e1a9c293736bda989290d88a6",
+    "trace_sha256": "fb916a4ce1310d1c39f8c49e8322ce4df07d33d4624df75f8d6dccace085ed54",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Библиотека облаков», облака хранят забытые истории. Велосипед, страницы на ветру, порядок в каталоге и автор незаконченной книги подтверждены film-04#plot. Ответ не подменён библиотекой под корнями; ссылка корректна."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

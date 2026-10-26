@@ -1,0 +1,14 @@
+{
+  "id": "marine-long",
+  "question": "Подойдёт ли «Коралловая почта», если у меня только 90 минут?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-02#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Нет, длительность 96 минут, это на 6 минут больше. Для факта длительности разрешена ссылка на карточку фильма."
+}

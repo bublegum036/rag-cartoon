@@ -1,0 +1,1 @@
+HF_HUB_OFFLINE=1 QDRANT_ALIAS=cartoons-expanded PYTHONPATH=src .venv/bin/python -m cartoon_rag.cli evaluate run --catalog data/catalog-expanded.json --questions data/questions-expanded.jsonl --output artifacts/expanded-run-v2-2026-10-26 --label expanded-v2 --k 3 --retrieval-k 10 --context-movies 3 --delay-seconds 10 --prompt-version grounded-ru-v2

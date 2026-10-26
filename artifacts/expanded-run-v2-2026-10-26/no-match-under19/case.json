@@ -1,0 +1,12 @@
+{
+  "id": "no-match-under19",
+  "question": "Нужен мультфильм про море короче 19 минут.",
+  "expected_status": "insufficient",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": 19,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "В расширенном каталоге нет ни одного фильма короче 19 минут (минимум 19). insufficient, без рекомендаций и ослабления условия."
+}

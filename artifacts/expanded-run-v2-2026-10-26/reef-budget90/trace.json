@@ -1,0 +1,52 @@
+{
+  "question": "Подойдёт ли «Риф без красок», если у меня только 90 минут?",
+  "plan": {
+    "semantic_query": "Подойдёт ли «Риф без красок», если у меня только 90 минут?",
+    "intent": "compare_duration",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": [
+        "film-26"
+      ]
+    },
+    "time_budget_minutes": 90,
+    "early_status": null,
+    "early_text": ""
+  },
+  "retrieved": [],
+  "context": [
+    {
+      "film": {
+        "movie_id": "film-26",
+        "title": "Риф без красок",
+        "year": 1983,
+        "duration_minutes": 90,
+        "version": 1,
+        "active": true,
+        "source_id": "film-26#plot",
+        "synopsis": "Юный морской конёк замечает, что кораллы у его дома потеряли цвет. Он и рыба-бабочка находят забитый водорослями проход, который приносил к рифу свежую воду. Они зовут соседей расчистить проход и договариваются больше не складывать там обломки раковин. Цвет постепенно возвращается к кораллам.",
+        "tags": [
+          "море",
+          "экология"
+        ]
+      },
+      "chunks": []
+    }
+  ],
+  "exact_result": {
+    "value": 0,
+    "unit": "minutes",
+    "source_ids": [
+      "film-26#plot"
+    ]
+  },
+  "answer": {
+    "status": "answered",
+    "text": "Да, мультфильм «Риф без красок» отлично подходит, так как его длительность составляет ровно 90 минут, что соответствует вашему бюджету времени (разница составляет 0 минут).",
+    "source_ids": [
+      "film-26#plot"
+    ],
+    "recommendations": []
+  }
+}

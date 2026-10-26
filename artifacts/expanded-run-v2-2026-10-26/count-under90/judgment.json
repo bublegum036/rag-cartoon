@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "count-under90",
+    "case_sha256": "055b22a7f5f1be632e1c9b0778a2a6e01602a71867ef15c2a76c2cbae83dc267",
+    "trace_sha256": "c6e30ce22cd80fbd3dcd177588de3bcf7c5e28fea95fb12286a92f4f0ff72177",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: названо ровно 30 фильмов длительностью строго <90. Значение совпадает с ExactResult и независимым полным подсчётом каталога. source_ids содержит все 30 посчитанных карточек, только их и без повторов; фильм длиной ровно 90 не включён. Полный контекст сохранён, это не подсчёт top-k."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

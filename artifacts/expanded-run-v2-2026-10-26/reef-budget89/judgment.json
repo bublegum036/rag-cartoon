@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "reef-budget89",
+    "case_sha256": "46483e01d4223ee800153438afc74f521419b9aec0b127b8baf4a3006834c519",
+    "trace_sha256": "7650e323fa9c2d06d3626ae2f9c509ed5c0239a3923cd82ad891d57be4b2de14",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: 90 минут превышают бюджет 89 на 1 минуту, вывод «не подходит». Подтверждено film-26#plot и ExactResult=+1, ссылка корректна."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

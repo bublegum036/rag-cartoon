@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-26",
+  "code_commit": "3703ae5d6ff6746412125194c05bacfe35daa712",
+  "stage": "first-expanded-v2-generation-run",
+  "run_state": "completed_with_errors",
+  "cases_attempted": 20,
+  "saved_answers": 16,
+  "generation_requests": 17,
+  "successful_generation_requests": 13,
+  "answers_without_generation": 3,
+  "failures": {
+    "sea-short": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini returned HTTP 503; check API access/quota",
+      "http_status": 503
+    },
+    "space": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini returned HTTP 503; check API access/quota",
+      "http_status": 503
+    },
+    "mechanical-whale": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini returned HTTP 503; check API access/quota",
+      "http_status": 503
+    },
+    "count-all": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini request failed or returned invalid JSON",
+      "http_status": null
+    }
+  },
+  "accepted_saved_answers": 16,
+  "accepted_over_all_cases": 0.8,
+  "accepted_over_saved_answers": 1.0,
+  "same_snapshot_as_retrieval_check": true,
+  "original_data_and_archives_preserved": true,
+  "completed_reference_cases": 12,
+  "reference_cases": 15,
+  "reference_cases_missing_trace": 3,
+  "completed_filtered_cases": 3,
+  "filtered_cases": 4,
+  "filtered_cases_missing_trace": 1,
+  "code_modified": false,
+  "reviewer": "Codex; manual review in current session; not independent or blind",
+  "review_protocol_sha256": "95d5cbe1b0526c4bf5253643ce996e12a6bd06a2fcc64d68c72304e6dfc3d38f"
+}

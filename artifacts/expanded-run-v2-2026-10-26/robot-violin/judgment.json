@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "robot-violin",
+    "case_sha256": "cdaf6ca002d338b05056ba7f73119d16f7a092748003454bddc7078e114d68f0",
+    "trace_sha256": "57ca34942ae4c47b29c1dad213eb5ed62938faee06790ad9ef40cc5e4582055f",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Робот чинит скрипку». Металлический корпус даёт резкий звук; девочка показывает склеивание деревянных частей. Это соответствует film-29#plot, а не выращиванию сада. Проверены text/reason и принадлежность источников."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

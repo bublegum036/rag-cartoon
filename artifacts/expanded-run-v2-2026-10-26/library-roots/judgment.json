@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "library-roots",
+    "case_sha256": "cd4bca1df616e9aa63a210eb971537900a6722f4e615db863bdbb5a82bb744ec",
+    "trace_sha256": "2f8e0476c6581dc8374c4f9866e142d75ee083f4e7042913534d883ab3ee626b",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: белка с бобром строят сухое хранилище и поднимают книги на подвесные полки после затопления нижних полок. В reason названо «Библиотека под корнями»; все факты и ссылки принадлежат film-36#plot, облака не подставлены."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

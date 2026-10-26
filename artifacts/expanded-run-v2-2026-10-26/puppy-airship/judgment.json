@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов расширенного набора 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "puppy-airship",
+    "case_sha256": "8d3f871cf9e7a49bbdadea9d4b1f98943a76e8157254e2a01c22f0efd6afeed7",
+    "trace_sha256": "099147297d0f7deaf47c02600c415af57d18e7e7c62cfee7f2cece0e1b950674",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Щенок и воздушная пристань», перчатка, запах мастерской и цепочка вещей ведут механика к хозяину в ангаре. Соответствует film-32#plot. Принадлежность знакомой перчатки хозяину принята как контекстное изложение поиска из карточки. Радиопередача и космический полёт не выдуманы; источник корректен."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}
