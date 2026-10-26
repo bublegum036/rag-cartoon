@@ -2,7 +2,7 @@
 
 from cartoon_rag.domain import (
     Answer, Chunk, Evidence, ExactExecution, ExactResult, GroundingError, Intent, MovieMatch,
-    QueryPlan, RetrievalResult, Status, Trace,
+    PreparedQuery, QueryPlan, RetrievalResult, Status, Trace,
 )
 from cartoon_rag.ports import AnswerGenerator, ExactCatalog, QueryPlanner, Retriever
 
@@ -102,13 +102,15 @@ class SearchService:
         self.context_movies = context_movies
 
     def ask(self, question: str) -> Trace:
-        return self.execute_plan(question, self.planner.plan(question))
+        return self.answer(self.prepare(question))
 
     def execute_plan(self, question: str, plan: QueryPlan) -> Trace:
-        early = early_trace(question, plan)
-        if early is not None:
-            return early
+        return self.answer(self.prepare(question, plan))
 
+    def prepare(self, question: str, plan: QueryPlan | None = None) -> PreparedQuery:
+        plan = self.planner.plan(question) if plan is None else plan
+        if plan.early_status is not None:
+            return PreparedQuery(question, plan, (), (), None)
         hits = ()
         exact = None
         if plan.intent is Intent.SEARCH:
@@ -118,7 +120,14 @@ class SearchService:
         else:
             result = execute_exact(self.catalog, plan)
             context, exact = result.context, result.exact_result
+        return PreparedQuery(question, plan, hits, context, exact)
 
+    def answer(self, prepared: PreparedQuery) -> Trace:
+        question, plan = prepared.question, prepared.plan
+        early = early_trace(question, plan)
+        if early is not None:
+            return early
+        hits, context, exact = prepared.retrieved, prepared.context, prepared.exact_result
         if not context and exact is None:
             answer = Answer(Status.INSUFFICIENT, "В каталоге нет подтверждения по этому запросу.")
         else:

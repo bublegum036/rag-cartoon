@@ -1,0 +1,24 @@
+[
+  {
+    "id": "sea-short",
+    "case_sha256": "612f6259cadaa2543e0bf0e43fb941ded5d26a3ee991218837d0dd47d4f75ac5",
+    "prepared_sha256": "23dd095798721602eaa586444aa64e66b7547696791e54a9747a96f7f5aa8757",
+    "state": "error",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "OFFLINE SIMULATION: HTTP 503; no API request made",
+      "http_status": 503
+    }
+  },
+  {
+    "id": "count-under90",
+    "case_sha256": "055b22a7f5f1be632e1c9b0778a2a6e01602a71867ef15c2a76c2cbae83dc267",
+    "prepared_sha256": "6465b105ef7d96a7d1dc73827d71cd00ffbb7908280af9a300c6f7c4e56d895f",
+    "state": "error",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "OFFLINE SIMULATION: HTTP 503; no API request made",
+      "http_status": 503
+    }
+  }
+]

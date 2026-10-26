@@ -199,6 +199,17 @@ class Answer:
 
 
 @dataclass(frozen=True)
+class PreparedQuery:
+    """Evidence and computed facts before generation; contains no answer."""
+
+    question: str
+    plan: QueryPlan
+    retrieved: tuple[Hit, ...]
+    context: tuple[Evidence, ...]
+    exact_result: ExactResult | None
+
+
+@dataclass(frozen=True)
 class Trace:
     question: str
     plan: QueryPlan

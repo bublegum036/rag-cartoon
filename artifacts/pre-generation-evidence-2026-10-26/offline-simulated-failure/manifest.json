@@ -1,0 +1,38 @@
+{
+  "artifact_schema_version": 2,
+  "label": "offline-simulated-error",
+  "created_at": "2026-10-26T12:59:16.654834+00:00",
+  "state": "completed_with_errors",
+  "case_ids": [
+    "sea-short",
+    "count-under90"
+  ],
+  "case_set_sha256": "3d2c261f51f854407658f741e80c8ec831b36be7d38d9bae26241b8675fcd188",
+  "recall_k": 3,
+  "delay_seconds": 0,
+  "implementation_sha256": {
+    "application.py": "9809c51f1d2deeda7351ea95ce2ce5e6f5a864ce2f8d1c89c7273c92861808ae",
+    "bootstrap.py": "ceb87d0b2cfcad94876a46d7005303aee73ac637c76cb70ebb3e77903918ed95",
+    "domain.py": "9717cf78245f3d88df8f992e82ce04d720d8f161367a162ab2adc8c057acff74",
+    "ports.py": "d4500e82a9b96328486c032aed1518e8e7ed6a6aea10e316c20b3db5b3405334",
+    "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+    "experiments.py": "e3a632128c6b4a4dd7ceb6da91ee97d19957c29b5e7fb447d5be8fae18279f13",
+    "adapters/rule_planner.py": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+    "adapters/gemini.py": "0df551eca323db5f38b9e788b5f837e44deec08e81d8504d1cd9d278870b07de",
+    "adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607"
+  },
+  "runtime": {
+    "query_mode": "offline-fixture",
+    "generator_model": "offline-simulated-failure"
+  },
+  "finished_at": "2026-10-26T12:59:16.658468+00:00",
+  "scoring": {
+    "scored_at": "2026-10-26T12:59:16.661118+00:00",
+    "reviewer": "Offline fixture; no answers to review",
+    "reviews_sha256": "06b4201c0f0d02bf9026f0be1bc21dc1e497f0075aa876783567268629aab6b0",
+    "source_sha256": {
+      "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+      "experiments.py": "e3a632128c6b4a4dd7ceb6da91ee97d19957c29b5e7fb447d5be8fae18279f13"
+    }
+  }
+}

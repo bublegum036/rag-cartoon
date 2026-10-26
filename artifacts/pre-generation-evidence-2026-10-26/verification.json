@@ -1,0 +1,26 @@
+{
+  "fixture": "offline only; synthetic retriever and simulated generation failure",
+  "real_provider_calls": 0,
+  "prepared_files_present_before_generator": [
+    "sea-short",
+    "count-under90"
+  ],
+  "metrics": {
+    "cases": 2,
+    "completed": 0,
+    "technical_errors": 2,
+    "not_executed": 0,
+    "reference_cases": 1,
+    "recall_k": 3,
+    "recall_at_k": 1.0,
+    "recall_at_1": 1.0,
+    "strict_filter_cases": 2,
+    "strict_filter_compliant": 2,
+    "strict_filter_compliance": 1.0,
+    "reviewed_cases": 0,
+    "pending_reviews": 0,
+    "accepted_answers": 0,
+    "answer_acceptance_rate": 0.0,
+    "prepared_cases": 2
+  }
+}

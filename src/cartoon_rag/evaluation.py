@@ -8,7 +8,7 @@ from typing import Protocol
 
 from cartoon_rag.domain import (
     Answer, Chunk, Evidence, ExactResult, Film, Filters, Hit, Intent, QueryPlan,
-    Recommendation, Status, Trace,
+    PreparedQuery, Recommendation, Status, Trace,
 )
 from cartoon_rag.snapshots import fingerprint
 
@@ -40,7 +40,7 @@ def load_cases(path: Path) -> tuple[Case, ...]:
     return tuple(cases)
 
 
-def recall_at_k(case: Case, trace: Trace, k: int) -> float | None:
+def recall_at_k(case: Case, trace: Trace | PreparedQuery, k: int) -> float | None:
     if k < 1:
         raise ValueError("k must be positive")
     relevant = set(case.relevant_source_ids)
@@ -71,6 +71,12 @@ def retrieval_filters_compliant(case: Case, trace: Trace) -> bool:
     return all(case.filters.matches(hit.chunk.film) for hit in trace.retrieved)
 
 
+def prepared_filters_compliant(case: Case, prepared: PreparedQuery) -> bool:
+    """Check evidence against reference constraints even without a final answer."""
+    return (all(case.filters.matches(hit.chunk.film) for hit in prepared.retrieved)
+            and all(case.filters.matches(item.film) for item in prepared.context))
+
+
 def accepted(case: Case, trace: Trace, judge: SemanticJudge) -> bool:
     if trace.answer.status is not case.expected_status:
         return False
@@ -99,7 +105,7 @@ def case_from_dict(row: dict) -> Case:
                 tuple(row["relevant_source_ids"]), Filters(**filters), row["rubric"])
 
 
-def trace_from_dict(row: dict) -> Trace:
+def prepared_from_dict(row: dict) -> PreparedQuery:
     def film(data):
         return Film(**{**data, "tags": tuple(data.get("tags", ()))})
 
@@ -112,16 +118,23 @@ def trace_from_dict(row: dict) -> Trace:
                      raw_plan["time_budget_minutes"],
                      Status(raw_plan["early_status"]) if raw_plan["early_status"] is not None else None,
                      raw_plan["early_text"])
-    raw_exact, raw_answer = row["exact_result"], row["answer"]
+    raw_exact = row["exact_result"]
     exact = ExactResult(raw_exact["value"], raw_exact["unit"], tuple(raw_exact["source_ids"])) if raw_exact else None
+    return PreparedQuery(row["question"], plan,
+                         tuple(Hit(chunk(item["chunk"]), item["score"]) for item in row["retrieved"]),
+                         tuple(Evidence(film(item["film"]), tuple(chunk(c) for c in item["chunks"]))
+                               for item in row["context"]), exact)
+
+
+def trace_from_dict(row: dict) -> Trace:
+    prepared = prepared_from_dict(row)
+    raw_answer = row["answer"]
     answer = Answer(Status(raw_answer["status"]), raw_answer["text"], tuple(raw_answer["source_ids"]), tuple(
         Recommendation(item["movie_id"], item["title"], item["reason"], tuple(item["source_ids"]))
         for item in raw_answer["recommendations"]
     ))
-    return Trace(row["question"], plan,
-                 tuple(Hit(chunk(item["chunk"]), item["score"]) for item in row["retrieved"]),
-                 tuple(Evidence(film(item["film"]), tuple(chunk(c) for c in item["chunks"]))
-                       for item in row["context"]), exact, answer)
+    return Trace(prepared.question, prepared.plan, prepared.retrieved, prepared.context,
+                 prepared.exact_result, answer)
 
 
 class ReviewedSemanticJudge:

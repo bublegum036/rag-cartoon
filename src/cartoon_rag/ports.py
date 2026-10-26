@@ -4,7 +4,7 @@ from typing import Protocol, Sequence
 
 from cartoon_rag.domain import (
     Answer, Chunk, EmbeddingBatch, EmbeddingIdentity, Evidence, ExactResult, Hit,
-    PublicationResult, QueryPlan, Trace,
+    PreparedQuery, PublicationResult, QueryPlan, Trace,
 )
 
 
@@ -13,7 +13,11 @@ class QueryPlanner(Protocol):
 
 
 class QuestionAnswerer(Protocol):
-    def ask(self, question: str) -> Trace: ...
+    """Two phases let callers archive evidence before invoking generation."""
+
+    def prepare(self, question: str) -> PreparedQuery: ...
+
+    def answer(self, prepared: PreparedQuery) -> Trace: ...
 
 
 class Embedder(Protocol):

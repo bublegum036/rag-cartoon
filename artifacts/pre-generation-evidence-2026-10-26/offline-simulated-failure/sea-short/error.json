@@ -1,0 +1,5 @@
+{
+  "type": "GenerationUnavailable",
+  "message": "OFFLINE SIMULATION: HTTP 503; no API request made",
+  "http_status": 503
+}

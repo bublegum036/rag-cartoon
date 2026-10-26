@@ -14,6 +14,12 @@ Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
 JsonExactCatalog and offline `exact` CLI implement lookup, full filtered counts
 and signed duration comparisons. `ask` composes these with Gemini structured generation
 and a Qdrant collection pinned to the same catalog fingerprint.
+Latest implementation: evaluation artifact schema 2 saves PreparedQuery before
+generation; QuestionAnswerer factories now provide prepare(question)/answer(prepared).
+Verified preparation survives generation failure and supports Recall/filter checks
+without a fake answer; answer acceptance still includes failures. Legacy schema 1
+metrics stay unchanged. 132 tests passed, 3 skipped; providers not rerun for this
+change (artifacts/pre-generation-evidence-2026-10-26).
 Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
 the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
 Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;
