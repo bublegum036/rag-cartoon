@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-26",
+  "code_commit": "f0cadcb93e180911120a931f469c8b8357572d78",
+  "model_get_http_status": 200,
+  "minimal_plain_generation_http_status": 503,
+  "provider_status": "UNAVAILABLE",
+  "provider_reported_cause": "high demand",
+  "generation_requests": 1,
+  "structured_probe_executed": false,
+  "rag_or_catalog_sent": false,
+  "model_switched": false,
+  "automatic_retries": 0,
+  "billing_changed": false,
+  "global_incident_status_verified": false,
+  "status_page_text_extraction": "No service status obtained; only script/iframe exposed",
+  "application_code_tests_data_and_archives_unchanged": true,
+  "diagnostic_script_sha256": "ef50df8e7b7517f66abc56aa79007ede992ff82afdd6cd1909838dc1e6abf0f5"
+}

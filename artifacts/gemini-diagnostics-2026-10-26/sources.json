@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://ai.google.dev/gemini-api/docs/generate-content/api-errors",
+    "checked_on": "2026-10-26",
+    "supports": "503 UNAVAILABLE is service overload/unavailability; error body exposes code/status/message separately from 429 quota."
+  },
+  {
+    "url": "https://ai.google.dev/gemini-api/docs/generate-content/structured-output?hl=en",
+    "checked_on": "2026-10-26",
+    "supports": "REST generationConfig.responseFormat.text.schema and Gemini 3.1 Flash-Lite structured-output support."
+  },
+  {
+    "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite.md",
+    "checked_on": "2026-10-26",
+    "supports": "Stable model identifier and declared structured-output capability."
+  },
+  {
+    "url": "https://aistudio.google.com/status",
+    "checked_on": "2026-10-26",
+    "supports": null,
+    "limitation": "Text extraction exposed no incident/health information; global outage not verified."
+  }
+]

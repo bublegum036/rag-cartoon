@@ -33,6 +33,11 @@ Full 20-case extractive renderer-v2 run: 9 accepted answers without LLM,
 45%; Recall@1/@3 and filters 100% use prepared evidence. No successful model
 selection in this run, so semantic selection quality is unmeasured. Code/data
 and prior archives unchanged, grounded/v2 still default. See artifacts/expanded-extractive-full-2026-10-26.
+One-shot provider diagnosis: GET configured model returned 200; one minimal
+plain generateContent request returned 503 UNAVAILABLE with provider message
+reporting high demand. No RAG/schema input, retries, model/billing changes.
+Structured probe skipped; no global incident verified. Do not rewrite older
+errors with this newer message. App code unchanged; artifacts/gemini-diagnostics-2026-10-26.
 Latest implementation: evaluation artifact schema 2 saves PreparedQuery before
 generation; QuestionAnswerer factories now provide prepare(question)/answer(prepared).
 Verified preparation survives generation failure and supports Recall/filter checks

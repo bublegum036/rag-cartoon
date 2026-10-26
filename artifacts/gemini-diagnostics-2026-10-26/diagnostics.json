@@ -1,0 +1,68 @@
+{
+  "started_at": "2026-10-26T18:36:59.352589+00:00",
+  "model": "gemini-3.1-flash-lite",
+  "api_version": "v1beta",
+  "timeout_seconds": 30.0,
+  "automatic_retries": 0,
+  "model_switches": 0,
+  "billing_changes": false,
+  "redaction_self_check_passed": true,
+  "probes": [
+    {
+      "name": "model_metadata",
+      "method": "GET",
+      "path": "/v1beta/models/gemini-3.1-flash-lite",
+      "started_at": "2026-10-26T18:36:59.352741+00:00",
+      "http_status": 200,
+      "model_metadata": {
+        "name": "models/gemini-3.1-flash-lite",
+        "version": "3.1-flash-lite-05-2026",
+        "displayName": "Gemini 3.1 Flash Lite",
+        "supportedGenerationMethods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "inputTokenLimit": 1048576,
+        "outputTokenLimit": 65536
+      },
+      "elapsed_seconds": 1.076
+    },
+    {
+      "name": "plain_minimal",
+      "method": "POST",
+      "path": "/v1beta/models/gemini-3.1-flash-lite:generateContent",
+      "started_at": "2026-10-26T18:37:00.429675+00:00",
+      "http_status": 503,
+      "retry_after": "",
+      "provider_error": {
+        "code": 503,
+        "status": "UNAVAILABLE",
+        "message": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+        "reasons": []
+      },
+      "elapsed_seconds": 0.948
+    }
+  ],
+  "plain_request": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Верни только слово OK."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0,
+      "candidateCount": 1,
+      "maxOutputTokens": 2048
+    }
+  },
+  "structured_probe_skipped": "Minimal unstructured generation failed; do not spend another call",
+  "finished_at": "2026-10-26T18:37:01.378924+00:00",
+  "generation_requests": 1
+}
