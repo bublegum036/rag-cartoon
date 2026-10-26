@@ -1,0 +1,30 @@
+{
+  "total_films": 40,
+  "original_films_preserved": 12,
+  "new_fictional_films": 28,
+  "new_film_year_range": [
+    1970,
+    2000
+  ],
+  "duration_range_minutes": [
+    19,
+    104
+  ],
+  "under_40_movie_ids": [
+    "film-13",
+    "film-14",
+    "film-16",
+    "film-18",
+    "film-21",
+    "film-25",
+    "film-30"
+  ],
+  "strict_lt90_count": 30,
+  "inclusive_lte90_count": 31,
+  "boundary_90_movie_id": "film-26",
+  "original_catalog_and_cases_unchanged": true,
+  "expanded_catalog_sha256": "213eb51e926d0655ff405ece3fc66cb8ca94f68d22a908a69f8978f3355fdf7b",
+  "provider_calls": 0,
+  "index_published": false,
+  "baseline_no_match_rubric_applicable": false
+}

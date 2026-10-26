@@ -50,6 +50,11 @@ current status accurate and never present planned or skipped checks as passed.
 - `catalog.json`: 12 fictional film cards; the sole source of film facts.
 - `questions.jsonl`: 10 evaluation cases with expected statuses, source IDs,
   strict filters, and semantic acceptance rubrics.
+- `data/catalog-expanded.json`: optional 40-film catalog, preserving the original
+  12 plus 28 fictional films dated 1970–2000. Offline validation/exact operations
+  passed; not indexed or evaluated with providers. Baseline no-match rubric is
+  invalid here: film-13 is a marine story lasting 24 minutes. Use separate cases
+  and a separate Qdrant alias for expansion experiments; see data/README.md.
 
 Do not claim installation, launch, or test commands exist before implementing
 and verifying them. Preserve the supplied catalog and evaluation cases unless
