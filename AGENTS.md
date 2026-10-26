@@ -18,6 +18,9 @@ Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
 the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
 Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;
 no provider calls (artifacts/semantic-recheck-2026-10-26).
+User supplied a separate Kimi K2.8 textual review, archived 2026-10-26:
+A 9/10, B 10/10 confirmed. Not blind or human; execution date and exact
+model ID unknown, no Kimi call observed by Codex. See artifacts/kimi-review-2026-10-26.
 Previous generator identity fix: 124 tests passed, 3 integration tests skipped;
 providers were not rerun (artifacts/generator-identity-fix-2026-10-25).
 Injected generators require explicit GeneratorIdentity; never infer their metadata from Settings.
