@@ -30,6 +30,11 @@ evaluate run can select it. On the same four cases, mechanical-whale was fixed
 but sea-short omitted 78 minutes (and added an unsupported gratitude motive).
 Acceptance stayed 3/4, no technical failures. v2 remains default; do not claim
 overall improvement or a full 20-case v3 evaluation. See artifacts/expanded-retry-v3-2026-10-26.
+Experimental v4 adds numeric-fact preservation and forbids inferred motives.
+Four-case gate returned 2 accepted answers and 2 HTTP 503 (sea-short/count-all):
+50% overall acceptance, all 4 preparations retained, Recall/filter checks 100%.
+Numeric-answer preservation remains unverified; conditional full 20-case v4 run
+was not started. v2 stays default; see artifacts/expanded-retry-v4-2026-10-26.
 Latest semantic recheck (2026-10-26): all 20 archived answers re-reviewed by
 the same Codex, confirming A 9/10 and B 10/10; not an independent assessment.
 Original A/B files unchanged; 124 tests passed, 3 integration tests skipped;

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов prompt v4 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "space",
+    "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+    "trace_sha256": "3e426613372782333df1816f7a4a4e0347ad0188d1b4eb586f857d9b173a732a",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Орбита щенка». Знакомая мелодия в радиопередаче явно помогает роботу определить направление и вернуться домой; грузовой корабль, потеря курса и пояс астероидов подтверждены film-03#plot. Проверены text и reason; чужой щенок на дирижабле не подставлен, источники корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

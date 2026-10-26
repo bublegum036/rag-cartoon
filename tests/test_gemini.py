@@ -82,6 +82,8 @@ class GeminiTest(unittest.TestCase):
         self.assertTrue(all(request == requests[0] for request in requests))
         self.assertEqual(PROMPTS["grounded-ru-v2"],
                          (ROOT / "artifacts/expanded-retry-v2-2026-10-26/prompt.txt").read_text())
+        self.assertEqual(PROMPTS["grounded-ru-v3"],
+                         (ROOT / "artifacts/expanded-retry-v3-2026-10-26/prompt.txt").read_text())
         with self.assertRaises(ValueError):
             GeminiAnswerGenerator(self.transport, prompt_version="unknown")
 

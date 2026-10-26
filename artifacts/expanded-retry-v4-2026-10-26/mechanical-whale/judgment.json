@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка сохранённых ответов prompt v4 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "mechanical-whale",
+    "case_sha256": "b9ba4b133b5ed51f427f0e142a51859255a44cdf75d45ec93766fa28a95386f4",
+    "trace_sha256": "e5d4bdfd46f97ee8e16e8e5e5520edef63fa3a02cde757e8cfb8ff31300b98cf",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: «Девочка и механический кит», измерение глубины, застревание между сваями, освобождение рычагом и лебёдкой. В text явно указана польза полученных данных: рыбаки находят безопасный проход для лодок. Все детали соответствуют film-37#plot, rubric выполнен; живой кит и ремонт маяка не выдуманы. Рекомендация и ссылки корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

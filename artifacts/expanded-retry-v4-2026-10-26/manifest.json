@@ -1,0 +1,55 @@
+{
+  "artifact_schema_version": 2,
+  "label": "expanded-v4-facts-and-causality",
+  "created_at": "2026-10-26T13:29:33.196377+00:00",
+  "state": "completed_with_errors",
+  "case_ids": [
+    "sea-short",
+    "space",
+    "mechanical-whale",
+    "count-all"
+  ],
+  "case_set_sha256": "47025e796359af95f39964504489e24371de35b8ff2749e05eff2547b8dbb1cc",
+  "recall_k": 3,
+  "delay_seconds": 10.0,
+  "implementation_sha256": {
+    "application.py": "9809c51f1d2deeda7351ea95ce2ce5e6f5a864ce2f8d1c89c7273c92861808ae",
+    "bootstrap.py": "ceb87d0b2cfcad94876a46d7005303aee73ac637c76cb70ebb3e77903918ed95",
+    "domain.py": "9717cf78245f3d88df8f992e82ce04d720d8f161367a162ab2adc8c057acff74",
+    "ports.py": "d4500e82a9b96328486c032aed1518e8e7ed6a6aea10e316c20b3db5b3405334",
+    "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+    "experiments.py": "e3a632128c6b4a4dd7ceb6da91ee97d19957c29b5e7fb447d5be8fae18279f13",
+    "adapters/rule_planner.py": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+    "adapters/gemini.py": "a89b5c7cb96402f315380883ccd1517df674914bab5647b8b780245bc1a13a26",
+    "adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607"
+  },
+  "runtime": {
+    "snapshot_id": "cartoons-expanded__e019d5eaa830452ca0bf54e0c520673b",
+    "max_output_tokens": 2048,
+    "prompt_version": "grounded-ru-v4",
+    "generator_model": "gemini-3.1-flash-lite",
+    "context_movies": 3,
+    "planner_version": "ru-rules-v1.1",
+    "embedding": {
+      "provider": "fastembed",
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+      "dimensions": 384,
+      "implementation_version": "0.9.0",
+      "encoding": "e5-query-passage-v1"
+    },
+    "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+    "index_name": "cartoons-expanded",
+    "retrieval_k": 10
+  },
+  "finished_at": "2026-10-26T13:30:14.291195+00:00",
+  "scoring": {
+    "scored_at": "2026-10-26T13:30:49.802663+00:00",
+    "reviewer": "Codex: ручная смысловая проверка сохранённых ответов prompt v4 2026-10-26; не независимый и не слепой оценщик",
+    "reviews_sha256": "96ca6e984afb333724d8e95a6c1940e09efa70d78c1319765cdfa9f302bc12cf",
+    "source_sha256": {
+      "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+      "experiments.py": "e3a632128c6b4a4dd7ceb6da91ee97d19957c29b5e7fb447d5be8fae18279f13"
+    }
+  }
+}

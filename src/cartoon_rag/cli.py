@@ -48,7 +48,7 @@ def main() -> None:
     run.add_argument("--retrieval-k", type=positive_int, default=10)
     run.add_argument("--context-movies", type=positive_int, default=3)
     run.add_argument("--delay-seconds", type=float, default=10)
-    run.add_argument("--prompt-version", choices=("grounded-ru-v1", "grounded-ru-v2", "grounded-ru-v3"), default=None)
+    run.add_argument("--prompt-version", choices=("grounded-ru-v1", "grounded-ru-v2", "grounded-ru-v3", "grounded-ru-v4"), default=None)
     score = evaluation_commands.add_parser("score", help="Check review provenance and calculate final metrics")
     score.add_argument("--run-dir", type=Path, required=True)
     score.add_argument("--reviews", type=Path, required=True)

@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-26",
+  "base_commit": "52c89d9c81d1e25d6e3daec6f55db341c348f792",
+  "comparisons": {
+    "v2": {
+      "runtime_changes": {
+        "prompt_version": {
+          "v2": "grounded-ru-v2",
+          "v4": "grounded-ru-v4"
+        }
+      },
+      "all_preparations_identical": true,
+      "metrics": {
+        "cases": 4,
+        "completed": 4,
+        "technical_errors": 0,
+        "not_executed": 0,
+        "reference_cases": 3,
+        "recall_k": 3,
+        "recall_at_k": 1.0,
+        "recall_at_1": 1.0,
+        "strict_filter_cases": 1,
+        "strict_filter_compliant": 1,
+        "strict_filter_compliance": 1.0,
+        "reviewed_cases": 4,
+        "pending_reviews": 0,
+        "accepted_answers": 3,
+        "answer_acceptance_rate": 0.75,
+        "prepared_cases": 4
+      }
+    },
+    "v3": {
+      "runtime_changes": {
+        "prompt_version": {
+          "v3": "grounded-ru-v3",
+          "v4": "grounded-ru-v4"
+        }
+      },
+      "all_preparations_identical": true,
+      "metrics": {
+        "cases": 4,
+        "completed": 4,
+        "technical_errors": 0,
+        "not_executed": 0,
+        "reference_cases": 3,
+        "recall_k": 3,
+        "recall_at_k": 1.0,
+        "recall_at_1": 1.0,
+        "strict_filter_cases": 1,
+        "strict_filter_compliant": 1,
+        "strict_filter_compliance": 1.0,
+        "reviewed_cases": 4,
+        "pending_reviews": 0,
+        "accepted_answers": 3,
+        "answer_acceptance_rate": 0.75,
+        "prepared_cases": 4
+      }
+    }
+  },
+  "v4_metrics": {
+    "cases": 4,
+    "completed": 2,
+    "technical_errors": 2,
+    "not_executed": 0,
+    "reference_cases": 3,
+    "recall_k": 3,
+    "recall_at_k": 1.0,
+    "recall_at_1": 1.0,
+    "strict_filter_cases": 1,
+    "strict_filter_compliant": 1,
+    "strict_filter_compliance": 1.0,
+    "reviewed_cases": 2,
+    "pending_reviews": 0,
+    "accepted_answers": 2,
+    "answer_acceptance_rate": 0.5,
+    "prepared_cases": 4
+  },
+  "generation_requests": 4,
+  "automatic_retries": 0,
+  "default_prompt": "grounded-ru-v2",
+  "gate_for_full_20": "not passed: sea-short and count-all failed with HTTP 503; numeric answer preservation remains unverified",
+  "full_20_run_started": false,
+  "count_40_computation_and_full_context_preserved": true,
+  "source_data_and_historical_archives_unchanged": true,
+  "independent_review": false,
+  "blind_review": false,
+  "prompt_sha256": {
+    "grounded-ru-v2": "c4340b91eac24e13844ec070fcff6d3360d60941b06f4d813757c5aa91cc4b6c",
+    "grounded-ru-v3": "3be58d0a2d37fb9a486360780e45ea0e7ed7ef68913d0c1f0473400cfce825d4",
+    "grounded-ru-v4": "af8c3fa4b477d9ec37b0ca02e7ac37c3e0ba2a8d156da85e73c21efb9cd55163"
+  }
+}
