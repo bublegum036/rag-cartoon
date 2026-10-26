@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка двух сохранённых ответов extractive-режима 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "mechanical-whale",
+    "case_sha256": "b9ba4b133b5ed51f427f0e142a51859255a44cdf75d45ec93766fa28a95386f4",
+    "trace_sha256": "46c7fa9cedf1f92b5ff8730481466fce0b7f2852ae74a41ff7d05987a68a6c95",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: правильные title/year/duration взяты кодом из film-37. Text и reason дословно цитируют целый переданный фрагмент: измерение глубины, освобождение рычагом/лебёдкой и применение данных для безопасного прохода лодок. Rubric выполнен, источник и рекомендация корректны; мотивы и события не добавлены."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

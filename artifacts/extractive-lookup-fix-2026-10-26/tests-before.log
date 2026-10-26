@@ -1,0 +1,47 @@
+test_complete_mechanical_whale_fragment_preserves_final_use_of_measurements (test_extractive.ExtractiveTest.test_complete_mechanical_whale_fragment_preserves_final_use_of_measurements) ... ok
+test_exact_comparison_sign_and_lookup_bypass_gemini (test_extractive.ExtractiveTest.test_exact_comparison_sign_and_lookup_bypass_gemini) ... ok
+test_exact_counts_and_zero_count_bypass_gemini (test_extractive.ExtractiveTest.test_exact_counts_and_zero_count_bypass_gemini) ... ok
+test_fragment_ownership_and_unknown_duplicate_or_forged_selections (test_extractive.ExtractiveTest.test_fragment_ownership_and_unknown_duplicate_or_forged_selections) ... ok
+test_inconsistent_computed_results_cannot_be_rendered (test_extractive.ExtractiveTest.test_inconsistent_computed_results_cannot_be_rendered) ... ok
+test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) ...
+  test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) (question='Как дракон помог пекарю в „Пекарня дракона“, когда сломалась печь?') ... FAIL
+  test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) (question='Расскажи сюжет «Маяк для кита».') ... FAIL
+  test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) (question='О чём мультфильм „Маяк для кита“?') ... FAIL
+test_nonanswered_selections_have_fixed_text_and_empty_evidence (test_extractive.ExtractiveTest.test_nonanswered_selections_have_fixed_text_and_empty_evidence) ... ok
+test_output_uses_exact_context_quote_and_numeric_card_facts (test_extractive.ExtractiveTest.test_output_uses_exact_context_quote_and_numeric_card_facts) ... ok
+test_selected_part_is_not_replaced_by_unretrieved_card_text (test_extractive.ExtractiveTest.test_selected_part_is_not_replaced_by_unretrieved_card_text) ... ok
+test_supplied_invented_chunk_is_rejected_before_model_call (test_extractive.ExtractiveTest.test_supplied_invented_chunk_is_rejected_before_model_call) ... ok
+test_technical_and_selection_failures_do_not_become_insufficient (test_extractive.ExtractiveTest.test_technical_and_selection_failures_do_not_become_insufficient) ... ok
+test_whole_fragment_keeps_negation_and_refuses_filter_or_mixed_card_context (test_extractive.ExtractiveTest.test_whole_fragment_keeps_negation_and_refuses_filter_or_mixed_card_context) ... ok
+
+======================================================================
+FAIL: test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) (question='Как дракон помог пекарю в „Пекарня дракона“, когда сломалась печь?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_extractive.py", line 167, in test_named_plot_questions_return_the_full_source_via_lookup_without_providers
+    self.assertIn(f"«{film.synopsis}»", trace.answer.text)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '«Молодой дракон хочет открыть пекарню, но постоянно сжигает тесто. Пекарь из соседнего города учит его управлять жаром и соблюдать рецепты. Вместе они готовят хлеб для большого праздника. Когда печь ломается, дракон помогает испечь последнюю партию собственным дыханием.»' not found in '«Пекарня дракона» (2021) — 85 минут.'
+
+======================================================================
+FAIL: test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) (question='Расскажи сюжет «Маяк для кита».')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_extractive.py", line 167, in test_named_plot_questions_return_the_full_source_via_lookup_without_providers
+    self.assertIn(f"«{film.synopsis}»", trace.answer.text)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '«Девочка Ника живёт на острове и замечает, что старый маяк перестал светить. Во время шторма она спасает маленького кита, запутавшегося в сети. Кит помогает ей добраться до затопленной мастерской, где лежит запасная линза. Вместе они чинят маяк и показывают дорогу рыбацким кораблям. Ника учится доверять новому другу, хотя жители острова считают китов опасными.»' not found in '«Маяк для кита» (2021) — 78 минут.'
+
+======================================================================
+FAIL: test_named_plot_questions_return_the_full_source_via_lookup_without_providers (test_extractive.ExtractiveTest.test_named_plot_questions_return_the_full_source_via_lookup_without_providers) (question='О чём мультфильм „Маяк для кита“?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_extractive.py", line 167, in test_named_plot_questions_return_the_full_source_via_lookup_without_providers
+    self.assertIn(f"«{film.synopsis}»", trace.answer.text)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '«Девочка Ника живёт на острове и замечает, что старый маяк перестал светить. Во время шторма она спасает маленького кита, запутавшегося в сети. Кит помогает ей добраться до затопленной мастерской, где лежит запасная линза. Вместе они чинят маяк и показывают дорогу рыбацким кораблям. Ника учится доверять новому другу, хотя жители острова считают китов опасными.»' not found in '«Маяк для кита» (2021) — 78 минут.'
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.006s
+
+FAILED (failures=3)

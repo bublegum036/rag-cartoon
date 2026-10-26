@@ -90,6 +90,22 @@ class GeminiTransport(Protocol):
     def generate(self, body: dict) -> dict: ...
 
 
+def decode_generated_json(response: dict) -> object:
+    """Decode one complete structured candidate, preserving technical failures."""
+    try:
+        candidates = response["candidates"]
+        if not isinstance(candidates, list) or len(candidates) != 1:
+            raise ValueError("Missing candidate")
+        candidate = candidates[0]
+        if candidate.get("finishReason") != "STOP":
+            raise ValueError("Incomplete or blocked answer")
+        parts = candidate["content"]["parts"]
+        text = "".join(part["text"] for part in parts if not part.get("thought", False))
+        return json.loads(text)
+    except (KeyError, TypeError, ValueError, AttributeError) as exc:
+        raise GenerationUnavailable("Gemini did not return a complete structured answer") from exc
+
+
 class GeminiHTTP:
     def __init__(self, *, api_key: str, model: str, timeout: float = 30) -> None:
         if not api_key or any(not 33 <= ord(char) <= 126 for char in api_key):
@@ -183,19 +199,7 @@ class GeminiAnswerGenerator:
                 "responseFormat": {"text": {"mimeType": "APPLICATION_JSON", "schema": ANSWER_SCHEMA}},
             },
         }
-        response = self.transport.generate(body)
-        try:
-            candidates = response["candidates"]
-            if not isinstance(candidates, list) or len(candidates) != 1:
-                raise ValueError("Missing candidate")
-            candidate = candidates[0]
-            if candidate.get("finishReason") != "STOP":
-                raise ValueError("Incomplete or blocked answer")
-            parts = candidate["content"]["parts"]
-            text = "".join(part["text"] for part in parts if not part.get("thought", False))
-            raw = json.loads(text)
-        except (KeyError, TypeError, ValueError, AttributeError) as exc:
-            raise GenerationUnavailable("Gemini did not return a complete structured answer") from exc
+        raw = decode_generated_json(self.transport.generate(body))
         answer = decode_answer(raw)
         validate_answer(answer, tuple(context),
                         exact_count=exact_result if plan.intent is Intent.COUNT else None)

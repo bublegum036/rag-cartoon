@@ -1,0 +1,134 @@
+[
+  {
+    "question": "Как дракон помог пекарю в „Пекарня дракона“, когда сломалась печь?",
+    "plan": {
+      "semantic_query": "Как дракон помог пекарю в „Пекарня дракона“, когда сломалась печь?",
+      "intent": "lookup",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": [
+          "film-10"
+        ]
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    },
+    "before_answer": {
+      "status": "answered",
+      "text": "«Пекарня дракона» (2021) — 85 минут.",
+      "source_ids": [
+        "film-10#plot"
+      ],
+      "recommendations": []
+    },
+    "after_answer": {
+      "status": "answered",
+      "text": "«Пекарня дракона» (2021) — 85 минут.\n«Молодой дракон хочет открыть пекарню, но постоянно сжигает тесто. Пекарь из соседнего города учит его управлять жаром и соблюдать рецепты. Вместе они готовят хлеб для большого праздника. Когда печь ломается, дракон помогает испечь последнюю партию собственным дыханием.»",
+      "source_ids": [
+        "film-10#plot"
+      ],
+      "recommendations": []
+    }
+  },
+  {
+    "question": "Расскажи сюжет «Маяк для кита».",
+    "plan": {
+      "semantic_query": "Расскажи сюжет «Маяк для кита».",
+      "intent": "lookup",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": [
+          "film-01"
+        ]
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    },
+    "before_answer": {
+      "status": "answered",
+      "text": "«Маяк для кита» (2021) — 78 минут.",
+      "source_ids": [
+        "film-01#plot"
+      ],
+      "recommendations": []
+    },
+    "after_answer": {
+      "status": "answered",
+      "text": "«Маяк для кита» (2021) — 78 минут.\n«Девочка Ника живёт на острове и замечает, что старый маяк перестал светить. Во время шторма она спасает маленького кита, запутавшегося в сети. Кит помогает ей добраться до затопленной мастерской, где лежит запасная линза. Вместе они чинят маяк и показывают дорогу рыбацким кораблям. Ника учится доверять новому другу, хотя жители острова считают китов опасными.»",
+      "source_ids": [
+        "film-01#plot"
+      ],
+      "recommendations": []
+    }
+  },
+  {
+    "question": "О чём мультфильм „Маяк для кита“?",
+    "plan": {
+      "semantic_query": "О чём мультфильм „Маяк для кита“?",
+      "intent": "lookup",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": [
+          "film-01"
+        ]
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    },
+    "before_answer": {
+      "status": "answered",
+      "text": "«Маяк для кита» (2021) — 78 минут.",
+      "source_ids": [
+        "film-01#plot"
+      ],
+      "recommendations": []
+    },
+    "after_answer": {
+      "status": "answered",
+      "text": "«Маяк для кита» (2021) — 78 минут.\n«Девочка Ника живёт на острове и замечает, что старый маяк перестал светить. Во время шторма она спасает маленького кита, запутавшегося в сети. Кит помогает ей добраться до затопленной мастерской, где лежит запасная линза. Вместе они чинят маяк и показывают дорогу рыбацким кораблям. Ника учится доверять новому другу, хотя жители острова считают китов опасными.»",
+      "source_ids": [
+        "film-01#plot"
+      ],
+      "recommendations": []
+    }
+  },
+  {
+    "question": "Сколько минут длится «Маяк для кита»?",
+    "plan": {
+      "semantic_query": "Сколько минут длится «Маяк для кита»?",
+      "intent": "lookup",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": [
+          "film-01"
+        ]
+      },
+      "time_budget_minutes": null,
+      "early_status": null,
+      "early_text": ""
+    },
+    "before_answer": {
+      "status": "answered",
+      "text": "«Маяк для кита» (2021) — 78 минут.",
+      "source_ids": [
+        "film-01#plot"
+      ],
+      "recommendations": []
+    },
+    "after_answer": {
+      "status": "answered",
+      "text": "«Маяк для кита» (2021) — 78 минут.\n«Девочка Ника живёт на острове и замечает, что старый маяк перестал светить. Во время шторма она спасает маленького кита, запутавшегося в сети. Кит помогает ей добраться до затопленной мастерской, где лежит запасная линза. Вместе они чинят маяк и показывают дорогу рыбацким кораблям. Ника учится доверять новому другу, хотя жители острова считают китов опасными.»",
+      "source_ids": [
+        "film-01#plot"
+      ],
+      "recommendations": []
+    }
+  }
+]

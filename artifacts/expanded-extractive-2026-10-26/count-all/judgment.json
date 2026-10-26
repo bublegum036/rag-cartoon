@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex: ручная смысловая проверка двух сохранённых ответов extractive-режима 2026-10-26; не независимый и не слепой оценщик",
+  "semantic": {
+    "case_id": "count-all",
+    "case_sha256": "108dc87009a386983aed2365d18a53ebfde91537b5e9629827de1a198641d43f",
+    "trace_sha256": "1b821f4f3813e4d6d4463334db3942de3e96fbebc58714836ebed4b5cc774f24",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "answered: 40, значение из ExactResult, полный контекст и все 40 источников. Ответ сформирован кодом в extractive-режиме, Gemini для подсчёта не вызывался. Rubric, статус, числовой результат и ссылки корректны."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

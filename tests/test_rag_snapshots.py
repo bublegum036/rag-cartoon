@@ -130,6 +130,7 @@ class SnapshotTest(unittest.TestCase):
         variants = (
             {"generator_identity": identity},
             {"generator": Mock(), "generator_identity": identity, "prompt_version": "grounded-ru-v2"},
+            {"generator": Mock(), "generator_identity": identity, "generator_mode": "extractive"},
             {"generator": Mock(), "generator_identity": {"api_key": "private-key"}},
         )
         with patch("cartoon_rag.bootstrap.build_search") as provider:
@@ -147,6 +148,22 @@ class SnapshotTest(unittest.TestCase):
         self.assertEqual(identity["prompt_version"], service.generator.prompt_version)
         self.assertEqual(identity["max_output_tokens"], service.generator.max_output_tokens)
         self.assertNotIn("private-key", json.dumps(identity))
+
+    def test_extractive_composition_reports_actual_mode_prompt_and_renderer(self):
+        from cartoon_rag.adapters.gemini_extractive import GeminiExtractiveGenerator
+        from cartoon_rag.extractive import RENDERER_VERSION
+
+        settings = Settings(gemini_api_key="private-key")
+        with patch("cartoon_rag.bootstrap.build_search", return_value=(self.embedder, self.index)):
+            service, identity = build_rag_runtime(self.films, settings, generator_mode="extractive")
+        self.assertIsInstance(service.generator, GeminiExtractiveGenerator)
+        self.assertEqual(identity["prompt_version"], "extractive-ru-v1")
+        self.assertEqual(identity["generator_mode"], "extractive")
+        self.assertEqual(identity["renderer_version"], RENDERER_VERSION)
+        with patch("cartoon_rag.bootstrap.build_search") as provider:
+            with self.assertRaises(ValueError):
+                build_rag_runtime(self.films, settings, generator_mode="extractive", prompt_version="grounded-ru-v4")
+            provider.assert_not_called()
 
 
 class AskCLITest(unittest.TestCase):

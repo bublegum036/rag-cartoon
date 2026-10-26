@@ -37,6 +37,7 @@ def main() -> None:
     ask.add_argument("question")
     ask.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     ask.add_argument("--trace", type=Path, help="Save retrieval, context, exact result and answer separately")
+    ask.add_argument("--generator-mode", choices=("grounded", "extractive"), default=None)
     evaluate = commands.add_parser("evaluate", help="Run cases or score an archived run with semantic reviews")
     evaluation_commands = evaluate.add_subparsers(dest="evaluation_command", required=True)
     run = evaluation_commands.add_parser("run", help="Generate artifacts; acceptance stays pending until review")
@@ -48,7 +49,8 @@ def main() -> None:
     run.add_argument("--retrieval-k", type=positive_int, default=10)
     run.add_argument("--context-movies", type=positive_int, default=3)
     run.add_argument("--delay-seconds", type=float, default=10)
-    run.add_argument("--prompt-version", choices=("grounded-ru-v1", "grounded-ru-v2", "grounded-ru-v3", "grounded-ru-v4"), default=None)
+    run.add_argument("--generator-mode", choices=("grounded", "extractive"), default=None)
+    run.add_argument("--prompt-version", choices=("grounded-ru-v1", "grounded-ru-v2", "grounded-ru-v3", "grounded-ru-v4", "extractive-ru-v1"), default=None)
     score = evaluation_commands.add_parser("score", help="Check review provenance and calculate final metrics")
     score.add_argument("--run-dir", type=Path, required=True)
     score.add_argument("--reviews", type=Path, required=True)
@@ -76,7 +78,8 @@ def main() -> None:
                 output = run_evaluation(
                     cases, lambda: build_rag_runtime(films, settings, retrieval_k=args.retrieval_k,
                                                      context_movies=args.context_movies,
-                                                     prompt_version=args.prompt_version),
+                                                     prompt_version=args.prompt_version,
+                                                     generator_mode=args.generator_mode),
                     args.output, label=args.label, k=args.k, delay_seconds=args.delay_seconds,
                     progress=lambda case_id, state: print(f"{case_id}: {state}", file=sys.stderr),
                 )
@@ -106,7 +109,8 @@ def main() -> None:
             plan = build_planner(films).plan(args.question)
             trace = early_trace(args.question, plan)
             if trace is None:
-                trace = build_rag(films, Settings.load(args.env_file)).execute_plan(args.question, plan)
+                trace = build_rag(films, Settings.load(args.env_file),
+                                  generator_mode=args.generator_mode).execute_plan(args.question, plan)
             if args.trace is not None:
                 save_trace(args.trace, trace)
             output = asdict(trace.answer)

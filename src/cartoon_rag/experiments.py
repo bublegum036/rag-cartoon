@@ -126,8 +126,9 @@ def run_evaluation(
         "recall_k": k, "delay_seconds": delay_seconds,
         "implementation_sha256": {
             name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest()
-            for name in ("application.py", "bootstrap.py", "domain.py", "ports.py", "evaluation.py", "experiments.py", "adapters/rule_planner.py",
-                         "adapters/gemini.py", "adapters/qdrant.py")
+            for name in ("application.py", "bootstrap.py", "domain.py", "ports.py", "evaluation.py", "experiments.py",
+                         "extractive.py", "adapters/rule_planner.py", "adapters/gemini.py",
+                         "adapters/gemini_extractive.py", "adapters/qdrant.py")
         },
     }
     for case in cases:
@@ -141,7 +142,7 @@ def run_evaluation(
         service, identity = factory()
         allowed = {"index_name", "snapshot_id", "catalog_sha256", "embedding", "generator_model",
                    "prompt_version", "planner_version", "retrieval_k", "context_movies",
-                   "max_output_tokens", "query_mode"}
+                   "max_output_tokens", "query_mode", "generator_mode", "renderer_version"}
         manifest["runtime"] = {name: identity[name] for name in allowed if name in identity}
     except Exception as exc:
         startup_error = _error(exc)

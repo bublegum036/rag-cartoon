@@ -1,0 +1,9 @@
+{
+  "renderer_before": "extractive-renderer-v1",
+  "renderer_after": "extractive-renderer-v2",
+  "before_source_sha256": "c666a40bd3200f9548dbdb2d4d53fdaf594bc56daf0de638c2e5195db905d9ef",
+  "before_matches_archived_live_run": true,
+  "examples": 4,
+  "provider_calls": 0,
+  "after_source_sha256": "89c6b81e3389a2209d7a236ada75ca3b87a31479fc109e8c8473f614667d427a"
+}

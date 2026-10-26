@@ -14,6 +14,20 @@ Planner ru-rules-v1.1 includes duration-fact and age-topic review fixes;
 JsonExactCatalog and offline `exact` CLI implement lookup, full filtered counts
 and signed duration comparisons. `ask` composes these with Gemini structured generation
 and a Qdrant collection pinned to the same catalog fingerprint.
+Experimental generator mode extractive selects existing fragment IDs only;
+extractive.py validates ownership and renders quotations/metadata, exact operations
+without LLM. CLI ask/evaluate support --generator-mode extractive, prompt
+extractive-ru-v1. Grounded/v2 remains default. Provenance includes generator_mode
+and renderer_version; custom injected generators remain explicitly identified.
+Initial extractive checks: 144 tests passed, 3 skipped. Real four-case experiment: 2 accepted,
+2 HTTP 503, 3 Gemini calls plus one local count. No overall quality improvement
+claimed; source fidelity does not prove relevance/completeness. See docs/extractive.md
+and artifacts/expanded-extractive-2026-10-26.
+Extractive LOOKUP fix: renderer v2 appends the full verbatim synopsis to card
+metadata because named-film LOOKUP includes plot questions, not only facts.
+145 tests passed, 3 skipped; new end-to-end offline test covers three named
+plot queries. No providers rerun; old renderer source retained to match historical
+v1 run hashes (artifacts/extractive-lookup-fix-2026-10-26).
 Latest implementation: evaluation artifact schema 2 saves PreparedQuery before
 generation; QuestionAnswerer factories now provide prepare(question)/answer(prepared).
 Verified preparation survives generation failure and supports Recall/filter checks
