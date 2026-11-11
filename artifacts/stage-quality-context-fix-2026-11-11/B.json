@@ -1,0 +1,797 @@
+{
+  "report_version": "stage-quality-v1.1",
+  "expectations_version": "baseline-stages-v1",
+  "provenance": {
+    "python": "3.13.15",
+    "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+    "expectations_sha256": "2dc5f53c4da401f3710dfb3c6306d64874a605c80c1a8b3fe9a4bf11e7b53fd8",
+    "manifest_sha256": "345497b68e8af234a6eec176dc08ecd787b79db5416f6476fdcb5d54d09c4c5c",
+    "results_sha256": "d0cc56dbaf7a07a85a1f8ee9e2065c73518f47f3a894f631a9f62c6b12b9e688",
+    "reviews_sha256": "1fc5ee8b334cac5fa363e0f24cf4d6f3ffca6c4d07080a6e943d929d36bc8ea2",
+    "source_fingerprints": {
+      "__init__.py": "20b142b00b0b3ea0fa09ba6073cfee15e2301b5f3ee56d79083fd849419172ad",
+      "adapters/__init__.py": "165c0bb9057847f108ed7dde6ec1afec131899c773a0ef9df03b194b6ed066a8",
+      "adapters/fastembed.py": "e076618f933be024e0785ce76b2b690e43692d88451ec1b6c7448993c84dd6f4",
+      "adapters/gemini.py": "568fb52a2dd09894316ba9e52069d4b1bd62bf193c9fc86613966068b1aba6ff",
+      "adapters/gemini_extractive.py": "b2fe19b104d09bb2341e8d2032e8f250954bc27a4cd7641aad28865b19349c56",
+      "adapters/json_catalog.py": "138650c64ea8c2e73acdb098a68c2c45107039bc16abe5a0fb70ca2052456302",
+      "adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607",
+      "adapters/rule_planner.py": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+      "application.py": "c208dea70b93ff263b7907d4545d20f51b3f69778c91356365074af807b2f184",
+      "bootstrap.py": "e66ada185915225d566ab6b8d729ff99b8eb084f037899e7bebc692b05b5b8c1",
+      "cli.py": "f8f74a04fd6a7bba8e6318924d1363be9264130150c3adbed44ea263008ee371",
+      "domain.py": "4cf69fd41637ca45a6caf935fe2c38fdb9bb1f3cceeb2ad8954502373463120a",
+      "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+      "experiments.py": "66125593d6fa1663b20bb4a415f1f9253e65d59e4660d0d0a092ea81b7117825",
+      "extractive.py": "89c6b81e3389a2209d7a236ada75ca3b87a31479fc109e8c8473f614667d427a",
+      "ingestion.py": "9a75898ff47a13cdbb3c6d8287bf47f6d413720ae52eb28e716a52d6feb6f11c",
+      "ports.py": "d4500e82a9b96328486c032aed1518e8e7ed6a6aea10e316c20b3db5b3405334",
+      "quality.py": "adbd4fbcb481673bc779a76fe6ddf321b2e225fd50aede38378a5281bb6f9302",
+      "settings.py": "277f716f637ec76ba4479f1480c329ba6b2ce4550d10d5c1585ffde9ed5bedcd",
+      "snapshots.py": "6489965e29c7508a66b428af216abb366ce3e8b13c3dbf29de0e9129f4b165ef"
+    },
+    "original_runtime": {
+      "snapshot_id": "cartoons__1be73f172727467ab7927befe66300f5",
+      "generator_model": "gemini-3.1-flash-lite",
+      "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+      "retrieval_k": 10,
+      "index_name": "cartoons",
+      "max_output_tokens": 2048,
+      "context_movies": 3,
+      "embedding": {
+        "provider": "fastembed",
+        "model": "intfloat/multilingual-e5-small",
+        "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+        "dimensions": 384,
+        "implementation_version": "0.9.0",
+        "encoding": "e5-query-passage-v1"
+      },
+      "prompt_version": "grounded-ru-v2",
+      "planner_version": "ru-rules-v1.1"
+    }
+  },
+  "metrics": {
+    "current_planner": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "archived_planner": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "completion": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "retrieval_recall_at_k": {
+      "pass": 6,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 4,
+      "evaluated": 6,
+      "applicable": 6,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "retrieval_filters": {
+      "pass": 7,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 3,
+      "evaluated": 7,
+      "applicable": 7,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "context_recall": {
+      "pass": 7,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 3,
+      "evaluated": 7,
+      "applicable": 7,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "context_filters": {
+      "pass": 8,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 2,
+      "evaluated": 8,
+      "applicable": 8,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "catalog_evidence": {
+      "pass": 8,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 2,
+      "evaluated": 8,
+      "applicable": 8,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "exact_result": {
+      "pass": 1,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 9,
+      "evaluated": 1,
+      "applicable": 1,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "answer_status": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "answer_contract": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "answer_semantics": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    },
+    "answer_acceptance": {
+      "pass": 10,
+      "fail": 0,
+      "missing": 0,
+      "not_applicable": 0,
+      "evaluated": 10,
+      "applicable": 10,
+      "observed_mean": 1.0,
+      "coverage": 1.0
+    }
+  },
+  "cases": [
+    {
+      "id": "sea-short",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "whale",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "robot",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "space",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "library",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "dragon",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "no-match",
+      "expected_route": "search",
+      "actual_route": "search",
+      "expected_status": "insufficient",
+      "actual_status": "insufficient",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "retrieval_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_recall": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "unknown",
+      "expected_route": "insufficient",
+      "actual_route": "insufficient",
+      "expected_status": "insufficient",
+      "actual_status": "insufficient",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "retrieval_filters": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "context_recall": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "context_filters": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "catalog_evidence": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "ambiguous",
+      "expected_route": "clarify",
+      "actual_route": "clarify",
+      "expected_status": "clarify",
+      "actual_status": "clarify",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "retrieval_filters": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "context_recall": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "context_filters": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "catalog_evidence": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "exact_result": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    },
+    {
+      "id": "marine-long",
+      "expected_route": "compare_duration",
+      "actual_route": "compare_duration",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "checks": {
+        "current_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "archived_planner": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "completion": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "retrieval_recall_at_k": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "retrieval_filters": {
+          "state": "not_applicable",
+          "score": null
+        },
+        "context_recall": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "context_filters": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "catalog_evidence": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "exact_result": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_status": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_contract": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_semantics": {
+          "state": "pass",
+          "score": 1.0
+        },
+        "answer_acceptance": {
+          "state": "pass",
+          "score": 1.0
+        }
+      }
+    }
+  ]
+}

@@ -2,6 +2,26 @@
 
 ## Current state
 
+Stage-quality review fix (2026-11-11): catalog_evidence now checks each
+Evidence.chunks[*].film against its parent Evidence.film and the active catalog.
+Three archive-roundtrip regressions failed before the fix and pass after it;
+valid full-card evidence without chunks remains supported. 157 tests passed,
+3 integration tests skipped; both catalogs validated. Report version is
+stage-quality-v1.1. Fresh offline A/B reports retain all prior metrics; original
+reports preserved. No providers called. See artifacts/stage-quality-context-fix-2026-11-11.
+
+Latest local stage-quality work (2026-11-11): load_catalog now validates JSON
+shape/fields/types and revision/source collisions before provider setup.
+AnswerService answers from PreparedQuery with only a generator dependency;
+SearchService keeps prepare/answer compatibility. Offline `evaluate stages`
+uses versioned baseline stage annotations and validated archives, separates
+route/status, retrieval/context/exact/contract/semantic checks with coverage.
+Archived A/B diagnostics preserve 9/10 and 10/10 semantic acceptance; no new
+provider calls or independent reviews. 153 tests passed, 3 integration tests
+skipped; both catalogs validated. New runs record environment versions and
+additional implementation hashes. See docs/pipeline-quality.md and
+artifacts/stage-quality-2026-11-11. Original data and archives unchanged.
+
 This directory contains a Russian-language RAG assignment and a Python 3.11+
 architecture with Qdrant REST and local FastEmbed E5 search adapters. Read
 `README.txt` for the assignment, `README.md` for commands and verification limits,

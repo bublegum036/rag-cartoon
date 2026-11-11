@@ -1,0 +1,44 @@
+test_rejects_invalid_data_at_load_boundary (test_quality_stages.CatalogValidationTest.test_rejects_invalid_data_at_load_boundary) ... ok
+test_versions_and_empty_snapshot_remain_supported (test_quality_stages.CatalogValidationTest.test_versions_and_empty_snapshot_remain_supported) ... ok
+test_answer_service_needs_only_generator_and_prepared_evidence (test_quality_stages.QualityStageTest.test_answer_service_needs_only_generator_and_prepared_evidence) ... ok
+test_catalog_evidence_accepts_valid_parent_without_chunks (test_quality_stages.QualityStageTest.test_catalog_evidence_accepts_valid_parent_without_chunks) ... ok
+test_cli_stage_report_is_offline (test_quality_stages.QualityStageTest.test_cli_stage_report_is_offline) ... ok
+test_context_chunk_from_another_active_movie_fails_parent_check (test_quality_stages.QualityStageTest.test_context_chunk_from_another_active_movie_fails_parent_check) ... FAIL
+test_context_chunk_with_stale_card_fails_catalog_check_after_roundtrip (test_quality_stages.QualityStageTest.test_context_chunk_with_stale_card_fails_catalog_check_after_roundtrip) ... FAIL
+test_context_loss_is_distinct_from_retrieval_failure (test_quality_stages.QualityStageTest.test_context_loss_is_distinct_from_retrieval_failure) ... ok
+test_correct_status_and_references_do_not_prove_semantics (test_quality_stages.QualityStageTest.test_correct_status_and_references_do_not_prove_semantics) ... ok
+test_failure_does_not_erase_retrieval_or_pass_generation (test_quality_stages.QualityStageTest.test_failure_does_not_erase_retrieval_or_pass_generation) ... ok
+test_gold_cannot_be_used_with_another_catalog (test_quality_stages.QualityStageTest.test_gold_cannot_be_used_with_another_catalog) ... ok
+test_invalid_context_chunk_is_detected_without_completed_answer (test_quality_stages.QualityStageTest.test_invalid_context_chunk_is_detected_without_completed_answer) ... FAIL
+
+======================================================================
+FAIL: test_context_chunk_from_another_active_movie_fails_parent_check (test_quality_stages.QualityStageTest.test_context_chunk_from_another_active_movie_fails_parent_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_quality_stages.py", line 135, in test_context_chunk_from_another_active_movie_fails_parent_check
+    self.assertEqual(report['metrics']['catalog_evidence']['fail'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_context_chunk_with_stale_card_fails_catalog_check_after_roundtrip (test_quality_stages.QualityStageTest.test_context_chunk_with_stale_card_fails_catalog_check_after_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_quality_stages.py", line 125, in test_context_chunk_with_stale_card_fails_catalog_check_after_roundtrip
+    self.assertEqual(report['metrics']['catalog_evidence']['fail'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_invalid_context_chunk_is_detected_without_completed_answer (test_quality_stages.QualityStageTest.test_invalid_context_chunk_is_detected_without_completed_answer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_quality_stages.py", line 142, in test_invalid_context_chunk_is_detected_without_completed_answer
+    self.assertEqual(report['metrics']['catalog_evidence']['fail'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.077s
+
+FAILED (failures=3)

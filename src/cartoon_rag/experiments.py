@@ -3,6 +3,8 @@
 import json
 import hashlib
 import math
+import platform
+from importlib.metadata import PackageNotFoundError, version
 import re
 import time
 from collections.abc import Callable, Sequence
@@ -119,7 +121,15 @@ def run_evaluation(
     if len(set(ids)) != len(ids) or any(not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,100}", item) for item in ids):
         raise ValueError("Case IDs must be unique safe file names")
     output.mkdir(parents=True, exist_ok=False)
+    packages = {}
+    for name in ("fastembed", "onnxruntime", "tokenizers", "numpy"):
+        try:
+            packages[name] = version(name)
+        except PackageNotFoundError:
+            packages[name] = None
     manifest = {
+        "environment": {"python": platform.python_version(), "platform": platform.platform(),
+                        "packages": packages},
         "artifact_schema_version": 2,
         "label": label, "created_at": datetime.now(timezone.utc).isoformat(), "state": "running",
         "case_ids": ids, "case_set_sha256": fingerprint([asdict(case) for case in cases]),
@@ -127,7 +137,8 @@ def run_evaluation(
         "implementation_sha256": {
             name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest()
             for name in ("application.py", "bootstrap.py", "domain.py", "ports.py", "evaluation.py", "experiments.py",
-                         "extractive.py", "adapters/rule_planner.py", "adapters/gemini.py",
+                         "extractive.py", "ingestion.py", "snapshots.py", "settings.py",
+                         "adapters/json_catalog.py", "adapters/fastembed.py", "adapters/rule_planner.py", "adapters/gemini.py",
                          "adapters/gemini_extractive.py", "adapters/qdrant.py")
         },
     }
@@ -200,7 +211,8 @@ def run_evaluation(
     return metrics
 
 
-def score_run(output: Path, reviews_path: Path) -> dict:
+def load_run(output: Path, reviews_path: Path) -> tuple:
+    """Validate an archive and review bindings without changing any files."""
     manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
     records = json.loads((output / "results.json").read_text(encoding="utf-8"))
     schema = manifest.get("artifact_schema_version", 1)
@@ -258,6 +270,15 @@ def score_run(output: Path, reviews_path: Path) -> dict:
             raise ValueError("Cannot review a case without a completed trace")
     if fingerprint([asdict(case) for case in cases]) != manifest["case_set_sha256"]:
         raise ValueError("Archived case set differs from manifest")
+    for case in cases:
+        if case.id in traces and case.id in judge.decisions:
+            judge.accepts(case, traces[case.id])
+    return manifest, records, cases, traces, preparations, judge
+
+
+def score_run(output: Path, reviews_path: Path) -> dict:
+    manifest, records, cases, traces, preparations, judge = load_run(output, reviews_path)
+    schema = manifest.get("artifact_schema_version", 1)
     metrics = summarize(cases, records, traces, k=manifest["recall_k"], judge=judge,
                         preparations=preparations if schema == 2 else None)
     for case in cases:

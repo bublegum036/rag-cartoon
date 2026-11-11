@@ -54,6 +54,12 @@ def main() -> None:
     score = evaluation_commands.add_parser("score", help="Check review provenance and calculate final metrics")
     score.add_argument("--run-dir", type=Path, required=True)
     score.add_argument("--reviews", type=Path, required=True)
+    stages = evaluation_commands.add_parser("stages", help="Offline diagnostics for each pipeline stage")
+    stages.add_argument("--run-dir", type=Path, required=True)
+    stages.add_argument("--expectations", type=Path, required=True)
+    stages.add_argument("--catalog", type=Path, default=Path("catalog.json"))
+    stages.add_argument("--reviews", type=Path, required=True)
+    stages.add_argument("--output", type=Path, required=True)
     index = commands.add_parser("index", help="Publish a complete active catalog snapshot")
     index.add_argument("--catalog", type=Path, default=Path("catalog.json"))
     search = commands.add_parser("search", help="Retrieve chunks; does not generate an answer")
@@ -67,7 +73,14 @@ def main() -> None:
         if args.command == "evaluate":
             from cartoon_rag.experiments import run_evaluation, score_run
 
-            if args.evaluation_command == "score":
+            if args.evaluation_command == "stages":
+                from cartoon_rag.quality import stage_report
+
+                output = stage_report(args.run_dir, args.expectations, args.catalog, args.reviews)
+                # A separate, exclusive output preserves the original run and previous reports.
+                with args.output.open("x", encoding="utf-8") as stream:
+                    stream.write(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
+            elif args.evaluation_command == "score":
                 output = score_run(args.run_dir, args.reviews)
             else:
                 from cartoon_rag.bootstrap import build_rag_runtime

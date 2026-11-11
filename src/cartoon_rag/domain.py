@@ -30,12 +30,19 @@ class Film:
     tags: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
-        if not isinstance(self.active, bool):
+        for name in ("movie_id", "title", "source_id", "synopsis"):
+            value = getattr(self, name)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"Film {name} must be a nonempty string")
+        for name in ("year", "duration_minutes", "version"):
+            value = getattr(self, name)
+            if type(value) is not int or value < 1:
+                raise ValueError(f"Film {self.movie_id}: {name} must be a positive integer")
+        if type(self.active) is not bool:
             raise ValueError(f"Film {self.movie_id}: active must be a boolean")
-        if not all((self.movie_id, self.title, self.source_id, self.synopsis)):
-            raise ValueError("Film identifiers, title and synopsis must be nonempty")
-        if self.duration_minutes <= 0 or self.version <= 0:
-            raise ValueError("Duration and version must be positive")
+        if (not isinstance(self.tags, tuple)
+                or any(not isinstance(tag, str) or not tag.strip() for tag in self.tags)):
+            raise ValueError(f"Film {self.movie_id}: tags must contain nonempty strings")
 
 
 @dataclass(frozen=True)

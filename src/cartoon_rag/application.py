@@ -123,6 +123,16 @@ class SearchService:
         return PreparedQuery(question, plan, hits, context, exact)
 
     def answer(self, prepared: PreparedQuery) -> Trace:
+        return AnswerService(self.generator).answer(prepared)
+
+
+class AnswerService:
+    """Answer from prepared evidence only; has no planner, retriever or database."""
+
+    def __init__(self, generator: AnswerGenerator) -> None:
+        self.generator = generator
+
+    def answer(self, prepared: PreparedQuery) -> Trace:
         question, plan = prepared.question, prepared.plan
         early = early_trace(question, plan)
         if early is not None:

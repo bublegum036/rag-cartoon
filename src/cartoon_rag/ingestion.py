@@ -10,8 +10,35 @@ from cartoon_rag.ports import Chunker, Embedder, IndexWriter
 
 
 def load_catalog(path: Path) -> tuple[Film, ...]:
-    records = json.loads(path.read_text(encoding="utf-8"))
-    return tuple(Film(**{**row, "tags": tuple(row.get("tags", ()))}) for row in records)
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"Duplicate catalog JSON field: {key}")
+            result[key] = value
+        return result
+
+    records = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    if not isinstance(records, list):
+        raise ValueError("Catalog must be a JSON array")
+    required = {"movie_id", "title", "year", "duration_minutes", "version", "active",
+                "source_id", "synopsis"}
+    films = []
+    for number, row in enumerate(records, 1):
+        if not isinstance(row, dict):
+            raise ValueError(f"Catalog row {number} must be an object")
+        if not required <= row.keys() or row.keys() - required - {"tags"}:
+            raise ValueError(f"Catalog row {number}: missing or unknown fields")
+        tags = row.get("tags", [])
+        if not isinstance(tags, list):
+            raise ValueError(f"Catalog row {number}: tags must be an array")
+        try:
+            films.append(Film(**{**row, "tags": tuple(tags)}))
+        except ValueError as exc:
+            raise ValueError(f"Catalog row {number}: {exc}") from exc
+    result = tuple(films)
+    active_snapshot(result)  # Check revision/source collisions before any provider is initialized.
+    return result
 
 
 def active_snapshot(films: Sequence[Film]) -> tuple[Film, ...]:
