@@ -1,0 +1,208 @@
+{
+  "verification_version": "year-operator-fix-v1",
+  "provider_calls": 0,
+  "planner_before": "ru-rules-v1.2",
+  "planner_after": "ru-rules-v1.2.1",
+  "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+  "examples": [
+    {
+      "question": "про море с 1990 года",
+      "before_plan": {
+        "semantic_query": "про море с",
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1990,
+          "year_lte": 1990
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "after_plan": {
+        "semantic_query": "про море",
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1990,
+          "year_lte": null
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "before_year_candidates": [
+        "film-33"
+      ],
+      "after_year_candidates": [
+        "film-01",
+        "film-02",
+        "film-03",
+        "film-04",
+        "film-05",
+        "film-06",
+        "film-07",
+        "film-08",
+        "film-09",
+        "film-10",
+        "film-11",
+        "film-12",
+        "film-33",
+        "film-34",
+        "film-35",
+        "film-36",
+        "film-37",
+        "film-38",
+        "film-39",
+        "film-40"
+      ],
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 1990
+            }
+          }
+        ]
+      },
+      "exact_count": {
+        "value": 20,
+        "unit": "movies",
+        "source_ids": [
+          "film-01#plot",
+          "film-02#plot",
+          "film-03#plot",
+          "film-04#plot",
+          "film-05#plot",
+          "film-06#plot",
+          "film-07#plot",
+          "film-08#plot",
+          "film-09#plot",
+          "film-10#plot",
+          "film-11#plot",
+          "film-12#plot",
+          "film-33#plot",
+          "film-34#plot",
+          "film-35#plot",
+          "film-36#plot",
+          "film-37#plot",
+          "film-38#plot",
+          "film-39#plot",
+          "film-40#plot"
+        ]
+      }
+    },
+    {
+      "question": "про море не ранее 1990 года",
+      "before_plan": {
+        "semantic_query": "про море не ранее",
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1990,
+          "year_lte": 1990
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "after_plan": {
+        "semantic_query": "про море",
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1990,
+          "year_lte": null
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "before_year_candidates": [
+        "film-33"
+      ],
+      "after_year_candidates": [
+        "film-01",
+        "film-02",
+        "film-03",
+        "film-04",
+        "film-05",
+        "film-06",
+        "film-07",
+        "film-08",
+        "film-09",
+        "film-10",
+        "film-11",
+        "film-12",
+        "film-33",
+        "film-34",
+        "film-35",
+        "film-36",
+        "film-37",
+        "film-38",
+        "film-39",
+        "film-40"
+      ],
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 1990
+            }
+          }
+        ]
+      },
+      "exact_count": {
+        "value": 20,
+        "unit": "movies",
+        "source_ids": [
+          "film-01#plot",
+          "film-02#plot",
+          "film-03#plot",
+          "film-04#plot",
+          "film-05#plot",
+          "film-06#plot",
+          "film-07#plot",
+          "film-08#plot",
+          "film-09#plot",
+          "film-10#plot",
+          "film-11#plot",
+          "film-12#plot",
+          "film-33#plot",
+          "film-34#plot",
+          "film-35#plot",
+          "film-36#plot",
+          "film-37#plot",
+          "film-38#plot",
+          "film-39#plot",
+          "film-40#plot"
+        ]
+      }
+    }
+  ],
+  "note": "Candidate membership checks the year bound, not semantic relevance to the sea topic.",
+  "before_source_sha256": "252786b9871eb4889430fabec7491a4678e48188899f8f0814b6b93565417e2c",
+  "after_source_sha256": "883326d7d87051cb559d6eb79a149f05aba4b2837fe49d493f47102f1afb19ad"
+}

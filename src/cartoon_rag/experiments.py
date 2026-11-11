@@ -20,6 +20,7 @@ from cartoon_rag.evaluation import (
 )
 from cartoon_rag.ports import QuestionAnswerer
 from cartoon_rag.snapshots import fingerprint
+from cartoon_rag.serialization import archive_data
 
 
 def _write(path: Path, value: object) -> None:
@@ -68,8 +69,7 @@ def summarize(
     if k < 1:
         raise ValueError("Recall k must be positive")
     reference_cases = [case for case in cases if case.relevant_source_ids]
-    filtered = [case for case in cases if case.filters.duration_minutes_lt is not None
-                or case.filters.duration_minutes_lte is not None or case.filters.movie_ids]
+    filtered = [case for case in cases if case.filters.constrained]
     reviewed, passed = 0, 0
     for case in cases:
         if case.id in traces and judge is not None and case.id in judge.decisions:
@@ -130,14 +130,14 @@ def run_evaluation(
     manifest = {
         "environment": {"python": platform.python_version(), "platform": platform.platform(),
                         "packages": packages},
-        "artifact_schema_version": 2,
+        "artifact_schema_version": 3,
         "label": label, "created_at": datetime.now(timezone.utc).isoformat(), "state": "running",
         "case_ids": ids, "case_set_sha256": fingerprint([asdict(case) for case in cases]),
         "recall_k": k, "delay_seconds": delay_seconds,
         "implementation_sha256": {
             name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest()
             for name in ("application.py", "bootstrap.py", "domain.py", "ports.py", "evaluation.py", "experiments.py",
-                         "extractive.py", "ingestion.py", "snapshots.py", "settings.py",
+                         "extractive.py", "serialization.py", "early_replies.py", "ingestion.py", "snapshots.py", "settings.py",
                          "adapters/json_catalog.py", "adapters/fastembed.py", "adapters/rule_planner.py", "adapters/gemini.py",
                          "adapters/gemini_extractive.py", "adapters/gemini_planner.py", "adapters/qdrant.py")
         },
@@ -155,7 +155,7 @@ def run_evaluation(
                    "prompt_version", "planner_version", "retrieval_k", "context_movies",
                    "max_output_tokens", "query_mode", "generator_mode", "renderer_version",
                    "planner_mode", "planner_model", "planner_prompt_version", "planner_max_output_tokens",
-                   "planner_decoder_version"}
+                   "planner_decoder_version", "planner_renderer_version"}
         manifest["runtime"] = {name: identity[name] for name in allowed if name in identity}
     except Exception as exc:
         startup_error = _error(exc)
@@ -220,7 +220,7 @@ def load_run(output: Path, reviews_path: Path) -> tuple:
     manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
     records = json.loads((output / "results.json").read_text(encoding="utf-8"))
     schema = manifest.get("artifact_schema_version", 1)
-    if type(schema) is not int or schema not in (1, 2):
+    if type(schema) is not int or schema not in (1, 2, 3):
         raise ValueError("Unsupported artifact schema version")
     if (manifest["state"] not in {"completed", "completed_with_errors", "stopped", "failed"}
             or [r["id"] for r in records] != manifest["case_ids"]
@@ -228,18 +228,18 @@ def load_run(output: Path, reviews_path: Path) -> tuple:
         raise ValueError("Run is unfinished or its case ledger is inconsistent")
     if any(not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,100}", item) for item in manifest["case_ids"]):
         raise ValueError("Unsafe case ID in run manifest")
-    judge = ReviewedSemanticJudge(json.loads(reviews_path.read_text(encoding="utf-8")))
+    judge = ReviewedSemanticJudge(json.loads(reviews_path.read_text(encoding="utf-8")), artifact_schema_version=schema)
     if not set(judge.decisions) <= set(manifest["case_ids"]):
         raise ValueError("Semantic reviews include cases outside this run")
     cases, traces, preparations = [], {}, {}
     for record in records:
         folder = output / record["id"]
         case = case_from_dict(json.loads((folder / "case.json").read_text(encoding="utf-8")))
-        if case.id != record["id"] or fingerprint(asdict(case)) != record["case_sha256"]:
+        if case.id != record["id"] or fingerprint(archive_data(asdict(case), schema)) != record["case_sha256"]:
             raise ValueError("Archived case/rubric differs from the run ledger")
         cases.append(case)
         prepared_data = None
-        if schema == 2:
+        if schema >= 2:
             if "prepared_sha256" in record:
                 if record["state"] == "not_executed":
                     raise ValueError("Unexecuted case cannot contain preparation")
@@ -248,7 +248,7 @@ def load_run(output: Path, reviews_path: Path) -> tuple:
                     raise ValueError("Preparation checksum differs from the run ledger")
                 _check_prepared_files(folder, prepared_data)
                 prepared = prepared_from_dict(prepared_data)
-                if fingerprint(asdict(prepared)) != record["prepared_sha256"]:
+                if fingerprint(archive_data(asdict(prepared), schema)) != record["prepared_sha256"]:
                     raise ValueError("Preparation is not in canonical form")
                 if prepared.question != case.question:
                     raise ValueError("Preparation belongs to another question")
@@ -265,6 +265,8 @@ def load_run(output: Path, reviews_path: Path) -> tuple:
                 if fingerprint(json.loads((folder / (name + ".json")).read_text(encoding="utf-8"))) != fingerprint(data[name]):
                     raise ValueError("Separate run artifacts differ from their trace")
             trace = trace_from_dict(data)
+            if fingerprint(archive_data(asdict(trace), schema)) != record["trace_sha256"]:
+                raise ValueError("Trace is not in canonical form")
             if trace.question != case.question:
                 raise ValueError("Trace belongs to another question")
             validate_answer(trace.answer, trace.context,
@@ -272,7 +274,7 @@ def load_run(output: Path, reviews_path: Path) -> tuple:
             traces[case.id] = trace
         elif case.id in judge.decisions:
             raise ValueError("Cannot review a case without a completed trace")
-    if fingerprint([asdict(case) for case in cases]) != manifest["case_set_sha256"]:
+    if fingerprint(archive_data([asdict(case) for case in cases], schema)) != manifest["case_set_sha256"]:
         raise ValueError("Archived case set differs from manifest")
     for case in cases:
         if case.id in traces and case.id in judge.decisions:
@@ -284,7 +286,7 @@ def score_run(output: Path, reviews_path: Path) -> dict:
     manifest, records, cases, traces, preparations, judge = load_run(output, reviews_path)
     schema = manifest.get("artifact_schema_version", 1)
     metrics = summarize(cases, records, traces, k=manifest["recall_k"], judge=judge,
-                        preparations=preparations if schema == 2 else None)
+                        preparations=preparations if schema >= 2 else None)
     for case in cases:
         if case.id in traces and case.id in judge.decisions:
             trace = traces[case.id]

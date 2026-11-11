@@ -61,6 +61,22 @@ class Filters:
     duration_minutes_lt: int | None = None
     duration_minutes_lte: int | None = None
     movie_ids: tuple[str, ...] = ()
+    year_gte: int | None = None
+    year_lte: int | None = None
+
+    def __post_init__(self) -> None:
+        for name in ("year_gte", "year_lte"):
+            value = getattr(self, name)
+            if value is not None and (type(value) is not int or not 1 <= value <= 9999):
+                raise ValueError(f"{name} must be an integer year from 1 to 9999")
+        if self.year_gte is not None and self.year_lte is not None and self.year_gte > self.year_lte:
+            raise ValueError("Year range is empty or reversed")
+
+    @property
+    def constrained(self) -> bool:
+        return any(value is not None for value in (
+            self.duration_minutes_lt, self.duration_minutes_lte, self.year_gte, self.year_lte,
+        )) or bool(self.movie_ids)
 
     def matches(self, film: Film) -> bool:
         return (
@@ -70,6 +86,8 @@ class Filters:
             and (self.duration_minutes_lte is None
                  or film.duration_minutes <= self.duration_minutes_lte)
             and (not self.movie_ids or film.movie_id in self.movie_ids)
+            and (self.year_gte is None or film.year >= self.year_gte)
+            and (self.year_lte is None or film.year <= self.year_lte)
         )
 
 

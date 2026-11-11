@@ -1,0 +1,284 @@
+{
+  "verification_version": "year-filters-v1",
+  "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+  "planner_version": "ru-rules-v1.2",
+  "provider_calls": 0,
+  "examples": [
+    {
+      "question": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+      "plan": {
+        "semantic_query": "Посоветуй фильм про море",
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1990,
+          "year_lte": null
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 1990
+            }
+          }
+        ]
+      }
+    },
+    {
+      "question": "про море с 1980 по 1990 год и короче 90 минут",
+      "plan": {
+        "semantic_query": "про море                    и",
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": 90,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1980,
+          "year_lte": 1990
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "duration_minutes",
+            "range": {
+              "lt": 90
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 1980,
+              "lte": 1990
+            }
+          }
+        ]
+      }
+    },
+    {
+      "question": "Сколько фильмов с 1980 по 1990 год и короче 90 минут?",
+      "plan": {
+        "semantic_query": "Сколько фильмов с 1980 по 1990 год и короче 90 минут?",
+        "intent": "count",
+        "filters": {
+          "duration_minutes_lt": 90,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1980,
+          "year_lte": 1990
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "duration_minutes",
+            "range": {
+              "lt": 90
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 1980,
+              "lte": 1990
+            }
+          }
+        ]
+      },
+      "context_movie_ids": [
+        "film-23",
+        "film-25",
+        "film-27",
+        "film-28",
+        "film-29",
+        "film-30",
+        "film-32"
+      ],
+      "exact_result": {
+        "value": 7,
+        "unit": "movies",
+        "source_ids": [
+          "film-23#plot",
+          "film-25#plot",
+          "film-27#plot",
+          "film-28#plot",
+          "film-29#plot",
+          "film-30#plot",
+          "film-32#plot"
+        ]
+      }
+    },
+    {
+      "question": "Сколько фильмов в 1900 году?",
+      "plan": {
+        "semantic_query": "Сколько фильмов в 1900 году?",
+        "intent": "count",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [],
+          "year_gte": 1900,
+          "year_lte": 1900
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 1900,
+              "lte": 1900
+            }
+          }
+        ]
+      },
+      "context_movie_ids": [],
+      "exact_result": {
+        "value": 0,
+        "unit": "movies",
+        "source_ids": []
+      }
+    },
+    {
+      "question": "Что происходит в «Маяк для кита», выпущенном в 2021 году?",
+      "plan": {
+        "semantic_query": "Что происходит в «Маяк для кита», выпущенном в 2021 году?",
+        "intent": "lookup",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [
+            "film-01"
+          ],
+          "year_gte": 2021,
+          "year_lte": 2021
+        },
+        "time_budget_minutes": null,
+        "early_status": null,
+        "early_text": ""
+      },
+      "qdrant_filter": {
+        "must": [
+          {
+            "key": "active",
+            "match": {
+              "value": true
+            }
+          },
+          {
+            "key": "year",
+            "range": {
+              "gte": 2021,
+              "lte": 2021
+            }
+          },
+          {
+            "key": "movie_id",
+            "match": {
+              "any": [
+                "film-01"
+              ]
+            }
+          }
+        ]
+      },
+      "context_movie_ids": [
+        "film-01"
+      ],
+      "exact_result": null
+    }
+  ],
+  "legacy": [
+    {
+      "run": "ab-A-2026-10-25",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "ab-B-2026-10-25",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "expanded-run-v2-2026-10-26",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "llm-planner-2026-11-12/A-rules",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "llm-planner-2026-11-12/B-gemini",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "llm-planner-2026-11-12/paraphrases-rules",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "llm-planner-2026-11-12/paraphrases-gemini",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    },
+    {
+      "run": "llm-planner-2026-11-12/early-recheck-v1.1",
+      "metrics_unchanged": true,
+      "files_unchanged": true
+    }
+  ],
+  "source_sha256": {
+    "domain.py": "c7ecf0d112041ed30de288a86a2a0f13621a50397a2388aeb878f7c015826460",
+    "serialization.py": "b5a6c170041574fa914e36719e7852932ae9cc220a325982f4fd3f722ad00a14",
+    "adapters/rule_planner.py": "252786b9871eb4889430fabec7491a4678e48188899f8f0814b6b93565417e2c",
+    "adapters/gemini_planner.py": "7716d9f28bf39dc888866eb4f6fb4b33eb428bdfe3b67e19f3e6634a309e7835",
+    "adapters/qdrant.py": "77c9ee0146a5c61391735261e0c5851a1a0c783c21804a99f3db517835e281ba",
+    "evaluation.py": "a9e6f81f8f5ec4531d0f5321e9ae0de3059a33a7897639fbaa34c5fe9a0635b6",
+    "experiments.py": "e0d5f98a87c5d4c6c00a3af9c6f579dfdd0ee9a46a0dd29cfe3afebee14a3bb4",
+    "quality.py": "6fa2878524d6d504d668222469c62bdbd3d9f55c48ad04eb0eebad7da342147e",
+    "early_replies.py": "84c6bac5b0669b06638e439ca12a0b8311b20b51a2475cb7e8e1e2b7c4ed9dee"
+  }
+}

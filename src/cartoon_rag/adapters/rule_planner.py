@@ -42,6 +42,69 @@ _MISSING_FACTS = (
 )
 
 
+_YEAR_NUMBER = r"([0-9]{4})(?![0-9]|[.,][0-9])"
+_YEAR_UNIT = r"(?:\s*год(?:а|у|ы|ов)?)?"
+_RELEASE = r"(?:(?:выпущенн\w*|вышедш\w*)\s+)?"
+_YEAR_RANGE = re.compile(r"(?<!\w)" + _RELEASE + r"(?:начиная\s+)?с\s+" + _YEAR_NUMBER + _YEAR_UNIT
+                         + r"\s+по\s+" + _YEAR_NUMBER + _YEAR_UNIT + r"(?!\w)")
+_YEAR_BOUND = re.compile(r"(?<!\w)" + _RELEASE + r"((?:начиная\s+)?с|не\s+раньше|не\s+ранее|не\s+позже|не\s+позднее|раньше|ранее|позже|позднее|после|до)\s+"
+                         + _YEAR_NUMBER + _YEAR_UNIT + r"(?!\w)")
+_YEAR_EXACT = re.compile(r"(?<!\w)" + _RELEASE + r"(?:(?:в|за)\s+)?" + _YEAR_NUMBER
+                         + r"\s+год(?:у|а)?(?!\w)")
+
+# A bare "1990 года" is an equality only if an unparsed relation has not
+# been left immediately before it. Never salvage the operand from an operator.
+_YEAR_EXACT_PREFIX = re.compile(
+    r"\b(?:с|со|c|от|по|до|после|раньше|позже|ранее|позднее|новее|старше|младше|начиная|не\s+\w+)"
+    r"\s+(?:(?:чем|в|за)\s+)*$"
+)
+
+
+def _year_constraints(text: str) -> tuple[dict, list[tuple[int, int]]]:
+    lower, upper, spans = [], [], []
+
+    def valid_match(match, values):
+        if any(not 1 <= int(value) <= 9999 for value in values):
+            raise ValueError("Invalid year")
+        if match[0][-1].isdigit() and not re.match(r"\s*(?:$|[.,;:?!]|и\b|или\b)", text[match.end():]):
+            raise ValueError("Year requires a year unit or phrase boundary")
+    for match in _YEAR_RANGE.finditer(text):
+        valid_match(match, (match[1], match[2]))
+        lower.append(int(match[1]))
+        upper.append(int(match[2]))
+        spans.append(match.span())
+    remainder = _mask(text, spans)
+    for match in _YEAR_BOUND.finditer(remainder):
+        operator = re.sub(r"\s+", " ", match[1])
+        year = int(match[2])
+        valid_match(match, (match[2],))
+        if operator in ("с", "начиная с", "не раньше", "не ранее"):
+            lower.append(year)
+        elif operator in ("не позже", "не позднее"):
+            upper.append(year)
+        elif operator in ("после", "позже", "позднее"):
+            lower.append(year + 1)
+        else:
+            upper.append(year - 1)
+        spans.append(match.span())
+    remainder = _mask(text, spans)
+    for match in _YEAR_EXACT.finditer(remainder):
+        if _YEAR_EXACT_PREFIX.search(remainder[:match.start()]):
+            raise ValueError("Unparsed operator before exact year")
+        valid_match(match, (match[1],))
+        lower.append(int(match[1]))
+        upper.append(int(match[1]))
+        spans.append(match.span())
+    if spans and re.search(r"\b(?:с|со|от|по|до|чем)\s*$", _mask(text, spans)):
+        raise ValueError("Incomplete year condition")
+    for start, _ in spans:
+        if re.search(r"\bне\s*$", text[:start]):
+            raise ValueError("Negated year condition")
+    bounds = dict(year_gte=max(lower) if lower else None, year_lte=min(upper) if upper else None)
+    Filters(**bounds)
+    return bounds, spans
+
+
 def _normalize(text: str) -> str:
     return text.lower().replace("ё", "е")
 
@@ -70,7 +133,7 @@ class RuleBasedQueryPlanner:
     unquoted titles must contain the complete title. No fuzzy/morphological match.
     """
 
-    version = "ru-rules-v1.1"
+    version = "ru-rules-v1.2.1"
 
     def __init__(self, titles: Mapping[str, str]) -> None:
         self._titles = []
@@ -119,6 +182,11 @@ class RuleBasedQueryPlanner:
         if any(char in _mask(text, [match.span() for match in quoted]) for char in '«»"„“”'):
             return _early(original, Status.CLARIFY, "Проверьте кавычки вокруг названия фильма.")
 
+        try:
+            years, year_spans = _year_constraints(masked)
+        except ValueError:
+            return _early(original, Status.CLARIFY, "Уточните корректный диапазон годов выпуска.")
+        masked = _mask(masked, year_spans)
         duration_matches = list(_DURATION.finditer(masked))
         budget_matches = list(_BUDGET.finditer(masked))
         # A bare number is accepted at a phrase boundary, but "90 seconds"
@@ -128,16 +196,18 @@ class RuleBasedQueryPlanner:
                for match in duration_matches):
             return _early(original, Status.CLARIFY,
                           "Укажите длительность в целых минутах.")
-        constraint_spans = [match.span() for match in duration_matches + budget_matches]
+        constraint_spans = [match.span() for match in duration_matches + budget_matches] + year_spans
         # Asking for a duration in minutes does not constrain its value. Mask
         # only the recognized fact phrase, leaving every numeric condition to
         # the normal validation and routing below.
         fact_spans = [match.span() for match in _DURATION_FACT_QUESTION.finditer(masked)]
         remainder = _mask(masked, constraint_spans + fact_spans)
+        if re.search(r"\b(?:не\s+(?:раньше|позже)|(?:раньше|позже|после|до|с)\s+[^.,;:?!]*\bгод\w*)", remainder):
+            return _early(original, Status.CLARIFY, "Укажите условие года выпуска с числовыми годами.")
         if re.search(r"\d", remainder) or _UNPARSED_DURATION.search(remainder):
             return _early(original, Status.CLARIFY,
                           "Уточните ограничение: поддерживаются целые минуты, «короче N» "
-                          "и «не больше N». Другие числовые условия пока не поддерживаются.")
+                          "и «не больше N», а также годы выпуска. Другие числовые условия пока не поддерживаются.")
         values = [int(match["value"]) for match in duration_matches + budget_matches]
         if any(value < 1 for value in values):
             return _early(original, Status.CLARIFY, "Укажите положительное число минут.")
@@ -148,7 +218,7 @@ class RuleBasedQueryPlanner:
         if any(match[0].startswith("за") for match in budget_matches) and not _COMPARE.search(masked):
             return _early(original, Status.CLARIFY,
                           "Уточните, означает ли «за N минут» бюджет просмотра: «у меня N минут».")
-        if len(constraint_spans) > 1 and re.search(r"\bили\b", masked):
+        if constraint_spans and re.search(r"\bили\b", masked):
             return _early(original, Status.CLARIFY, "Укажите одно условие длительности без «или».")
         if len(budget_matches) > 1 or (budget_matches and duration_matches):
             return _early(original, Status.CLARIFY, "Укажите один бюджет времени или условие длительности.")
@@ -163,19 +233,19 @@ class RuleBasedQueryPlanner:
             # ExactCatalog has no semantic topic predicate. Never count vector top-k.
             leftover = re.sub(r"\b(?:в|из)\s+каталог(?:е|а)\b", " ", remainder)
             leftover = re.sub(r"\b(?:сколько|всего|все|посчитай(?:те)?|количество|мультфильмов|"
-                              r"мультфильмы|фильмов|фильмы|есть|доступно|и)\b", " ", leftover)
+                              r"мультфильмы|фильмов|фильмы|есть|доступно|вышло|выпущено|выпущенных|вышедших|и)\b", " ", leftover)
             if re.search(r"\w", leftover) or movie_ids or budget is not None:
                 return _early(original, Status.CLARIFY,
-                              "Могу точно посчитать все фильмы каталога по длительности. "
+                              "Могу точно посчитать все фильмы каталога по году и длительности. "
                               "Уточните запрос без сюжетного или другого дополнительного условия.")
             return QueryPlan(original, intent=Intent.COUNT, filters=Filters(
                 duration_minutes_lt=min(lt) if lt else None,
-                duration_minutes_lte=min(lte) if lte else None,
+                duration_minutes_lte=min(lte) if lte else None, **years,
             ))
 
         if movie_ids and budget is not None:
             return QueryPlan(original, intent=Intent.COMPARE_DURATION,
-                             filters=Filters(movie_ids=tuple(movie_ids)), time_budget_minutes=budget)
+                             filters=Filters(movie_ids=tuple(movie_ids), **years), time_budget_minutes=budget)
         if _COMPARE.search(masked):
             return _early(original, Status.CLARIFY,
                           "Для сравнения укажите один фильм и бюджет: «у меня N минут».")
@@ -183,7 +253,7 @@ class RuleBasedQueryPlanner:
             if duration_matches:
                 return _early(original, Status.CLARIFY,
                               "Для проверки названного фильма укажите бюджет: «у меня N минут».")
-            return QueryPlan(original, intent=Intent.LOOKUP, filters=Filters(movie_ids=tuple(movie_ids)))
+            return QueryPlan(original, intent=Intent.LOOKUP, filters=Filters(movie_ids=tuple(movie_ids), **years))
         if (_FACT_QUESTION.search(masked)
                 and not re.search(r"\b(?:про|где|котор\w*)\b", masked)):
             return _early(original, Status.CLARIFY, "О каком фильме идёт речь? Укажите название.")
@@ -193,5 +263,5 @@ class RuleBasedQueryPlanner:
         semantic = _mask(original, constraint_spans).strip(" \t\n.,;:?!—-") or "мультфильм"
         return QueryPlan(semantic, filters=Filters(
             duration_minutes_lt=min(lt) if lt else None,
-            duration_minutes_lte=min(lte) if lte else None,
+            duration_minutes_lte=min(lte) if lte else None, **years,
         ))

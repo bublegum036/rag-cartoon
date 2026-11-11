@@ -99,6 +99,34 @@ class QdrantLiveTest(unittest.TestCase):
         self.store.replace_snapshot([], FixedEmbedder().embed([]))
         self.assertEqual(self.store.search(QueryPlan("кит"), limit=5), ())
 
+    def test_year_prefilter_combines_with_duration_and_includes_boundaries(self):
+        older = replace(self.films[0], year=1989)
+        boundary = replace(self.films[1], year=1990)
+        newer = replace(self.films[2], year=1991)
+        transport = self.transport
+
+        class WithoutYearIndex:
+            def request(self, method, path, body=None):
+                if method == "PUT" and path.endswith("/index?wait=true") and body["field_name"] == "year":
+                    return True  # Reproduce an existing snapshot without the new optional index.
+                return transport.request(method, path, body)
+
+        legacy_store = QdrantIndex(WithoutYearIndex(), self.alias, FixedEmbedder())
+        publication = index_catalog((older, boundary, newer), WholeSynopsis(), FixedEmbedder(), legacy_store)
+        info = transport.request("GET", "/collections/" + publication.snapshot_id)
+        self.assertNotIn("year", info["payload_schema"])
+        self.assertIn("duration_minutes", info["payload_schema"])
+        # The 1990 film has the highest score, but duration excludes it. The
+        # 1989 film is short, but the year constraint excludes it before top-k.
+        plan = QueryPlan("море", filters=Filters(year_gte=1990, duration_minutes_lt=90))
+        hits = self.store.search(plan, limit=1)
+        self.assertEqual([hit.chunk.film.movie_id for hit in hits], [newer.movie_id])
+        exact_year = self.store.search(QueryPlan("море", filters=Filters(year_gte=1990, year_lte=1990)), limit=1)
+        self.assertEqual([hit.chunk.film.movie_id for hit in exact_year], [boundary.movie_id])
+        earlier = self.store.search(QueryPlan("море", filters=Filters(year_lte=1989)), limit=10)
+        self.assertEqual([hit.chunk.film.movie_id for hit in earlier], [older.movie_id])
+        self.assertEqual(self.store.search(QueryPlan("море", filters=Filters(year_gte=1992)), limit=1), ())
+
     @unittest.skipUnless(os.environ.get("RUN_SEMANTIC_SMOKE") == "1", "Set RUN_SEMANTIC_SMOKE=1 to download E5 and check semantics")
     def test_real_embeddings_find_whale_and_robot(self):
         from cartoon_rag.adapters.fastembed import E5Embedder

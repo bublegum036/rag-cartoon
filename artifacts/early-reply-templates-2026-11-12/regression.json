@@ -1,0 +1,61 @@
+{
+  "verification": "offline-mocked-reason-v1",
+  "classification_source": "mock transport, not Gemini",
+  "real_provider_calls": 0,
+  "question": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+  "old_archived_answer": {
+    "status": "clarify",
+    "text": "Я не могу фильтровать мультфильмы по году выпуска, так как в каталоге нет данных о дате выхода.",
+    "source_ids": [],
+    "recommendations": []
+  },
+  "mocked_proposed_plan": {
+    "semantic_query": "фильм про море",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_reason": "unsupported_year_filter"
+  },
+  "new_trace": {
+    "question": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+    "plan": {
+      "semantic_query": "",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": "clarify",
+      "early_text": "Данные о годе есть, но фильтрация по году пока не реализована. Уточните запрос без этого условия."
+    },
+    "retrieved": [],
+    "context": [],
+    "exact_result": null,
+    "answer": {
+      "status": "clarify",
+      "text": "Данные о годе есть, но фильтрация по году пока не реализована. Уточните запрос без этого условия.",
+      "source_ids": [],
+      "recommendations": []
+    }
+  },
+  "versions": {
+    "planner": "gemini-plan-ru-v2",
+    "prompt": "gemini-plan-ru-v2",
+    "decoder": "planner-decoder-v3",
+    "renderer": "early-replies-ru-v1"
+  },
+  "source_sha256": {
+    "adapters/gemini_planner.py": "c51eec1785f47431c5a24c48ff824f110edaa9b4a7ae76c661b91c9e5cf9c454",
+    "early_replies.py": "59b02bd5b2ddebed26108cb12bbd2655a5306e6be90b14ae22b8146f98991031",
+    "bootstrap.py": "dfb6734cd2775280149be4342d73d97c19c103c26de8e397a20d4f2e93e7f164",
+    "experiments.py": "f186533b61538354bd8407a2e2e29980c9ca83a3ceeb13b439b67beb2ef10ae2"
+  },
+  "verification_sha256": "9a970d977ceb976ed7c1058631df3fd0fdf726c8510bc1ee6f95eb66e3314121"
+}

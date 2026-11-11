@@ -173,7 +173,7 @@ class QualityStageTest(unittest.TestCase):
         with patch('sys.argv', argv), redirect_stdout(io.StringIO()), \
                 patch.object(Settings, 'load', side_effect=AssertionError('Offline command')):
             main()
-        self.assertEqual(json.loads((self.root / 'report.json').read_text())['report_version'], 'stage-quality-v1.3')
+        self.assertEqual(json.loads((self.root / 'report.json').read_text())['report_version'], 'stage-quality-v2')
 
     def test_answer_service_needs_only_generator_and_prepared_evidence(self):
         generator = Mock()

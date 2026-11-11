@@ -141,3 +141,10 @@ Recall@1/@3 и фильтры 100%, общая приёмка 9/20 (45%). Ист
 лежит в `stage-expectations-planner-paraphrases-v1.json` (planner-paraphrases-v1),
 с привязкой к SHA-256 каталога и набора вопросов. Базовые questions.jsonl и
 catalog.json не изменены. [Эксперимент](../artifacts/llm-planner-2026-11-12/README.md).
+
+
+Для новых архивов схемы 3 с годовыми фильтрами исходные 10 вопросов имеют
+отдельную разметку stage-expectations-v2.json (baseline-stages-v2-year-fields).
+Версия v1 и прежние вопросы/рубрики расширения не менялись. В частности, старый
+year-filter ожидал clarify до появления этой функциональности; это исторический
+эталон, не текущий. [Контракт года](../docs/year-filters.md).

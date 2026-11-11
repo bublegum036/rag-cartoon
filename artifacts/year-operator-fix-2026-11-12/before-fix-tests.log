@@ -1,0 +1,97 @@
+test_application_rejects_retriever_violating_year_bound (test_year_filters.YearFilterTest.test_application_rejects_retriever_violating_year_bound) ... ok
+test_cli_plan_exact_and_explicit_year_search_flags (test_year_filters.YearFilterTest.test_cli_plan_exact_and_explicit_year_search_flags) ... ok
+test_exact_count_uses_full_year_and_duration_filtered_catalog (test_year_filters.YearFilterTest.test_exact_count_uses_full_year_and_duration_filtered_catalog) ... ok
+test_gemini_year_schema_decodes_and_validates_without_provider_calls (test_year_filters.YearFilterTest.test_gemini_year_schema_decodes_and_validates_without_provider_calls) ... ok
+test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) ... 
+  test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море от 1990 года') ... FAIL
+  test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море новее 1990 года') ... FAIL
+  test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море старше 1990 года') ... FAIL
+  test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море не моложе 1990 года') ... FAIL
+  test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море с 1990 года по') ... FAIL
+test_legacy_archives_are_verified_using_original_filters_and_hashes (test_year_filters.YearFilterTest.test_legacy_archives_are_verified_using_original_filters_and_hashes) ... ok
+test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) ... 
+  test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) (operator='с') ... FAIL
+  test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) (operator='начиная с') ... FAIL
+  test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) (operator='не ранее') ... FAIL
+test_named_lookup_keeps_year_constraint (test_year_filters.YearFilterTest.test_named_lookup_keeps_year_constraint) ... ok
+test_qdrant_body_combines_year_and_duration_before_top_k (test_year_filters.YearFilterTest.test_qdrant_body_combines_year_and_duration_before_top_k) ... ok
+test_rule_boundaries_exact_year_range_and_duration_intersection (test_year_filters.YearFilterTest.test_rule_boundaries_exact_year_range_and_duration_intersection) ... ok
+test_schema1_cannot_introduce_year_constraints_even_without_reviews (test_year_filters.YearFilterTest.test_schema1_cannot_introduce_year_constraints_even_without_reviews) ... ok
+test_schema3_year_metric_and_review_binding_survive_roundtrip (test_year_filters.YearFilterTest.test_schema3_year_metric_and_review_binding_survive_roundtrip) ... ok
+
+======================================================================
+FAIL: test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море от 1990 года')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 91, in test_invalid_ranges_units_negations_or_alternatives_require_clarification
+    self.assertIs(self.planner.plan(question).early_status, Status.CLARIFY)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None is not <Status.CLARIFY: 'clarify'>
+
+======================================================================
+FAIL: test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море новее 1990 года')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 91, in test_invalid_ranges_units_negations_or_alternatives_require_clarification
+    self.assertIs(self.planner.plan(question).early_status, Status.CLARIFY)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None is not <Status.CLARIFY: 'clarify'>
+
+======================================================================
+FAIL: test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море старше 1990 года')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 91, in test_invalid_ranges_units_negations_or_alternatives_require_clarification
+    self.assertIs(self.planner.plan(question).early_status, Status.CLARIFY)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None is not <Status.CLARIFY: 'clarify'>
+
+======================================================================
+FAIL: test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море не моложе 1990 года')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 91, in test_invalid_ranges_units_negations_or_alternatives_require_clarification
+    self.assertIs(self.planner.plan(question).early_status, Status.CLARIFY)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None is not <Status.CLARIFY: 'clarify'>
+
+======================================================================
+FAIL: test_invalid_ranges_units_negations_or_alternatives_require_clarification (test_year_filters.YearFilterTest.test_invalid_ranges_units_negations_or_alternatives_require_clarification) (question='про море с 1990 года по')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 91, in test_invalid_ranges_units_negations_or_alternatives_require_clarification
+    self.assertIs(self.planner.plan(question).early_status, Status.CLARIFY)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None is not <Status.CLARIFY: 'clarify'>
+
+======================================================================
+FAIL: test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) (operator='с')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 68, in test_lower_year_operator_is_consumed_whole_not_as_an_exact_year
+    self.assertEqual(plan.filters, Filters(year_gte=1990))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Filte[36 chars]n_minutes_lte=None, movie_ids=(), year_gte=1990, year_lte=1990) != Filte[36 chars]n_minutes_lte=None, movie_ids=(), year_gte=1990, year_lte=None)
+
+======================================================================
+FAIL: test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) (operator='начиная с')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 68, in test_lower_year_operator_is_consumed_whole_not_as_an_exact_year
+    self.assertEqual(plan.filters, Filters(year_gte=1990))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Filte[36 chars]n_minutes_lte=None, movie_ids=(), year_gte=1990, year_lte=1990) != Filte[36 chars]n_minutes_lte=None, movie_ids=(), year_gte=1990, year_lte=None)
+
+======================================================================
+FAIL: test_lower_year_operator_is_consumed_whole_not_as_an_exact_year (test_year_filters.YearFilterTest.test_lower_year_operator_is_consumed_whole_not_as_an_exact_year) (operator='не ранее')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreiiarkovoi/Desktop/AI-Engineer/rag-cartoon-task/tests/test_year_filters.py", line 68, in test_lower_year_operator_is_consumed_whole_not_as_an_exact_year
+    self.assertEqual(plan.filters, Filters(year_gte=1990))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Filte[36 chars]n_minutes_lte=None, movie_ids=(), year_gte=1990, year_lte=1990) != Filte[36 chars]n_minutes_lte=None, movie_ids=(), year_gte=1990, year_lte=None)
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.266s
+
+FAILED (failures=8)

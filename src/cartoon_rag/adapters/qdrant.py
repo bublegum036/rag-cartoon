@@ -54,6 +54,10 @@ def qdrant_filter(filters: Filters) -> dict:
         bounds["lte"] = filters.duration_minutes_lte
     if bounds:
         must.append({"key": "duration_minutes", "range": bounds})
+    years = {operator: value for operator, value in (("gte", filters.year_gte), ("lte", filters.year_lte))
+             if value is not None}
+    if years:
+        must.append({"key": "year", "range": years})
     if filters.movie_ids:
         must.append({"key": "movie_id", "match": {"any": list(filters.movie_ids)}})
     return {"must": must}
@@ -115,7 +119,7 @@ class QdrantIndex:
         self.transport.request("PUT", path, {
             "vectors": {"size": self.dimensions, "distance": "Cosine"}, "metadata": manifest,
         })
-        for field, schema in (("active", "bool"), ("duration_minutes", "integer"), ("movie_id", "keyword")):
+        for field, schema in (("active", "bool"), ("duration_minutes", "integer"), ("year", "integer"), ("movie_id", "keyword")):
             self.transport.request("PUT", path + "/index?wait=true", {
                 "field_name": field, "field_schema": schema,
             })

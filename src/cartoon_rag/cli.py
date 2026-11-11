@@ -68,6 +68,8 @@ def main() -> None:
     search.add_argument("--duration-lt", type=positive_int)
     search.add_argument("--duration-lte", type=positive_int)
     search.add_argument("--movie-id", action="append", default=[])
+    search.add_argument("--year-gte", type=positive_int)
+    search.add_argument("--year-lte", type=positive_int)
     for command in (plan, exact, ask, run):
         command.add_argument("--planner-mode", choices=("rules", "gemini"), default="rules",
                              help="rules is offline; gemini makes an additional API request per question")
@@ -150,7 +152,7 @@ def main() -> None:
             else:
                 plan = QueryPlan(args.query, filters=Filters(
                     duration_minutes_lt=args.duration_lt, duration_minutes_lte=args.duration_lte,
-                    movie_ids=tuple(args.movie_id),
+                    movie_ids=tuple(args.movie_id), year_gte=args.year_gte, year_lte=args.year_lte,
                 ))
                 output = asdict(RetrievalService(store).search(plan, limit=args.limit))
         print(json.dumps(output, ensure_ascii=False, indent=2))

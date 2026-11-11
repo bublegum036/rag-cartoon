@@ -11,6 +11,7 @@ from cartoon_rag.domain import (
     PreparedQuery, Recommendation, Status, Trace,
 )
 from cartoon_rag.snapshots import fingerprint
+from cartoon_rag.serialization import archive_data
 
 
 @dataclass(frozen=True)
@@ -146,7 +147,8 @@ class ReviewedSemanticJudge:
 
     checks = ("rubric_passed", "facts_supported", "constraints_passed", "references_supported")
 
-    def __init__(self, document: dict) -> None:
+    def __init__(self, document: dict, *, artifact_schema_version: int = 3) -> None:
+        self.artifact_schema_version = artifact_schema_version
         if not isinstance(document.get("reviewer"), str) or not document["reviewer"].strip():
             raise ValueError("Semantic reviews require a named reviewer")
         if not isinstance(document.get("decisions"), list):
@@ -171,9 +173,9 @@ class ReviewedSemanticJudge:
 
     def accepts(self, case: Case, trace: Trace) -> bool:
         decision = self.decisions[case.id]
-        if decision["case_sha256"] != fingerprint(asdict(case)):
+        if decision["case_sha256"] != fingerprint(archive_data(asdict(case), self.artifact_schema_version)):
             raise ValueError("Semantic review belongs to another case/rubric")
-        if decision["trace_sha256"] != fingerprint(asdict(trace)):
+        if decision["trace_sha256"] != fingerprint(archive_data(asdict(trace), self.artifact_schema_version)):
             raise ValueError("Semantic review belongs to another generated trace")
         return all(decision[name] for name in self.checks)
 

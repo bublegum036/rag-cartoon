@@ -2,6 +2,44 @@
 
 ## Current state
 
+Year-operator review fix (2026-11-12): rules ru-rules-v1.2.1 consume the whole
+с/начиная с/не ранее/не раньше condition as year_gte; earlier code incorrectly
+salvaged the year operand as equality. Added related aliases and exact-year
+prefix guards for unsupported/dangling relations. Both reported questions now
+retain 20 >=1990 candidates instead of one =1990; exact counts/source membership
+are covered. 186 local tests passed, 4 integration skipped; both catalogs valid.
+No provider rerun; prior 189 live checks remain historical. See
+artifacts/year-operator-fix-2026-11-12. Data and prior archives unchanged.
+
+Year filtering (2026-11-12): Filters.year_gte/year_lte are inclusive, compose
+with duration/movie IDs and apply before Qdrant top-k and across full exact
+catalog operations. Rules ru-rules-v1.2 parse bounds, exact years, inclusive
+ranges; Gemini planner/prompt v3, decoder v4, early-replies v2 add year fields
+and retire unsupported_year_filter. New archives use schema 3; serialization.py
+verifies legacy v1/v2 hashes/reviews without rewriting them and rejects actual
+year constraints in old schemas, including unreviewed traces. fingerprint unchanged.
+Use stage-expectations-v2.json for new baseline runs; v1 remains for old archives.
+Stage report is stage-quality-v2. 189 tests passed with real Qdrant/E5, no skips;
+local checks pass 185 with 4 integration skips. A real year test confirms
+prefilter boundaries and duration intersection even without a year payload index.
+Original question now plans search/year_gte=1990. Expanded 1980–1990 and <90
+exact count is 7. No Gemini calls for this stage or new semantic quality claim.
+Eight historical runs retain identical metrics. See docs/year-filters.md and
+artifacts/year-filters-2026-11-12. The preceding explanation-only artifact is
+historical; its unsupported-year reason was removed when years became supported.
+
+Early explanation fix (2026-11-12): Gemini planner now uses structured
+early_reason instead of provider early_text. Provider-independent early_replies.py
+maps known reasons to status/text and validates reason/status consistency.
+Current adapter/prompt gemini-plan-ru-v2, decoder planner-decoder-v3, templates
+early-replies-ru-v1; runtime records planner_renderer_version and source hash.
+Year-filter template correctly distinguishes existing year data from unsupported
+filtering. QueryPlan/legacy traces unchanged, rules still default. Archived
+question regression uses a mocked reason through real decoder/service/evaluator;
+174 tests passed, 3 integration tests skipped; both catalogs validated. No real
+provider rerun, no new classification/acceptance improvement claimed. Historical
+archives unchanged. See artifacts/early-reply-templates-2026-11-12 and docs/llm-planner.md.
+
 LLM planner experiment (2026-11-12): opt-in --planner-mode gemini is available
 for plan/exact/ask/evaluate run; rules remains default. GeminiQueryPlanner gets
 only IDs/titles and validates structured plans before execution. Current adapter

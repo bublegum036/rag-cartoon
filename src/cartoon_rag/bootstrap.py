@@ -13,6 +13,7 @@ from cartoon_rag.adapters.gemini_planner import (
     GeminiQueryPlanner, PLANNER_DECODER_VERSION, PLANNER_PROMPT_VERSION,
 )
 from cartoon_rag.domain import Film, GeneratorIdentity
+from cartoon_rag.early_replies import EARLY_REPLY_VERSION
 from cartoon_rag.application import SearchService
 from cartoon_rag.ingestion import active_snapshot
 from cartoon_rag.extractive import RENDERER_VERSION
@@ -124,6 +125,7 @@ def build_rag_runtime(
     if planner_mode == "gemini":
         identity.update(planner_model=settings.gemini_model, planner_prompt_version=PLANNER_PROMPT_VERSION,
                         planner_decoder_version=PLANNER_DECODER_VERSION,
+                        planner_renderer_version=EARLY_REPLY_VERSION,
                         planner_max_output_tokens=planner.max_output_tokens)
     if selected_mode == "extractive":
         identity["renderer_version"] = RENDERER_VERSION

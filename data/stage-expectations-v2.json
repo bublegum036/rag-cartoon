@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "version": "baseline-stages-v2-year-fields",
+  "case_set_sha256": "eb3e4fadecd2f42aa1293b8a31ed1cee63d8f7571abd797f856a355af91c6abe",
+  "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+  "expectations": {
+    "sea-short": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": 90,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "whale": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "robot": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "space": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "library": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "dragon": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "no-match": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": 40,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": null
+      },
+      "exact_result": null
+    },
+    "unknown": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": "insufficient"
+      },
+      "exact_result": null
+    },
+    "ambiguous": {
+      "plan": {
+        "intent": "search",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": []
+        },
+        "time_budget_minutes": null,
+        "early_status": "clarify"
+      },
+      "exact_result": null
+    },
+    "marine-long": {
+      "plan": {
+        "intent": "compare_duration",
+        "filters": {
+          "duration_minutes_lt": null,
+          "duration_minutes_lte": null,
+          "movie_ids": [
+            "film-02"
+          ]
+        },
+        "time_budget_minutes": 90,
+        "early_status": null
+      },
+      "exact_result": {
+        "value": 6,
+        "unit": "minutes",
+        "source_ids": [
+          "film-02#plot"
+        ]
+      }
+    }
+  }
+}

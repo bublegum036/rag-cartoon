@@ -16,13 +16,14 @@ from cartoon_rag.ingestion import active_snapshot, load_catalog
 from cartoon_rag.snapshots import catalog_fingerprint, fingerprint
 
 
-REPORT_VERSION = "stage-quality-v1.3"
+REPORT_VERSION = "stage-quality-v2"
 
 
 def plan_fields(plan: QueryPlan) -> dict:
     """Route is distinct from final answered/insufficient/clarify status."""
     return json.loads(json.dumps({
-        "intent": plan.intent, "filters": asdict(plan.filters),
+        "intent": plan.intent, "filters": {name: value for name, value in asdict(plan.filters).items()
+                                         if name not in ("year_gte", "year_lte") or value is not None},
         "time_budget_minutes": plan.time_budget_minutes, "early_status": plan.early_status,
     }))
 
