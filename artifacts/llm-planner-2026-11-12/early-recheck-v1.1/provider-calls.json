@@ -1,0 +1,42 @@
+[
+  {
+    "number": 1,
+    "phase": "planner",
+    "body_sha256": "1fc7350e2f87062b359643931e5f244aa74c199e59a9e2945304c3b12ff0c0b9",
+    "state": "response",
+    "response_sha256": "4632e993c9c66dffb89ca65a104aa3802bf9938bc7e145c897561d0398c91f93",
+    "proposed_plan": {
+      "semantic_query": "\u0434\u0440\u0443\u0436\u0431\u0430",
+      "intent": "count",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": "clarify",
+      "early_text": "\u041f\u043e\u0434\u0441\u0447\u0451\u0442 \u043c\u0443\u043b\u044c\u0442\u0444\u0438\u043b\u044c\u043c\u043e\u0432 \u043f\u043e \u0441\u044e\u0436\u0435\u0442\u043d\u043e\u0439 \u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0435 (\u0434\u0440\u0443\u0436\u0431\u0430) \u043d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u0435\u043d \u0431\u0435\u0437 \u0443\u0442\u043e\u0447\u043d\u0435\u043d\u0438\u044f \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u044b\u0445 \u043a\u0440\u0438\u0442\u0435\u0440\u0438\u0435\u0432 \u0438\u043b\u0438 \u0441\u043f\u0438\u0441\u043a\u0430 \u0444\u0438\u043b\u044c\u043c\u043e\u0432, \u0442\u0430\u043a \u043a\u0430\u043a \u044d\u0442\u043e \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u0441\u0435\u043c\u0430\u043d\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u0430\u043d\u0430\u043b\u0438\u0437\u0430 \u0432\u0441\u0435\u0433\u043e \u043a\u0430\u0442\u0430\u043b\u043e\u0433\u0430."
+    },
+    "elapsed_seconds": 23.393
+  },
+  {
+    "number": 2,
+    "phase": "planner",
+    "body_sha256": "031d89780ee18f08616006425e9c73d9e302be00c8c767c0c8b41ef2672a967d",
+    "state": "response",
+    "response_sha256": "78a1f5b57bd3930707dc7d830b806d4b4fa7b018c98de8512a735ce74e3149d3",
+    "proposed_plan": {
+      "semantic_query": "\u0444\u0438\u043b\u044c\u043c \u043f\u0440\u043e \u043c\u043e\u0440\u0435",
+      "intent": "search",
+      "filters": {
+        "duration_minutes_lt": null,
+        "duration_minutes_lte": null,
+        "movie_ids": []
+      },
+      "time_budget_minutes": null,
+      "early_status": "clarify",
+      "early_text": "\u042f \u043d\u0435 \u043c\u043e\u0433\u0443 \u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u0442\u044c \u043c\u0443\u043b\u044c\u0442\u0444\u0438\u043b\u044c\u043c\u044b \u043f\u043e \u0433\u043e\u0434\u0443 \u0432\u044b\u043f\u0443\u0441\u043a\u0430, \u0442\u0430\u043a \u043a\u0430\u043a \u0432 \u043a\u0430\u0442\u0430\u043b\u043e\u0433\u0435 \u043d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445 \u043e \u0434\u0430\u0442\u0435 \u0432\u044b\u0445\u043e\u0434\u0430."
+    },
+    "elapsed_seconds": 2.396
+  }
+]

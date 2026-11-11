@@ -1,0 +1,18 @@
+{
+  "question": "Чьим голосом говорит девочка в «Маяке для кита»?",
+  "plan": {
+    "semantic_query": "Чьим голосом говорит девочка в «Маяке для кита»?",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Уточните название: используйте полное название из каталога."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null
+}

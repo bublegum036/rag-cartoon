@@ -131,3 +131,13 @@ Recall@1/@3 и фильтры 100%, общая приёмка 9/20 (45%). Ист
 
 [Результаты локальных проверок](../artifacts/catalog-expansion-2026-10-26/README.md).
 [Индекс, поиск и точные результаты](../artifacts/expanded-retrieval-2026-10-26/README.md).
+
+
+## Формулировки для LLM-планировщика
+
+`questions-planner-paraphrases.jsonl` — отдельные 8 случаев для исходного
+каталога из 12 карточек: часы/числа словами, склонение названия, опечатка,
+точный подсчёт и сохранение отказов/уточнений. Разметка маршрутов и вычислений
+лежит в `stage-expectations-planner-paraphrases-v1.json` (planner-paraphrases-v1),
+с привязкой к SHA-256 каталога и набора вопросов. Базовые questions.jsonl и
+catalog.json не изменены. [Эксперимент](../artifacts/llm-planner-2026-11-12/README.md).

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "ambiguous",
+    "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+    "trace_sha256": "070364fc1213828e3f67ce7cf559193b5c9f2e2a86432ce29f360028ac0ec774",
+    "explanation": "Уточнение выбранного фильма соответствует отсутствующему контексту местоимения.",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

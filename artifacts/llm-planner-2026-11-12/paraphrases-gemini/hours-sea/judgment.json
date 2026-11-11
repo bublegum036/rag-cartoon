@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "hours-sea",
+    "case_sha256": "736cbb2e33ec23abfc7864ba8c8b0fe60fab90f224a71ec8d07f8adaa74b9688",
+    "trace_sha256": "cda76e6d75bd3c29c6b14fa7d2d5bd677d3c602b4fe0e00630601f345b065399",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "film-01, 78 минут <90 и совместный ремонт маяка подтверждены. Часы корректно преобразованы в строгий фильтр."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

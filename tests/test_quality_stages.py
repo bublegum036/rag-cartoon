@@ -10,7 +10,7 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 from cartoon_rag.application import AnswerService
-from cartoon_rag.domain import Answer, Chunk, Evidence, GenerationUnavailable, Hit, PreparedQuery, QueryPlan, Status, Trace
+from cartoon_rag.domain import Answer, Chunk, Evidence, GenerationUnavailable, Hit, Intent, PreparedQuery, QueryPlan, Status, Trace
 from cartoon_rag.evaluation import Case, ReviewedSemanticJudge
 from cartoon_rag.experiments import run_evaluation
 from cartoon_rag.ingestion import load_catalog
@@ -95,6 +95,7 @@ class QualityStageTest(unittest.TestCase):
         report = stage_report(run_dir, gold, ROOT / 'catalog.json', reviews)
         self.assertEqual(before, {p: p.read_bytes() for p in run_dir.rglob('*') if p.is_file()})
         self.assertEqual(report, stage_report(run_dir, gold, ROOT / 'catalog.json', reviews))
+        self.assertEqual(report['provenance']['current_planner_mode'], 'rules')
         return report
 
     def test_failure_does_not_erase_retrieval_or_pass_generation(self):
@@ -147,6 +148,15 @@ class QualityStageTest(unittest.TestCase):
         report = self.run_report()
         self.assertEqual(report['metrics']['catalog_evidence']['pass'], 1)
 
+    def test_lookup_does_not_pass_computation_check_on_matching_nulls(self):
+        plan = QueryPlan('', intent=Intent.LOOKUP,
+                         filters=replace(self.prepared.plan.filters, movie_ids=(self.film.movie_id,)))
+        self.prepared = replace(self.prepared, plan=plan)
+        self.gold['expectations']['whale']['plan'] = plan_fields(plan)
+        report = self.run_report()
+        self.assertEqual(report['metrics']['exact_result']['not_applicable'], 1)
+        self.assertEqual(report['metrics']['context_recall']['pass'], 1)
+
     def test_gold_cannot_be_used_with_another_catalog(self):
         self.gold['catalog_sha256'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'another catalog'):
@@ -163,7 +173,7 @@ class QualityStageTest(unittest.TestCase):
         with patch('sys.argv', argv), redirect_stdout(io.StringIO()), \
                 patch.object(Settings, 'load', side_effect=AssertionError('Offline command')):
             main()
-        self.assertEqual(json.loads((self.root / 'report.json').read_text())['report_version'], 'stage-quality-v1.1')
+        self.assertEqual(json.loads((self.root / 'report.json').read_text())['report_version'], 'stage-quality-v1.3')
 
     def test_answer_service_needs_only_generator_and_prepared_evidence(self):
         generator = Mock()

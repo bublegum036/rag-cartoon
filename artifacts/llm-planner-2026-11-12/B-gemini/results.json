@@ -1,0 +1,81 @@
+[
+  {
+    "id": "sea-short",
+    "case_sha256": "4e71e7fe0c83e1f025a26af986abb5391160eba4e208ec7c754abae0b4063082",
+    "prepared_sha256": "72381076cb6bf15e609f027a28fd23e7da3f2c7b1da6f8c4b4c127e8648a4fdd",
+    "state": "ok",
+    "trace_sha256": "abc8d8282fda438f288b628d2cf8fe974e4623e2037dba3afe52cc369e4f8d4e"
+  },
+  {
+    "id": "whale",
+    "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+    "prepared_sha256": "9d89acf4b697c45157364f2c200ea0e80e2387da4bfc43c668c12d28eeb7567a",
+    "state": "ok",
+    "trace_sha256": "327e846358d6a6c1cfd0165868be6b175e255dd71e00336c50f15f89843f93ce"
+  },
+  {
+    "id": "robot",
+    "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+    "prepared_sha256": "d76969a603b8932c218ea602dd2b4443ecd96cf13371a05c6a0a6e65e9513e84",
+    "state": "ok",
+    "trace_sha256": "68c4fef2312c9c023d50e542bd043782a355ae5c7889a4c5dad7dac553ce115d"
+  },
+  {
+    "id": "space",
+    "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+    "prepared_sha256": "85f0e6f5b15feb5680ded213c21dd640b170cc4d38c32f3734b92202f22b3ba1",
+    "state": "ok",
+    "trace_sha256": "d969511b0906f96d848ffb6bfe489f26215adec2f71f21597f78c1eace50a1ee"
+  },
+  {
+    "id": "library",
+    "case_sha256": "84b24bc101d8174dee20fb4a32422225b7be3e1e1a9c293736bda989290d88a6",
+    "prepared_sha256": "35c7dae563e18da3b61dff14175a5cb783c9ddd4826e18d2736365559c45241b",
+    "state": "error",
+    "error_stage": "answer",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini request failed or returned invalid JSON",
+      "http_status": null
+    }
+  },
+  {
+    "id": "dragon",
+    "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+    "prepared_sha256": "9556f6e90aecf1bc36231aac0fd456b79b3e6c1ff792b5d305942a338526b63f",
+    "state": "ok",
+    "trace_sha256": "ba3ab5a931a826143e3686bb780b1205a2b0448069143e102004de707429316d"
+  },
+  {
+    "id": "no-match",
+    "case_sha256": "1a4e05ab01fc0f1504cc21619ff4700572fc61055f77b8d5c7fbdbaff57d6b9c",
+    "prepared_sha256": "08f23743b552fa3be595be4c7c1881985819f450a88273a5f17b8dee20599ab3",
+    "state": "ok",
+    "trace_sha256": "ffe63be35922e07285b34d9cf094392d6e82c3e1f030ecbd11245fff3fc3573b"
+  },
+  {
+    "id": "unknown",
+    "case_sha256": "98e8b3adf1ab7e5391f1cdc43931d7c2f94c1a3b13eac4544ff3b8fe4fff6fad",
+    "prepared_sha256": "a98df5f7412d9636c41f8599eaf7739394ebe9cf796e311c2eb94c340340c6fd",
+    "state": "ok",
+    "trace_sha256": "9e88990d6e1fe41ab8fcd4f379c88028bcf6faf8f08aa38c03f24ff2eeb13cb1"
+  },
+  {
+    "id": "ambiguous",
+    "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+    "prepared_sha256": "62804bfc676d4559ceb242e9be0cedeede00f2bcdd7857308bef2ec04d508427",
+    "state": "ok",
+    "trace_sha256": "c493a84808d863ea87be7f257566c6dd2569f5937db772a33c9dc8dfcf929eb0"
+  },
+  {
+    "id": "marine-long",
+    "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+    "state": "error",
+    "error_stage": "prepare",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini query planning failed",
+      "http_status": 503
+    }
+  }
+]

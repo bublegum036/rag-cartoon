@@ -139,7 +139,7 @@ def run_evaluation(
             for name in ("application.py", "bootstrap.py", "domain.py", "ports.py", "evaluation.py", "experiments.py",
                          "extractive.py", "ingestion.py", "snapshots.py", "settings.py",
                          "adapters/json_catalog.py", "adapters/fastembed.py", "adapters/rule_planner.py", "adapters/gemini.py",
-                         "adapters/gemini_extractive.py", "adapters/qdrant.py")
+                         "adapters/gemini_extractive.py", "adapters/gemini_planner.py", "adapters/qdrant.py")
         },
     }
     for case in cases:
@@ -153,7 +153,9 @@ def run_evaluation(
         service, identity = factory()
         allowed = {"index_name", "snapshot_id", "catalog_sha256", "embedding", "generator_model",
                    "prompt_version", "planner_version", "retrieval_k", "context_movies",
-                   "max_output_tokens", "query_mode", "generator_mode", "renderer_version"}
+                   "max_output_tokens", "query_mode", "generator_mode", "renderer_version",
+                   "planner_mode", "planner_model", "planner_prompt_version", "planner_max_output_tokens",
+                   "planner_decoder_version"}
         manifest["runtime"] = {name: identity[name] for name in allowed if name in identity}
     except Exception as exc:
         startup_error = _error(exc)
@@ -168,6 +170,7 @@ def run_evaluation(
         else:
             if number and delay_seconds:
                 wait(delay_seconds)
+            phase = "prepare"
             try:
                 # Only the question enters preparation. Reference labels never
                 # reach the RAG, and persistence finishes before generation.
@@ -178,6 +181,7 @@ def run_evaluation(
                 _save_prepared(folder, prepared_data)
                 record["prepared_sha256"] = fingerprint(prepared_data)
                 preparations[case.id] = prepared
+                phase = "answer"
                 trace = service.answer(prepared)
                 if trace.question != case.question:
                     raise ValueError("Trace question differs from evaluation question")
@@ -188,7 +192,7 @@ def run_evaluation(
                     raise ValueError("Completed trace differs from archived preparation")
                 trace_hash = fingerprint(trace_data)
             except Exception as exc:
-                record.update(state="error", error=_error(exc))
+                record.update(state="error", error_stage=phase, error=_error(exc))
                 if isinstance(exc, GenerationUnavailable) and exc.http_status in (401, 403, 429):
                     stopped = record["error"]
             else:

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "hours-sea",
+    "case_sha256": "736cbb2e33ec23abfc7864ba8c8b0fe60fab90f224a71ec8d07f8adaa74b9688",
+    "trace_sha256": "ce30defc2dd5f8c6cdaa639752e6db0bb15289fccd02b7f76da86004054f93f8",
+    "rubric_passed": false,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+  },
+  "status_matches": false,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

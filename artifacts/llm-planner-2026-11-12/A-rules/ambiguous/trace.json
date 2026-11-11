@@ -1,0 +1,24 @@
+{
+  "question": "Сколько он длится?",
+  "plan": {
+    "semantic_query": "Сколько он длится?",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "О каком фильме идёт речь? Укажите название."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "clarify",
+    "text": "О каком фильме идёт речь? Укажите название.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "semantic_query": "Ищу мультфильм про робота, который выращивает сад",
+  "intent": "search",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

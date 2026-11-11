@@ -1,0 +1,71 @@
+[
+  {
+    "id": "hours-sea",
+    "case_sha256": "736cbb2e33ec23abfc7864ba8c8b0fe60fab90f224a71ec8d07f8adaa74b9688",
+    "prepared_sha256": "9be6a15d5b2a4b1681cc525bee9f1de8e1ab539c163fc5eedb1b457ff72892e4",
+    "state": "ok",
+    "trace_sha256": "cda76e6d75bd3c29c6b14fa7d2d5bd677d3c602b4fe0e00630601f345b065399"
+  },
+  {
+    "id": "declined-title",
+    "case_sha256": "956f650c937324ad258476a6f2273ccbb235bbb6332eb74a5348d87c919522eb",
+    "prepared_sha256": "17571c9d089ec4463e798118e29a41a5897f04a0fda0452a90d3bb19046e6789",
+    "state": "ok",
+    "trace_sha256": "d0351a863a16c177ee16fdfd81b73841c539b9442d8cc3999eaab14e128df794"
+  },
+  {
+    "id": "title-typo",
+    "case_sha256": "90e99a9104ded428b37c67c8e2c47765d75ce5096ca4fb8365c960a312d26550",
+    "prepared_sha256": "3655ac6f2305f355615055de1f75d297e60cf30a69eb5d3c8d07bcded18f313f",
+    "state": "ok",
+    "trace_sha256": "0d68ef01d776af4dcd84d53b887a1998cdbd155018e9c54cd8881d67e451dbcd"
+  },
+  {
+    "id": "hours-budget",
+    "case_sha256": "600e921ab4787048fc0e05a06fe833853ae5c80dc6189411a1533f5c98027730",
+    "prepared_sha256": "dd4624ab1c9c771a2ba1f5791b63503ec92d2a8a65107b3ffe52043fa946c76f",
+    "state": "ok",
+    "trace_sha256": "f91ad964648f5da0e32ee6d66898721722f4bad8bb0eeef288fde6666f88484a"
+  },
+  {
+    "id": "count-words",
+    "case_sha256": "682555c7f1faefc2098e36bc62dbc3dfafef2e1d8dd0bf47d2d4db12773373d2",
+    "prepared_sha256": "f0c1d92f0250525fd877640cb88006cbee3dc3b70cb18a9d2fd896fb84e33d01",
+    "state": "error",
+    "error_stage": "answer",
+    "error": {
+      "type": "GenerationUnavailable",
+      "message": "Gemini request failed or returned invalid JSON",
+      "http_status": null
+    }
+  },
+  {
+    "id": "topic-count",
+    "case_sha256": "39f3147dee0330a58b036476c8a1fd51564a47c8270312f1b6e7060ca7747f95",
+    "state": "error",
+    "error_stage": "prepare",
+    "error": {
+      "type": "InvalidPlan",
+      "message": "Early plan requires only clarify/insufficient and an explanation",
+      "http_status": null
+    }
+  },
+  {
+    "id": "year-filter",
+    "case_sha256": "95fa39d108d2efbb8a863bc3254edd370f0aaf29a91c5b8eade82b9de9914e80",
+    "state": "error",
+    "error_stage": "prepare",
+    "error": {
+      "type": "InvalidPlan",
+      "message": "Early plan requires only clarify/insufficient and an explanation",
+      "http_status": null
+    }
+  },
+  {
+    "id": "voice-paraphrase",
+    "case_sha256": "0b0a3ae4f20da71296536e130feb0f118718472b89146ef64effeb3f3ff02a68",
+    "prepared_sha256": "9930c8f020beb28f9e483ea08da9eae21e73181a0c165732da86b28df8532012",
+    "state": "ok",
+    "trace_sha256": "22505195a0579ac85db6051b86f95e7461e46dd57ef1def76cfc504d1566563b"
+  }
+]

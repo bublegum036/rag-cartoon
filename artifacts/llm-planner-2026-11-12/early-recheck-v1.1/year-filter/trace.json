@@ -1,0 +1,24 @@
+{
+  "question": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+  "plan": {
+    "semantic_query": "",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Я не могу фильтровать мультфильмы по году выпуска, так как в каталоге нет данных о дате выхода."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "clarify",
+    "text": "Я не могу фильтровать мультфильмы по году выпуска, так как в каталоге нет данных о дате выхода.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "declined-title",
+    "case_sha256": "956f650c937324ad258476a6f2273ccbb235bbb6332eb74a5348d87c919522eb",
+    "trace_sha256": "d0351a863a16c177ee16fdfd81b73841c539b9442d8cc3999eaab14e128df794",
+    "rubric_passed": true,
+    "facts_supported": false,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Название и основная причинная цепочка film-01 распознаны, но фраза «В благодарность кит помогает» приписывает мотив, которого нет в карточке. Сюжетный ответ отклонён по фактам."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

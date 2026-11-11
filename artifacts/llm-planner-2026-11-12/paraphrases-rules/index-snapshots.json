@@ -1,0 +1,82 @@
+{
+  "before": {
+    "cartoons-expanded": {
+      "collection": "cartoons-expanded__e019d5eaa830452ca0bf54e0c520673b",
+      "count": 40,
+      "metadata": {
+        "schema_version": 1,
+        "embedding": {
+          "provider": "fastembed",
+          "model": "intfloat/multilingual-e5-small",
+          "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+          "dimensions": 384,
+          "implementation_version": "0.9.0",
+          "encoding": "e5-query-passage-v1"
+        },
+        "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+        "chunks_sha256": "a0f53957204e84afe5a8a5a92dd48e36d4e54d8a54e78e1fb10f8b28ec5e2bab",
+        "movies": 40,
+        "chunks": 40
+      }
+    },
+    "cartoons": {
+      "collection": "cartoons__1be73f172727467ab7927befe66300f5",
+      "count": 12,
+      "metadata": {
+        "schema_version": 1,
+        "embedding": {
+          "provider": "fastembed",
+          "model": "intfloat/multilingual-e5-small",
+          "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+          "dimensions": 384,
+          "implementation_version": "0.9.0",
+          "encoding": "e5-query-passage-v1"
+        },
+        "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+        "chunks_sha256": "6804aff17c8196af074e6458250a2eaaae7a42b80d6e5b43eddc39def98584f2",
+        "movies": 12,
+        "chunks": 12
+      }
+    }
+  },
+  "after": {
+    "cartoons-expanded": {
+      "collection": "cartoons-expanded__e019d5eaa830452ca0bf54e0c520673b",
+      "count": 40,
+      "metadata": {
+        "schema_version": 1,
+        "embedding": {
+          "provider": "fastembed",
+          "model": "intfloat/multilingual-e5-small",
+          "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+          "dimensions": 384,
+          "implementation_version": "0.9.0",
+          "encoding": "e5-query-passage-v1"
+        },
+        "catalog_sha256": "853607c1bf4e60bc6b59d46829bdb78e2c228d3a0f9d4d3b550c1a6af505efb7",
+        "chunks_sha256": "a0f53957204e84afe5a8a5a92dd48e36d4e54d8a54e78e1fb10f8b28ec5e2bab",
+        "movies": 40,
+        "chunks": 40
+      }
+    },
+    "cartoons": {
+      "collection": "cartoons__1be73f172727467ab7927befe66300f5",
+      "count": 12,
+      "metadata": {
+        "schema_version": 1,
+        "embedding": {
+          "provider": "fastembed",
+          "model": "intfloat/multilingual-e5-small",
+          "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+          "dimensions": 384,
+          "implementation_version": "0.9.0",
+          "encoding": "e5-query-passage-v1"
+        },
+        "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+        "chunks_sha256": "6804aff17c8196af074e6458250a2eaaae7a42b80d6e5b43eddc39def98584f2",
+        "movies": 12,
+        "chunks": 12
+      }
+    }
+  }
+}

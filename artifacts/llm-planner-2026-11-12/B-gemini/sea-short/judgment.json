@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "sea-short",
+    "case_sha256": "4e71e7fe0c83e1f025a26af986abb5391160eba4e208ec7c754abae0b4063082",
+    "trace_sha256": "abc8d8282fda438f288b628d2cf8fe974e4623e2037dba3afe52cc369e4f8d4e",
+    "rubric_passed": true,
+    "facts_supported": false,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Рекомендация film-01, дружба, ремонт маяка и 78 минут соответствуют rubric и фильтру. Но reason добавляет цель «чтобы спасти рыбацкие корабли»: карточка говорит о показе дороги, не о спасении кораблей. Отклонено по поддержке фактов."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

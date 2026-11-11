@@ -1,0 +1,14 @@
+{
+  "id": "hours-budget",
+  "question": "Уложится ли «Коралловая почта» в полтора часа?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-02#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Нет: фильм длится 96 минут, бюджет 90, превышение 6 минут."
+}

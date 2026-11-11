@@ -1,0 +1,46 @@
+{
+  "question": "Как дракон помог пекарю, когда сломалась печь?",
+  "plan": {
+    "semantic_query": "Как дракон помог пекарю, когда сломалась печь?",
+    "intent": "lookup",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": [
+        "film-10"
+      ]
+    },
+    "time_budget_minutes": null,
+    "early_status": null,
+    "early_text": ""
+  },
+  "retrieved": [],
+  "context": [
+    {
+      "film": {
+        "movie_id": "film-10",
+        "title": "Пекарня дракона",
+        "year": 2021,
+        "duration_minutes": 85,
+        "version": 1,
+        "active": true,
+        "source_id": "film-10#plot",
+        "synopsis": "Молодой дракон хочет открыть пекарню, но постоянно сжигает тесто. Пекарь из соседнего города учит его управлять жаром и соблюдать рецепты. Вместе они готовят хлеб для большого праздника. Когда печь ломается, дракон помогает испечь последнюю партию собственным дыханием.",
+        "tags": [
+          "дракон",
+          "кулинария"
+        ]
+      },
+      "chunks": []
+    }
+  ],
+  "exact_result": null,
+  "answer": {
+    "status": "answered",
+    "text": "Когда печь в пекарне сломалась, дракон помог испечь последнюю партию хлеба, используя собственное дыхание для поддержания необходимого жара.",
+    "source_ids": [
+      "film-10#plot"
+    ],
+    "recommendations": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "no-match",
+    "case_sha256": "1a4e05ab01fc0f1504cc21619ff4700572fc61055f77b8d5c7fbdbaff57d6b9c",
+    "trace_sha256": "ffe63be35922e07285b34d9cf094392d6e82c3e1f030ecbd11245fff3fc3573b",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "В исходном каталоге нет фильмов <40 минут; пустой поиск и отказ соответствуют строгому условию."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

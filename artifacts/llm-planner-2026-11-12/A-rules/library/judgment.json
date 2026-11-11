@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "library",
+    "case_sha256": "84b24bc101d8174dee20fb4a32422225b7be3e1e1a9c293736bda989290d88a6",
+    "trace_sha256": "40d4364af6ef6a979b3a746fedfc82dc47b555fbd1b82f1c8b0644b2673335c8",
+    "explanation": "film-04: истории в облаках, воздушный велосипед, восстановление каталога и поиск автора подтверждены.",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

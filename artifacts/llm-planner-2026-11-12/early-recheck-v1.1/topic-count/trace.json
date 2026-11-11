@@ -1,0 +1,24 @@
+{
+  "question": "Сколько мультфильмов рассказывают о дружбе?",
+  "plan": {
+    "semantic_query": "",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Подсчёт мультфильмов по сюжетной тематике (дружба) невозможен без уточнения конкретных критериев или списка фильмов, так как это требует семантического анализа всего каталога."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "clarify",
+    "text": "Подсчёт мультфильмов по сюжетной тематике (дружба) невозможен без уточнения конкретных критериев или списка фильмов, так как это требует семантического анализа всего каталога.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}

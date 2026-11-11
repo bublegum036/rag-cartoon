@@ -1,0 +1,84 @@
+{
+  "environment": {
+    "python": "3.13.15",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "fastembed": "0.9.0",
+      "onnxruntime": "1.31.0",
+      "tokenizers": "0.23.3",
+      "numpy": "2.5.4"
+    }
+  },
+  "artifact_schema_version": 2,
+  "label": "gemini",
+  "created_at": "2026-11-11T21:07:51.913321+00:00",
+  "state": "completed_with_errors",
+  "case_ids": [
+    "sea-short",
+    "whale",
+    "robot",
+    "space",
+    "library",
+    "dragon",
+    "no-match",
+    "unknown",
+    "ambiguous",
+    "marine-long"
+  ],
+  "case_set_sha256": "382e4c2350f25509e69934f6b43ff704b88f2338d1b0397dda5efcf28319b611",
+  "recall_k": 3,
+  "delay_seconds": 0,
+  "implementation_sha256": {
+    "application.py": "c208dea70b93ff263b7907d4545d20f51b3f69778c91356365074af807b2f184",
+    "bootstrap.py": "44e3c4928a6ea3142481d34530392ac3f1586cb15fffba628257f12d2879a652",
+    "domain.py": "4cf69fd41637ca45a6caf935fe2c38fdb9bb1f3cceeb2ad8954502373463120a",
+    "ports.py": "d4500e82a9b96328486c032aed1518e8e7ed6a6aea10e316c20b3db5b3405334",
+    "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+    "experiments.py": "bd8f7908f89cd2d8925c34dfc61350af1d46a05702b875490f2ed8f87c4fc136",
+    "extractive.py": "89c6b81e3389a2209d7a236ada75ca3b87a31479fc109e8c8473f614667d427a",
+    "ingestion.py": "9a75898ff47a13cdbb3c6d8287bf47f6d413720ae52eb28e716a52d6feb6f11c",
+    "snapshots.py": "6489965e29c7508a66b428af216abb366ce3e8b13c3dbf29de0e9129f4b165ef",
+    "settings.py": "277f716f637ec76ba4479f1480c329ba6b2ce4550d10d5c1585ffde9ed5bedcd",
+    "adapters/json_catalog.py": "138650c64ea8c2e73acdb098a68c2c45107039bc16abe5a0fb70ca2052456302",
+    "adapters/fastembed.py": "e076618f933be024e0785ce76b2b690e43692d88451ec1b6c7448993c84dd6f4",
+    "adapters/rule_planner.py": "c62573c95d18ca664479125f80a8fdd86c8a519524dd30348a9a55cf00f8ce4d",
+    "adapters/gemini.py": "568fb52a2dd09894316ba9e52069d4b1bd62bf193c9fc86613966068b1aba6ff",
+    "adapters/gemini_extractive.py": "b2fe19b104d09bb2341e8d2032e8f250954bc27a4cd7641aad28865b19349c56",
+    "adapters/gemini_planner.py": "520b7c421833a6ed5e8babf1ade53769131a21cf5f181dd14d536471d6143a76",
+    "adapters/qdrant.py": "a368438330af54a35b617432bd15189201b75da0f7660030085481aecdb64607"
+  },
+  "runtime": {
+    "context_movies": 3,
+    "planner_prompt_version": "gemini-plan-ru-v1",
+    "planner_mode": "gemini",
+    "planner_model": "gemini-3.1-flash-lite",
+    "embedding": {
+      "provider": "fastembed",
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+      "dimensions": 384,
+      "implementation_version": "0.9.0",
+      "encoding": "e5-query-passage-v1"
+    },
+    "catalog_sha256": "def660d1b19056e9570a72f1ba5b30a0a965e9cc5889240293c229e899dd92f9",
+    "generator_model": "gemini-3.1-flash-lite",
+    "snapshot_id": "cartoons__1be73f172727467ab7927befe66300f5",
+    "retrieval_k": 10,
+    "planner_max_output_tokens": 2048,
+    "max_output_tokens": 2048,
+    "prompt_version": "grounded-ru-v2",
+    "generator_mode": "grounded",
+    "planner_version": "gemini-plan-ru-v1",
+    "index_name": "cartoons"
+  },
+  "finished_at": "2026-11-11T21:10:28.934189+00:00",
+  "scoring": {
+    "scored_at": "2026-11-11T21:11:16.479667+00:00",
+    "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+    "reviews_sha256": "f85400d835b85bbf063972f5eff98de4763e03697327f3cabbe8219a1b3ab6e5",
+    "source_sha256": {
+      "evaluation.py": "5c4d1276896d6d8bf0c1367fe06fa7d98fc161cc83d9d8cfede505f2229dc72f",
+      "experiments.py": "bd8f7908f89cd2d8925c34dfc61350af1d46a05702b875490f2ed8f87c4fc136"
+    }
+  }
+}

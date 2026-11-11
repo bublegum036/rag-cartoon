@@ -1,0 +1,12 @@
+{
+  "id": "topic-count",
+  "question": "Сколько мультфильмов рассказывают о дружбе?",
+  "expected_status": "clarify",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Уточнить критерий сюжетного подсчёта, не выдавать точное число по семантическому top-k."
+}

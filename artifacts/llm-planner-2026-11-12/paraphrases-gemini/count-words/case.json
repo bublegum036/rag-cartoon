@@ -1,0 +1,12 @@
+{
+  "id": "count-words",
+  "question": "Посчитай фильмы, которые идут меньше полутора часов.",
+  "expected_status": "answered",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": 90,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Точный результат 9 фильмов; считать весь каталог, не top-k, с подтверждающими источниками."
+}

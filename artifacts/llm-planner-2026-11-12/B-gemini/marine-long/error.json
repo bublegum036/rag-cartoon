@@ -1,0 +1,5 @@
+{
+  "type": "GenerationUnavailable",
+  "message": "Gemini query planning failed",
+  "http_status": 503
+}

@@ -1,0 +1,14 @@
+{
+  "semantic_query": "робот, который выращивает сад",
+  "intent": "lookup",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [
+      "film-05"
+    ]
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

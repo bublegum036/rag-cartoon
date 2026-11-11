@@ -1,0 +1,5 @@
+{
+  "type": "InvalidPlan",
+  "message": "Early plan requires only clarify/insufficient and an explanation",
+  "http_status": null
+}

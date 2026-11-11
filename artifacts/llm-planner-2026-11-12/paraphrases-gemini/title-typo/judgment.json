@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "title-typo",
+    "case_sha256": "90e99a9104ded428b37c67c8e2c47765d75ce5096ca4fb8365c960a312d26550",
+    "trace_sha256": "0d68ef01d776af4dcd84d53b887a1998cdbd155018e9c54cd8881d67e451dbcd",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Небольшая опечатка однозначно сопоставлена film-01; длительность 78 минут подтверждена карточкой."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

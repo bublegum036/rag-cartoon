@@ -1,0 +1,12 @@
+{
+  "id": "no-match",
+  "question": "Нужен мультфильм про море короче 40 минут.",
+  "expected_status": "insufficient",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": 40,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "В каталоге нет ни одного фильма короче 40 минут. Не ослаблять условие молча."
+}

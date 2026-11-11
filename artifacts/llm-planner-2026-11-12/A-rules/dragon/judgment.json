@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "dragon",
+    "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+    "trace_sha256": "6c7ed98c36192d3d8b6635681e54fc9d55745fe9c07860170c79e0f6d7ac77d7",
+    "explanation": "film-10: последнюю партию хлеба дракон испёк собственным дыханием после поломки печи.",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "no-match",
+    "case_sha256": "1a4e05ab01fc0f1504cc21619ff4700572fc61055f77b8d5c7fbdbaff57d6b9c",
+    "trace_sha256": "d4cc875b0a6ce16d6a00fb4899a08d5d854660acd996072483db1b221b096e83",
+    "explanation": "Для исходных 12 карточек нет длительности <40; недостаточность подтверждена пустым поиском и всем каталогом.",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

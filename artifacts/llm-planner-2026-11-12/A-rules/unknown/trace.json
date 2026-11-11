@@ -1,0 +1,24 @@
+{
+  "question": "Кто озвучивает девочку в «Маяке для кита»?",
+  "plan": {
+    "semantic_query": "Кто озвучивает девочку в «Маяке для кита»?",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "insufficient",
+    "early_text": "В каталоге нет сведений о актёрах озвучивания."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "insufficient",
+    "text": "В каталоге нет сведений о актёрах озвучивания.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}

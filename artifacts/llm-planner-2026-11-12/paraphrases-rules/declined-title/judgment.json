@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "declined-title",
+    "case_sha256": "956f650c937324ad258476a6f2273ccbb235bbb6332eb74a5348d87c919522eb",
+    "trace_sha256": "401bc3252f4d5e7f14c417b283cdfd260a2fdff4cd9c75be8889af6cd8ab2953",
+    "rubric_passed": false,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+  },
+  "status_matches": false,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

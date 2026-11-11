@@ -1,0 +1,85 @@
+{
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "decisions": [
+    {
+      "case_id": "hours-sea",
+      "case_sha256": "736cbb2e33ec23abfc7864ba8c8b0fe60fab90f224a71ec8d07f8adaa74b9688",
+      "trace_sha256": "ce30defc2dd5f8c6cdaa639752e6db0bb15289fccd02b7f76da86004054f93f8",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+    },
+    {
+      "case_id": "declined-title",
+      "case_sha256": "956f650c937324ad258476a6f2273ccbb235bbb6332eb74a5348d87c919522eb",
+      "trace_sha256": "401bc3252f4d5e7f14c417b283cdfd260a2fdff4cd9c75be8889af6cd8ab2953",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+    },
+    {
+      "case_id": "title-typo",
+      "case_sha256": "90e99a9104ded428b37c67c8e2c47765d75ce5096ca4fb8365c960a312d26550",
+      "trace_sha256": "56c81bee04e8e44b79cb093da79ad7fabf69a78c41f328967a1a5567a104b4c6",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+    },
+    {
+      "case_id": "hours-budget",
+      "case_sha256": "600e921ab4787048fc0e05a06fe833853ae5c80dc6189411a1533f5c98027730",
+      "trace_sha256": "3e3d3aa4af1e38f9c6794f89255daacc67492454a5db3c1d6c46421e4834a380",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+    },
+    {
+      "case_id": "count-words",
+      "case_sha256": "682555c7f1faefc2098e36bc62dbc3dfafef2e1d8dd0bf47d2d4db12773373d2",
+      "trace_sha256": "c7abbf7a1da1c384e5f51c9a48923cf0da98daf44d0bea1ea389893cce7ed3fc",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+    },
+    {
+      "case_id": "voice-paraphrase",
+      "case_sha256": "0b0a3ae4f20da71296536e130feb0f118718472b89146ef64effeb3f3ff02a68",
+      "trace_sha256": "12a3f476e316ae0a90126791c3faef06347980dd8dbe60694893efa07f5de9d0",
+      "rubric_passed": false,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+    },
+    {
+      "case_id": "topic-count",
+      "case_sha256": "39f3147dee0330a58b036476c8a1fd51564a47c8270312f1b6e7060ca7747f95",
+      "trace_sha256": "d38dec4b9baecf0b33913dcaab9176f10a6a22fb76ee8ae941f329faed021011",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правильно запрошено уточнение: точный сюжетный подсчёт не поддерживается, top-k не выдан за количество."
+    },
+    {
+      "case_id": "year-filter",
+      "case_sha256": "95fa39d108d2efbb8a863bc3254edd370f0aaf29a91c5b8eade82b9de9914e80",
+      "trace_sha256": "204c5e77bc9c6c028b98422d51450c8655f40ca97132c8c890c8e9a14a89b70d",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Правильно запрошено уточнение неподдерживаемого числового фильтра; условие не отброшено."
+    }
+  ]
+}

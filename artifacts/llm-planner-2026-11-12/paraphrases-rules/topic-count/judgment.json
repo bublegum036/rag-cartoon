@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "topic-count",
+    "case_sha256": "39f3147dee0330a58b036476c8a1fd51564a47c8270312f1b6e7060ca7747f95",
+    "trace_sha256": "d38dec4b9baecf0b33913dcaab9176f10a6a22fb76ee8ae941f329faed021011",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Правильно запрошено уточнение: точный сюжетный подсчёт не поддерживается, top-k не выдан за количество."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

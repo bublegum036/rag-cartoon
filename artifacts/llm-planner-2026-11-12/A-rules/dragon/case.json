@@ -1,0 +1,14 @@
+{
+  "id": "dragon",
+  "question": "Как дракон помог пекарю, когда сломалась печь?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-10#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Испёк последнюю партию собственным дыханием."
+}

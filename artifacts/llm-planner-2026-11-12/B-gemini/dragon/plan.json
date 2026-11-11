@@ -1,0 +1,14 @@
+{
+  "semantic_query": "Как дракон помог пекарю, когда сломалась печь?",
+  "intent": "lookup",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [
+      "film-10"
+    ]
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_text": ""
+}

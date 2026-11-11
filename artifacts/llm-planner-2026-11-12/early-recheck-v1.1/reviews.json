@@ -1,0 +1,25 @@
+{
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "decisions": [
+    {
+      "case_id": "topic-count",
+      "case_sha256": "39f3147dee0330a58b036476c8a1fd51564a47c8270312f1b6e7060ca7747f95",
+      "trace_sha256": "e85f15b32a5160083109dd868daf45ad4799df7f671de59ae0b547c535aff66f",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Корректное уточнение вместо точного подсчёта по семантическому top-k; никаких фильмов или чисел не выдумано."
+    },
+    {
+      "case_id": "year-filter",
+      "case_sha256": "95fa39d108d2efbb8a863bc3254edd370f0aaf29a91c5b8eade82b9de9914e80",
+      "trace_sha256": "a3e84337064e1a922beeb81f0ee0776dd58c5ee9a2d5f0f4cdd6a995b2b2557e",
+      "rubric_passed": true,
+      "facts_supported": false,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Статус clarify и отказ от неподдерживаемого фильтра года правильны, но объяснение «в каталоге нет данных о дате выхода» неверно: у карточек есть year. Отклонено по фактам о возможностях данных."
+    }
+  ]
+}

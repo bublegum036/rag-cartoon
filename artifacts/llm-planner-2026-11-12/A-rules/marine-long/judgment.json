@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "marine-long",
+    "case_sha256": "2bc79ab7c7b0e8699a41b333fa22b928025c928a408bb8e5e82f1012d91439d0",
+    "trace_sha256": "e8ef494a753c2a949ba9bd74b56d0ce48106e935599f48bae022f81f48f53b8c",
+    "explanation": "96 минут, бюджет 90, превышение 6 и отрицательный ответ подтверждены film-02 и exact_result.",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

@@ -68,6 +68,9 @@ def main() -> None:
     search.add_argument("--duration-lt", type=positive_int)
     search.add_argument("--duration-lte", type=positive_int)
     search.add_argument("--movie-id", action="append", default=[])
+    for command in (plan, exact, ask, run):
+        command.add_argument("--planner-mode", choices=("rules", "gemini"), default="rules",
+                             help="rules is offline; gemini makes an additional API request per question")
     args = parser.parse_args()
     try:
         if args.command == "evaluate":
@@ -92,7 +95,8 @@ def main() -> None:
                     cases, lambda: build_rag_runtime(films, settings, retrieval_k=args.retrieval_k,
                                                      context_movies=args.context_movies,
                                                      prompt_version=args.prompt_version,
-                                                     generator_mode=args.generator_mode),
+                                                     generator_mode=args.generator_mode,
+                                                     planner_mode=args.planner_mode),
                     args.output, label=args.label, k=args.k, delay_seconds=args.delay_seconds,
                     progress=lambda case_id, state: print(f"{case_id}: {state}", file=sys.stderr),
                 )
@@ -107,23 +111,28 @@ def main() -> None:
         elif args.command == "plan":
             from cartoon_rag.bootstrap import build_planner
 
-            output = asdict(build_planner(load_catalog(args.catalog)).plan(args.question))
+            settings = Settings.load(args.env_file) if args.planner_mode == "gemini" else None
+            output = asdict(build_planner(load_catalog(args.catalog), mode=args.planner_mode,
+                                          settings=settings).plan(args.question))
         elif args.command == "exact":
             from cartoon_rag.bootstrap import build_exact_catalog, build_planner
 
             # Load once so planner references and exact evidence share revisions.
             films = load_catalog(args.catalog)
-            plan = build_planner(films).plan(args.question)
+            settings = Settings.load(args.env_file) if args.planner_mode == "gemini" else None
+            plan = build_planner(films, mode=args.planner_mode, settings=settings).plan(args.question)
             output = asdict(execute_exact(build_exact_catalog(films), plan))
         elif args.command == "ask":
             from cartoon_rag.bootstrap import build_planner, build_rag
 
             films = load_catalog(args.catalog)
-            plan = build_planner(films).plan(args.question)
+            settings = Settings.load(args.env_file) if args.planner_mode == "gemini" else None
+            plan = build_planner(films, mode=args.planner_mode, settings=settings).plan(args.question)
             trace = early_trace(args.question, plan)
             if trace is None:
-                trace = build_rag(films, Settings.load(args.env_file),
-                                  generator_mode=args.generator_mode).execute_plan(args.question, plan)
+                trace = build_rag(films, settings or Settings.load(args.env_file),
+                                  generator_mode=args.generator_mode,
+                                  planner_mode=args.planner_mode).execute_plan(args.question, plan)
             if args.trace is not None:
                 save_trace(args.trace, trace)
             output = asdict(trace.answer)

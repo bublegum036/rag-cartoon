@@ -1,0 +1,14 @@
+{
+  "id": "declined-title",
+  "question": "Что происходит в «Маяке для кита»?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-01#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Описать девочку и кита, ремонт маяка и помощь кораблям; не подменять фильм."
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "topic-count",
+    "case_sha256": "39f3147dee0330a58b036476c8a1fd51564a47c8270312f1b6e7060ca7747f95",
+    "prepared_sha256": "abb44d8e194487041c87c327f1b68edc150f6ab10a2bccf0761f235a7a6b2c47",
+    "state": "ok",
+    "trace_sha256": "e85f15b32a5160083109dd868daf45ad4799df7f671de59ae0b547c535aff66f"
+  },
+  {
+    "id": "year-filter",
+    "case_sha256": "95fa39d108d2efbb8a863bc3254edd370f0aaf29a91c5b8eade82b9de9914e80",
+    "prepared_sha256": "32c8ab5937a84b5652c53be4258f99ea65c1a7d0228db9681cc75f7498d55a5b",
+    "state": "ok",
+    "trace_sha256": "a3e84337064e1a922beeb81f0ee0776dd58c5ee9a2d5f0f4cdd6a995b2b2557e"
+  }
+]

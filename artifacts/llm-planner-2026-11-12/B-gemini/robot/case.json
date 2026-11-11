@@ -1,0 +1,14 @@
+{
+  "id": "robot",
+  "question": "Ищу мультфильм про робота, который выращивает сад.",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-05#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Робот и сад; робот сохраняет росток и выращивает сад с детьми."
+}

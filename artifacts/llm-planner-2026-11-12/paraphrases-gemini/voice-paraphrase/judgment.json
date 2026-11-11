@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "voice-paraphrase",
+    "case_sha256": "0b0a3ae4f20da71296536e130feb0f118718472b89146ef64effeb3f3ff02a68",
+    "trace_sha256": "22505195a0579ac85db6051b86f95e7461e46dd57ef1def76cfc504d1566563b",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Перефразированный запрос об озвучивании завершён insufficient без выдуманного актёра."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

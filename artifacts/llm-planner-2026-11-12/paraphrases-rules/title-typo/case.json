@@ -1,0 +1,14 @@
+{
+  "id": "title-typo",
+  "question": "Сколько минут длится «Маяк для кта»?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-01#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Однозначно распознать небольшую опечатку названия «Маяк для кита» и ответить 78 минут с источником."
+}

@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "hours-budget",
+    "case_sha256": "600e921ab4787048fc0e05a06fe833853ae5c80dc6189411a1533f5c98027730",
+    "trace_sha256": "3e3d3aa4af1e38f9c6794f89255daacc67492454a5db3c1d6c46421e4834a380",
+    "rubric_passed": false,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Правила требуют уточнения вместо эталонного ответа/отказа; выдуманных фактов нет, но rubric и ожидаемый статус не выполнены."
+  },
+  "status_matches": false,
+  "strict_filters_compliant": true,
+  "accepted": false
+}

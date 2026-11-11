@@ -1,0 +1,12 @@
+{
+  "id": "voice-paraphrase",
+  "question": "Чьим голосом говорит девочка в «Маяке для кита»?",
+  "expected_status": "insufficient",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Сообщить, что в каталоге нет сведений об актёрах озвучивания; не придумывать имя."
+}

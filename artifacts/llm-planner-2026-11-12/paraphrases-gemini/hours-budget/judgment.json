@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "hours-budget",
+    "case_sha256": "600e921ab4787048fc0e05a06fe833853ae5c80dc6189411a1533f5c98027730",
+    "trace_sha256": "f91ad964648f5da0e32ee6d66898721722f4bad8bb0eeef288fde6666f88484a",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "film-02 длится 96 минут при бюджете 90; корректно указано превышение на 6 минут и отрицательный ответ."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

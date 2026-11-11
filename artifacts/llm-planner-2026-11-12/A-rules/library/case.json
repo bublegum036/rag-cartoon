@@ -1,0 +1,14 @@
+{
+  "id": "library",
+  "question": "Есть история про библиотекаря и забытые истории?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-04#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Библиотека облаков; истории хранятся в облаках."
+}

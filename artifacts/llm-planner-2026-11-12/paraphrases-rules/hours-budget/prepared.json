@@ -1,0 +1,18 @@
+{
+  "question": "Уложится ли «Коралловая почта» в полтора часа?",
+  "plan": {
+    "semantic_query": "Уложится ли «Коралловая почта» в полтора часа?",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Уточните ограничение: поддерживаются целые минуты, «короче N» и «не больше N». Другие числовые условия пока не поддерживаются."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null
+}

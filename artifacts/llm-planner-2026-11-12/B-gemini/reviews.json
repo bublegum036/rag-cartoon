@@ -1,0 +1,85 @@
+{
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "decisions": [
+    {
+      "case_id": "sea-short",
+      "case_sha256": "4e71e7fe0c83e1f025a26af986abb5391160eba4e208ec7c754abae0b4063082",
+      "trace_sha256": "abc8d8282fda438f288b628d2cf8fe974e4623e2037dba3afe52cc369e4f8d4e",
+      "rubric_passed": true,
+      "facts_supported": false,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Рекомендация film-01, дружба, ремонт маяка и 78 минут соответствуют rubric и фильтру. Но reason добавляет цель «чтобы спасти рыбацкие корабли»: карточка говорит о показе дороги, не о спасении кораблей. Отклонено по поддержке фактов."
+    },
+    {
+      "case_id": "whale",
+      "case_sha256": "a2cf445f9a6e2eea3868a73bb273f5fe456207722f68a126809b7e6f7803f661",
+      "trace_sha256": "327e846358d6a6c1cfd0165868be6b175e255dd71e00336c50f15f89843f93ce",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "film-01: девочка Ника, кит, линза из затопленной мастерской и ремонт маяка подтверждены."
+    },
+    {
+      "case_id": "robot",
+      "case_sha256": "a7c980f95b1fb17d6d761ab187483549389e7cb2e2064baf83005f34b6b9bb90",
+      "trace_sha256": "68c4fef2312c9c023d50e542bd043782a355ae5c7889a4c5dad7dac553ce115d",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "film-05: уход за ростком и помощь детей с семенами объясняют создание сада; «ботаника» обобщает обучение различению растений."
+    },
+    {
+      "case_id": "space",
+      "case_sha256": "c9659806b4dee3cc458eb6450eac34c4047bc0217fa1e901748c5481c9bc6006",
+      "trace_sha256": "d969511b0906f96d848ffb6bfe489f26215adec2f71f21597f78c1eace50a1ee",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "film-03 и роль знакомой мелодии в радиопередаче для определения курса домой сохранены. Возвращение через пояс астероидов подтверждено карточкой."
+    },
+    {
+      "case_id": "dragon",
+      "case_sha256": "554d7eac208b3c4092d9d78391768ff4c8a5b1e1168ee992baf07dd854ff0441",
+      "trace_sha256": "ba3ab5a931a826143e3686bb780b1205a2b0448069143e102004de707429316d",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "film-10: поломка печи и выпечка последней партии собственным дыханием прямо подтверждены."
+    },
+    {
+      "case_id": "no-match",
+      "case_sha256": "1a4e05ab01fc0f1504cc21619ff4700572fc61055f77b8d5c7fbdbaff57d6b9c",
+      "trace_sha256": "ffe63be35922e07285b34d9cf094392d6e82c3e1f030ecbd11245fff3fc3573b",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "В исходном каталоге нет фильмов <40 минут; пустой поиск и отказ соответствуют строгому условию."
+    },
+    {
+      "case_id": "unknown",
+      "case_sha256": "98e8b3adf1ab7e5391f1cdc43931d7c2f94c1a3b13eac4544ff3b8fe4fff6fad",
+      "trace_sha256": "9e88990d6e1fe41ab8fcd4f379c88028bcf6faf8f08aa38c03f24ff2eeb13cb1",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Нет сведений об актёрах озвучивания; неподдерживаемые имена не придуманы."
+    },
+    {
+      "case_id": "ambiguous",
+      "case_sha256": "c268d6dcb4f20f4ec6b039a4bf8fe39eb1d5f51d54bf4b870e781ab6c8ce8c2c",
+      "trace_sha256": "c493a84808d863ea87be7f257566c6dd2569f5937db772a33c9dc8dfcf929eb0",
+      "rubric_passed": true,
+      "facts_supported": true,
+      "constraints_passed": true,
+      "references_supported": true,
+      "explanation": "Уточнение выбранного фильма корректно при неизвестном референте «он»."
+    }
+  ]
+}

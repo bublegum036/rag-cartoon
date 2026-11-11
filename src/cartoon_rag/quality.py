@@ -16,7 +16,7 @@ from cartoon_rag.ingestion import active_snapshot, load_catalog
 from cartoon_rag.snapshots import catalog_fingerprint, fingerprint
 
 
-REPORT_VERSION = "stage-quality-v1.1"
+REPORT_VERSION = "stage-quality-v1.3"
 
 
 def plan_fields(plan: QueryPlan) -> dict:
@@ -60,7 +60,7 @@ def stage_report(run_dir: Path, expectations_path: Path, catalog_path: Path,
         plan = expected["plan"]
         prepared, trace = evidence.get(case.id), traces.get(case.id)
         search = plan["early_status"] is None and plan["intent"] == "search"
-        exact = plan["early_status"] is None and not search
+        exact = plan["early_status"] is None and plan["intent"] in ("count", "compare_duration")
         checks = {}
 
         def check(name, applicable, score):
@@ -126,7 +126,8 @@ def stage_report(run_dir: Path, expectations_path: Path, catalog_path: Path,
     sources = {str(path.relative_to(Path(__file__).parent)): hashlib.sha256(path.read_bytes()).hexdigest()
                for path in sorted(Path(__file__).parent.rglob("*.py"))}
     return {"report_version": REPORT_VERSION, "expectations_version": gold["version"],
-            "provenance": {"python": platform.python_version(), "catalog_sha256": catalog_hash,
+            "provenance": {"python": platform.python_version(), "current_planner_mode": "rules",
+                           "catalog_sha256": catalog_hash,
                            "expectations_sha256": fingerprint(gold), "manifest_sha256": fingerprint(manifest),
                            "results_sha256": fingerprint(records), "reviews_sha256": fingerprint(judge.document),
                            "source_fingerprints": sources, "original_runtime": manifest.get("runtime", {})},

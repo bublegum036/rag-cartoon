@@ -2,6 +2,24 @@
 
 ## Current state
 
+LLM planner experiment (2026-11-12): opt-in --planner-mode gemini is available
+for plan/exact/ask/evaluate run; rules remains default. GeminiQueryPlanner gets
+only IDs/titles and validates structured plans before execution. Current adapter
+is gemini-plan-ru-v1.1, prompt gemini-plan-ru-v1, decoder planner-decoder-v2;
+early replies canonicalize non-executed fields. Runtime records planner identity
+separately; errors record prepare/answer phase. stage-quality-v1.3 labels its
+current_planner rerun as rules and limits computation checks to count/compare.
+173 tests passed with real Qdrant/E5, no skips. Authorized Gemini experiments:
+fresh baseline rules A accepted 10/10; LLM v1 B 7/10, 2 technical errors,
+3 wrong lookup routes instead of search. Separate 8 paraphrases: rules 2/8,
+LLM v1 4/8 with 3 technical errors; hours/title declension/typo/count prepared
+correctly. Separate v1.1 early-reply recheck: 2 completed, 1 accepted; year-filter
+reply falsely says release-year data is absent despite year being present.
+No overall improvement, independent review or full v1.1 10+8 run claimed.
+38 Gemini calls total; no automatic retries, model/billing changes or key logs.
+Published main/expanded snapshots and original datasets/archives preserved.
+See docs/llm-planner.md and artifacts/llm-planner-2026-11-12.
+
 Stage-quality review fix (2026-11-11): catalog_evidence now checks each
 Evidence.chunks[*].film against its parent Evidence.film and the active catalog.
 Three archive-roundtrip regressions failed before the fix and pass after it;

@@ -1,0 +1,18 @@
+{
+  "question": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+  "plan": {
+    "semantic_query": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Уточните ограничение: поддерживаются целые минуты, «короче N» и «не больше N». Другие числовые условия пока не поддерживаются."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null
+}

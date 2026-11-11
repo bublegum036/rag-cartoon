@@ -1,0 +1,14 @@
+{
+  "id": "whale",
+  "question": "Как называется мультфильм, где девочка и кит чинят маяк?",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-01#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Маяк для кита; не подменять на просто историю про остров."
+}

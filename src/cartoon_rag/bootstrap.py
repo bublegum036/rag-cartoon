@@ -9,6 +9,9 @@ from cartoon_rag.adapters.gemini_extractive import EXTRACTIVE_PROMPT_VERSION, Ge
 from cartoon_rag.adapters.json_catalog import JsonExactCatalog
 from cartoon_rag.adapters.qdrant import QdrantHTTP, QdrantIndex
 from cartoon_rag.adapters.rule_planner import RuleBasedQueryPlanner
+from cartoon_rag.adapters.gemini_planner import (
+    GeminiQueryPlanner, PLANNER_DECODER_VERSION, PLANNER_PROMPT_VERSION,
+)
 from cartoon_rag.domain import Film, GeneratorIdentity
 from cartoon_rag.application import SearchService
 from cartoon_rag.ingestion import active_snapshot
@@ -18,8 +21,18 @@ from cartoon_rag.settings import Settings
 from cartoon_rag.snapshots import catalog_fingerprint
 
 
-def build_planner(films: Sequence[Film]) -> QueryPlanner:
-    return RuleBasedQueryPlanner({film.movie_id: film.title for film in active_snapshot(films)})
+def build_planner(films: Sequence[Film], *, mode: str = "rules",
+                  settings: Settings | None = None) -> QueryPlanner:
+    titles = {film.movie_id: film.title for film in active_snapshot(films)}
+    if mode == "rules":
+        return RuleBasedQueryPlanner(titles)
+    if mode != "gemini":
+        raise ValueError("Unknown planner mode")
+    if settings is None:
+        raise ValueError("Gemini planner requires explicit settings")
+    transport = GeminiHTTP(api_key=settings.gemini_api_key, model=settings.gemini_model,
+                           timeout=settings.generation_timeout_seconds)
+    return GeminiQueryPlanner(transport, titles)
 
 
 def build_exact_catalog(films: Sequence[Film]) -> ExactCatalog:
@@ -53,11 +66,11 @@ def build_generator(settings: Settings, *, prompt_version: str | None = None,
 def build_rag(
     films: Sequence[Film], settings: Settings, *, generator: AnswerGenerator | None = None,
     generator_identity: GeneratorIdentity | None = None,
-    generator_mode: str | None = None,
+    generator_mode: str | None = None, planner_mode: str = "rules",
 ) -> SearchService:
     return build_rag_runtime(
         films, settings, generator=generator, generator_identity=generator_identity,
-        generator_mode=generator_mode,
+        generator_mode=generator_mode, planner_mode=planner_mode,
     )[0]
 
 
@@ -66,7 +79,7 @@ def build_rag_runtime(
     retrieval_k: int = 10, context_movies: int = 3,
     prompt_version: str | None = None,
     generator_identity: GeneratorIdentity | None = None,
-    generator_mode: str | None = None,
+    generator_mode: str | None = None, planner_mode: str = "rules",
 ) -> tuple[SearchService, dict]:
     """Build a runtime; injected generators require caller-owned, non-secret provenance."""
     if retrieval_k < 1 or context_movies < 1:
@@ -95,18 +108,23 @@ def build_rag_runtime(
     snapshot = active_snapshot(films)
     _, index = build_search(settings)
     retriever = index.bind_snapshot(catalog_fingerprint(snapshot))
-    service = SearchService(build_planner(snapshot), retriever, build_exact_catalog(snapshot),
+    planner = build_planner(snapshot, mode=planner_mode, settings=settings)
+    service = SearchService(planner, retriever, build_exact_catalog(snapshot),
                             selected_generator, retrieval_k=retrieval_k, context_movies=context_movies)
     # Explicit whitelist: never serialize Settings or adapter state containing keys.
     identity = {
         "index_name": settings.qdrant_alias, "snapshot_id": retriever.collection,
         "catalog_sha256": retriever.catalog_sha256, "embedding": asdict(index.embedder.identity),
         "generator_model": selected_identity.model, "prompt_version": selected_identity.prompt_version,
-        "planner_version": RuleBasedQueryPlanner.version,
+        "planner_version": planner.version, "planner_mode": planner_mode,
         "retrieval_k": retrieval_k, "context_movies": context_movies,
         "max_output_tokens": selected_identity.max_output_tokens,
         "generator_mode": selected_mode,
     }
+    if planner_mode == "gemini":
+        identity.update(planner_model=settings.gemini_model, planner_prompt_version=PLANNER_PROMPT_VERSION,
+                        planner_decoder_version=PLANNER_DECODER_VERSION,
+                        planner_max_output_tokens=planner.max_output_tokens)
     if selected_mode == "extractive":
         identity["renderer_version"] = RENDERER_VERSION
     return service, identity

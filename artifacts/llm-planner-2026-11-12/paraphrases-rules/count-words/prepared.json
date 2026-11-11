@@ -1,0 +1,18 @@
+{
+  "question": "Посчитай фильмы, которые идут меньше полутора часов.",
+  "plan": {
+    "semantic_query": "Посчитай фильмы, которые идут меньше полутора часов.",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Уточните ограничение: поддерживаются целые минуты, «короче N» и «не больше N». Другие числовые условия пока не поддерживаются."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null
+}

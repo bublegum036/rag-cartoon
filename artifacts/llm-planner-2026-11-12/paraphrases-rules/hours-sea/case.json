@@ -1,0 +1,14 @@
+{
+  "id": "hours-sea",
+  "question": "Хочу мультфильм про море и дружбу, строго меньше полутора часов.",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-01#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": 90,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Предложить «Маяк для кита», явно указать 78 минут и совместный ремонт маяка. Не ослаблять строгую границу."
+}

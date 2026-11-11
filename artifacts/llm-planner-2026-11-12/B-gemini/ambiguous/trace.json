@@ -1,0 +1,24 @@
+{
+  "question": "Сколько он длится?",
+  "plan": {
+    "semantic_query": "",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Уточните, пожалуйста, о каком именно фильме вы спрашиваете, так как местоимение «он» не указывает на конкретное название из каталога."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "clarify",
+    "text": "Уточните, пожалуйста, о каком именно фильме вы спрашиваете, так как местоимение «он» не указывает на конкретное название из каталога.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}

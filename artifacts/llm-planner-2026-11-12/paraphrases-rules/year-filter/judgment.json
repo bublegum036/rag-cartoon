@@ -1,0 +1,17 @@
+{
+  "state": "reviewed",
+  "reviewer": "Codex — implementing agent; non-independent semantic review, 2026-11-12",
+  "semantic": {
+    "case_id": "year-filter",
+    "case_sha256": "95fa39d108d2efbb8a863bc3254edd370f0aaf29a91c5b8eade82b9de9914e80",
+    "trace_sha256": "204c5e77bc9c6c028b98422d51450c8655f40ca97132c8c890c8e9a14a89b70d",
+    "rubric_passed": true,
+    "facts_supported": true,
+    "constraints_passed": true,
+    "references_supported": true,
+    "explanation": "Правильно запрошено уточнение неподдерживаемого числового фильтра; условие не отброшено."
+  },
+  "status_matches": true,
+  "strict_filters_compliant": true,
+  "accepted": true
+}

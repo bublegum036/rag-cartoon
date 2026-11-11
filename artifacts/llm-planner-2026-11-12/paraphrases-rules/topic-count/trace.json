@@ -1,0 +1,24 @@
+{
+  "question": "Сколько мультфильмов рассказывают о дружбе?",
+  "plan": {
+    "semantic_query": "Сколько мультфильмов рассказывают о дружбе?",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Могу точно посчитать все фильмы каталога по длительности. Уточните запрос без сюжетного или другого дополнительного условия."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "clarify",
+    "text": "Могу точно посчитать все фильмы каталога по длительности. Уточните запрос без сюжетного или другого дополнительного условия.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}

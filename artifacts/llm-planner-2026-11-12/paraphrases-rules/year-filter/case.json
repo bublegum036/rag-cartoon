@@ -1,0 +1,12 @@
+{
+  "id": "year-filter",
+  "question": "Посоветуй фильм про море, выпущенный не раньше 1990 года.",
+  "expected_status": "clarify",
+  "relevant_source_ids": [],
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Уточнить неподдерживаемое условие года; не отбросить его молча."
+}

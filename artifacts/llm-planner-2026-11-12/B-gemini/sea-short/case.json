@@ -1,0 +1,14 @@
+{
+  "id": "sea-short",
+  "question": "Хочу мультфильм про море и дружбу, короче 90 минут.",
+  "expected_status": "answered",
+  "relevant_source_ids": [
+    "film-01#plot"
+  ],
+  "filters": {
+    "duration_minutes_lt": 90,
+    "duration_minutes_lte": null,
+    "movie_ids": []
+  },
+  "rubric": "Предложить «Маяк для кита», указать 78 минут и подтверждение дружбы. «Коралловая почта» не проходит по длительности."
+}

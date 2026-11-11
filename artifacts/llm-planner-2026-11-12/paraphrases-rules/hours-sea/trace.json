@@ -1,0 +1,24 @@
+{
+  "question": "Хочу мультфильм про море и дружбу, строго меньше полутора часов.",
+  "plan": {
+    "semantic_query": "Хочу мультфильм про море и дружбу, строго меньше полутора часов.",
+    "intent": "search",
+    "filters": {
+      "duration_minutes_lt": null,
+      "duration_minutes_lte": null,
+      "movie_ids": []
+    },
+    "time_budget_minutes": null,
+    "early_status": "clarify",
+    "early_text": "Уточните ограничение: поддерживаются целые минуты, «короче N» и «не больше N». Другие числовые условия пока не поддерживаются."
+  },
+  "retrieved": [],
+  "context": [],
+  "exact_result": null,
+  "answer": {
+    "status": "clarify",
+    "text": "Уточните ограничение: поддерживаются целые минуты, «короче N» и «не больше N». Другие числовые условия пока не поддерживаются.",
+    "source_ids": [],
+    "recommendations": []
+  }
+}
