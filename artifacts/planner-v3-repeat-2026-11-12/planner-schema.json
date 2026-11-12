@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "semantic_query": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "search",
+        "lookup",
+        "compare_duration",
+        "count"
+      ]
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duration_minutes_lt": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "duration_minutes_lte": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "movie_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "year_gte": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 9999
+        },
+        "year_lte": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 9999
+        }
+      },
+      "required": [
+        "duration_minutes_lt",
+        "duration_minutes_lte",
+        "movie_ids",
+        "year_gte",
+        "year_lte"
+      ]
+    },
+    "time_budget_minutes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "early_status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "clarify",
+        "insufficient"
+      ]
+    },
+    "early_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "empty_question",
+        "unknown_title",
+        "ambiguous_title",
+        "missing_movie",
+        "unsupported_duration_filter",
+        "ambiguous_duration",
+        "unsupported_constraint",
+        "semantic_count",
+        "missing_voice_actors",
+        "missing_rating",
+        "missing_age_restriction",
+        "missing_biography",
+        "unsupported_fact"
+      ]
+    }
+  },
+  "required": [
+    "semantic_query",
+    "intent",
+    "filters",
+    "time_budget_minutes",
+    "early_status",
+    "early_reason"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "semantic_query": "",
+  "intent": "count",
+  "filters": {
+    "duration_minutes_lt": 90,
+    "duration_minutes_lte": null,
+    "movie_ids": [],
+    "year_gte": 1980,
+    "year_lte": 1990
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_reason": null
+}

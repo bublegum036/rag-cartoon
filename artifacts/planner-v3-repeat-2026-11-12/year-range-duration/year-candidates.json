@@ -1,0 +1,37 @@
+[
+  {
+    "movie_id": "film-23",
+    "year": 1980,
+    "duration_minutes": 58
+  },
+  {
+    "movie_id": "film-25",
+    "year": 1982,
+    "duration_minutes": 31
+  },
+  {
+    "movie_id": "film-27",
+    "year": 1984,
+    "duration_minutes": 73
+  },
+  {
+    "movie_id": "film-28",
+    "year": 1985,
+    "duration_minutes": 81
+  },
+  {
+    "movie_id": "film-29",
+    "year": 1986,
+    "duration_minutes": 64
+  },
+  {
+    "movie_id": "film-30",
+    "year": 1987,
+    "duration_minutes": 27
+  },
+  {
+    "movie_id": "film-32",
+    "year": 1989,
+    "duration_minutes": 69
+  }
+]

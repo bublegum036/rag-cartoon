@@ -1,0 +1,107 @@
+[
+  {
+    "movie_id": "film-13",
+    "year": 1970,
+    "duration_minutes": 24
+  },
+  {
+    "movie_id": "film-14",
+    "year": 1971,
+    "duration_minutes": 19
+  },
+  {
+    "movie_id": "film-15",
+    "year": 1972,
+    "duration_minutes": 76
+  },
+  {
+    "movie_id": "film-16",
+    "year": 1973,
+    "duration_minutes": 28
+  },
+  {
+    "movie_id": "film-17",
+    "year": 1974,
+    "duration_minutes": 84
+  },
+  {
+    "movie_id": "film-18",
+    "year": 1975,
+    "duration_minutes": 33
+  },
+  {
+    "movie_id": "film-19",
+    "year": 1976,
+    "duration_minutes": 92
+  },
+  {
+    "movie_id": "film-20",
+    "year": 1977,
+    "duration_minutes": 67
+  },
+  {
+    "movie_id": "film-21",
+    "year": 1978,
+    "duration_minutes": 22
+  },
+  {
+    "movie_id": "film-22",
+    "year": 1979,
+    "duration_minutes": 89
+  },
+  {
+    "movie_id": "film-23",
+    "year": 1980,
+    "duration_minutes": 58
+  },
+  {
+    "movie_id": "film-24",
+    "year": 1981,
+    "duration_minutes": 95
+  },
+  {
+    "movie_id": "film-25",
+    "year": 1982,
+    "duration_minutes": 31
+  },
+  {
+    "movie_id": "film-26",
+    "year": 1983,
+    "duration_minutes": 90
+  },
+  {
+    "movie_id": "film-27",
+    "year": 1984,
+    "duration_minutes": 73
+  },
+  {
+    "movie_id": "film-28",
+    "year": 1985,
+    "duration_minutes": 81
+  },
+  {
+    "movie_id": "film-29",
+    "year": 1986,
+    "duration_minutes": 64
+  },
+  {
+    "movie_id": "film-30",
+    "year": 1987,
+    "duration_minutes": 27
+  },
+  {
+    "movie_id": "film-31",
+    "year": 1988,
+    "duration_minutes": 97
+  },
+  {
+    "movie_id": "film-32",
+    "year": 1989,
+    "duration_minutes": 69
+  },
+  {
+    "movie_id": "film-33",
+    "year": 1990,
+    "duration_minutes": 101
+  }
+]

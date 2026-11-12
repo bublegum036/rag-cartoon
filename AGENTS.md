@@ -2,6 +2,32 @@
 
 ## Current state
 
+Separate planner v3 repeat (2026-11-12): same 13 cases, model, prompt, source
+hashes and request bodies, 13 plans received with zero technical errors.
+Strict reference agreement remains 12/13: count-years adds unrequested
+upper bound year_lte=9999; on this catalog exact count is still correctly 20.
+Other count=7 and all four early reasons passed. Review keeps the extra bound
+as a plan mismatch, not a provider error. Previous 12/13 with one technical
+failure remains unchanged; attempts are not merged. No ordinary answers or
+integration rerun; previous 190 live Qdrant/E5 tests still apply to unchanged code.
+A malformed standalone line 15 in ignored .env was commented before starting;
+setting values/model unchanged, no key logged, no API call before repair.
+No auto-retries, model/billing changes. See artifacts/planner-v3-repeat-2026-11-12.
+
+Current planner live verification (2026-11-12): 190 tests passed with real
+Qdrant/E5, no skips, after the ru-rules-v1.2.1 operator fix. Main/expanded
+collections, metadata and exact counts unchanged before/after. Separate real
+Gemini planner v3/decoder v4/early-replies v2 check used 13 questions and calls:
+12 plans matched reference routes/filters/reasons; one count-years request
+failed with transport/request-or-JSON error and no HTTP status. No retry;
+failure stays in denominator. All seven year-search cases, four structured
+early reasons and the range+duration count=7 passed. The count>=1990 LLM plan
+remains unverified in this run (no plan received); prior local count=20 is
+separate evidence. Templates rendered early replies; no free early_text.
+No ordinary answer generation or full A/B/answer-quality improvement claimed.
+Same Codex reviewed saved plans, not an independent judge. App code/defaults,
+data and old archives unchanged. See artifacts/planner-v3-live-2026-11-12.
+
 Year-operator review fix (2026-11-12): rules ru-rules-v1.2.1 consume the whole
 с/начиная с/не ранее/не раньше condition as year_gte; earlier code incorrectly
 salvaged the year operand as equality. Added related aliases and exact-year

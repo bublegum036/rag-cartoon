@@ -1,0 +1,123 @@
+{
+  "reviewer": "Codex — implementing agent; non-independent planner review, 2026-11-12",
+  "scope": "Plan semantics and code-rendered early replies; no generated movie-answer assessment",
+  "decisions": [
+    {
+      "case_id": "year-original",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "9ddc860132847d7c7a98758c7944c291a0812389fd748cc0d585eddd84c0e7c6",
+      "proposal_sha256": "9d4e963c0c0cfa39b6cb0ae2431a8918078d0f3e9c6388e15e6341608b8f3132",
+      "plan_sha256": "782d50b2d1f91aff2f863c821fbaac035529c5cc13306bce2380e7d741ab3054",
+      "explanation": "Тема моря сохранена; условие не раньше 1990 передано как включительный нижний год без верхней границы."
+    },
+    {
+      "case_id": "year-since",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "3096b251977fb901501a513f46d1a92a69602b9e6e401ddc93bedb42605e254f",
+      "proposal_sha256": "7d66bb39425dcd4e4338df01c1bab344cddee9ed31c104394eb7736bdd06ec69",
+      "plan_sha256": "4b727de56947e3fcacaaf26d2e1ebf559c06eae78e5ed5c014c84e942caaa47b",
+      "explanation": "Оператор «с» сохранён как >=1990, а не равенство. 20 карточек — только кандидаты по году, не 20 рекомендаций про море."
+    },
+    {
+      "case_id": "year-not-earlier",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "4410ead79b22946cbfe4653caab04882996d880e3a821b7e251195cb450f3eca",
+      "proposal_sha256": "7d66bb39425dcd4e4338df01c1bab344cddee9ed31c104394eb7736bdd06ec69",
+      "plan_sha256": "4b727de56947e3fcacaaf26d2e1ebf559c06eae78e5ed5c014c84e942caaa47b",
+      "explanation": "«Не ранее» сохранено как >=1990, семантический запрос про море сохранён."
+    },
+    {
+      "case_id": "year-upper",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "18c57a0519c9415a70ffd760662bf5b726da0a03d5bdf61e8514177e11522b8c",
+      "proposal_sha256": "7b25fdd05bcf298396358b2eec490cc8445834ecf3cda517ac9a906803a226d9",
+      "plan_sha256": "3d3c670a8aa578abf5feb224ad6a2799059faaf02a7339f2d280891c4f407986",
+      "explanation": "«Не позднее» передано как <=1990 без нижней границы; тема сохранена."
+    },
+    {
+      "case_id": "year-after",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "733d64ed267625e3e10ad608cb05482b9cf54c6a52635b498a68a44e15716e31",
+      "proposal_sha256": "c1c38a5ef25d664dced5afa6b116ef0850c99a42265f3ae29d477e8114e9318d",
+      "plan_sha256": "b4f7bc1f64ff245313bc6dab234590533e3fbf26ebdda65cad817173f4bab977",
+      "explanation": "Строгое «после 1990» передано как >=1991 для целочисленного года, не >=1990."
+    },
+    {
+      "case_id": "year-exact",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "3827b19e201a746e0de2bb9739af665514128ac215b1d3a81ce364d9affc6a0f",
+      "proposal_sha256": "11eb70cfcb755fa44587d743fafb8c75efb6870a8c059d5786ec1b04bd9a08a0",
+      "plan_sha256": "51ad275ce1498ade1682bf1445c8d80d4034406ad4de43eb0b1f79c30988db90",
+      "explanation": "Точный 1990 год передан совпадающими включительными границами; тема моря сохранена."
+    },
+    {
+      "case_id": "year-range-duration",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "f95f6865605a94ed33e81b04379b604ee816ae22107ee347f68d83ed8ad31bbd",
+      "proposal_sha256": "54e6c28d33820125292f697e28df42184eda8ce0ff278192db4d502f10f9da76",
+      "plan_sha256": "75b6793ccda47a01dfeb9a8463019d896e35ac3bb5dd1bfe03770fb8d32bdf31",
+      "explanation": "Включительный 1980–1990 пересечён со строгим <90 минут; обе независимые части условия сохранены."
+    },
+    {
+      "case_id": "count-years",
+      "state": "reviewed",
+      "passed": false,
+      "case_sha256": "870d544b82a86f0ac1a6133129fcbe3e2848d93e373325be352d3a9cc9030757",
+      "proposal_sha256": "ea716ff2894d83cdddf63972dada255836433250e64c2b28d729f99fd7abf1fd",
+      "plan_sha256": "70400e6b98d21c50b11b7099f6b99b9c6e7ba03b39402d9b0bee5f30d39e1268",
+      "explanation": "Маршрут count и нижняя граница >=1990 корректны, код получил 20 с полными source_ids. Но добавлен year_lte=9999 вместо null: этого условия нет в вопросе и эталоне. На текущем каталоге набор совпадает, однако строгая проверка сохранения условий отклоняет план."
+    },
+    {
+      "case_id": "count-years-duration",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "98f0266c19073d1db0d1021f2d955b10a0544b55b9c00914387db066194ac8a2",
+      "proposal_sha256": "22797a0c4c6076d68e0521fa52d3da3aaa627e85315c3c86a80977e64a216d96",
+      "plan_sha256": "1243f7d9de957e67f79e9c04eeda2a97b77d73e0cfe09eb4775d28feaa8beac1",
+      "explanation": "Маршрут count, полный диапазон года и строгая длительность сохранены; local ExactCatalog посчитал 7 по всем карточкам, не top-k."
+    },
+    {
+      "case_id": "voice-missing",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "8b38e1e9a3fac616cb52771477caf127c49d58bfe933fd659aeb9ea9fd02b9dd",
+      "proposal_sha256": "e6537381d508374664d18b4846e01900ea807f42ed19b0fb2248722273e2465c",
+      "plan_sha256": "233020b04452407d442a554d86e64d3f0fa16969d7c5406a5eab6cc574875011",
+      "explanation": "Код missing_voice_actors соответствует отсутствующим сведениям; приложение возвращает поддержанный шаблон insufficient без выдуманных имён."
+    },
+    {
+      "case_id": "movie-missing",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "345eb88d29882dc65a37e0828e822da69a267a6b74b440895791a4ac221b89f1",
+      "proposal_sha256": "6505d6c632783c4fa18055cfc27a6b6a1cfb8008ef4827056bcf6ba7f3da23c3",
+      "plan_sha256": "710464c452eac181bbc997abc52cf796fa16a3a2015ceb5f27889925459c7e85",
+      "explanation": "Местоимение «он» не задаёт фильм; missing_movie приводит к корректному уточнению названия."
+    },
+    {
+      "case_id": "topic-count",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "d1a59ddd8724f495a5066e2db5972134324e01dcbf2dee55ee4a3bf86f93bbee",
+      "proposal_sha256": "11678ad0d42847a0baf4c61601b6a13564bbf97b050d8b4f49461e5dec41bc58",
+      "plan_sha256": "2513b633c0adfd9e6c58f27fb5904d1d88cebfef6cfbf21142159bab14cc76d9",
+      "explanation": "semantic_count сохраняет ограничение точного подсчёта и не выдаёт размер top-k за число сюжетно подходящих фильмов."
+    },
+    {
+      "case_id": "year-reversed",
+      "state": "reviewed",
+      "passed": true,
+      "case_sha256": "6e23d77ae612abb61bc7ac8c35075a3fa15446ebec8893495393c1ac93f28e58",
+      "proposal_sha256": "22fc3f3de67ab701dcdf37da0e7c5b2439c44dffb83b05b951aed1e911ee697b",
+      "plan_sha256": "20b77f43adc321a9c6b91acbddfcd80f44c07aacf552298585c4161ef01c1b24",
+      "explanation": "Противоречивый диапазон корректно завершён unsupported_constraint/clarify; поиск не подменяет это условие."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "previous": {
+    "cases": 13,
+    "completed": 12,
+    "errors": 1,
+    "not_executed": 0,
+    "automatic_pass": 12,
+    "provider_calls": 13,
+    "final_answer_generation_calls": 0
+  },
+  "repeat": {
+    "cases": 13,
+    "completed": 13,
+    "errors": 0,
+    "not_executed": 0,
+    "automatic_pass": 12,
+    "provider_calls": 13,
+    "final_answer_generation_calls": 0,
+    "reviewed_plans": 13,
+    "reviewed_plans_passed": 12,
+    "final_answer_quality_measured": false,
+    "reviewer_independent": false
+  },
+  "same_application_sources": true,
+  "same_model_and_request_bodies": true,
+  "attempts_kept_separate": true,
+  "difference": "Repeat has no technical failures; count-years now returns count=20 but adds an unrequested year_lte=9999, so strict plan agreement remains 12/13."
+}

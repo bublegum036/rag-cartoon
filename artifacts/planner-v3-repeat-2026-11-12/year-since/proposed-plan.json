@@ -1,0 +1,14 @@
+{
+  "semantic_query": "про море",
+  "intent": "search",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [],
+    "year_gte": 1990,
+    "year_lte": null
+  },
+  "time_budget_minutes": null,
+  "early_status": null,
+  "early_reason": null
+}

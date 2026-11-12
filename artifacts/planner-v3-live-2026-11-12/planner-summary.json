@@ -1,0 +1,9 @@
+{
+  "cases": 13,
+  "completed": 12,
+  "errors": 1,
+  "not_executed": 0,
+  "automatic_pass": 12,
+  "provider_calls": 13,
+  "final_answer_generation_calls": 0
+}

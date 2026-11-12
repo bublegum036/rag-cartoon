@@ -1,0 +1,130 @@
+[
+  {
+    "id": "year-original",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-since",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-not-earlier",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-upper",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-after",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-exact",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-range-duration",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "count-years",
+    "state": "error",
+    "type": "GenerationUnavailable",
+    "message": "Gemini query planning failed",
+    "http_status": null
+  },
+  {
+    "id": "count-years-duration",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true,
+      "exact_count_matches": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "voice-missing",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "movie-missing",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "topic-count",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  },
+  {
+    "id": "year-reversed",
+    "state": "completed",
+    "checks": {
+      "plan_matches": true,
+      "reason_matches": true,
+      "provider_free_text_absent": true
+    },
+    "automatic_pass": true
+  }
+]

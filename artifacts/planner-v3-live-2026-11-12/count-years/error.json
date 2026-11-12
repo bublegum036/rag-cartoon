@@ -1,0 +1,7 @@
+{
+  "id": "count-years",
+  "state": "error",
+  "type": "GenerationUnavailable",
+  "message": "Gemini query planning failed",
+  "http_status": null
+}

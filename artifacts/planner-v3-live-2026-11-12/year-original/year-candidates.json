@@ -1,0 +1,102 @@
+[
+  {
+    "movie_id": "film-01",
+    "year": 2021,
+    "duration_minutes": 78
+  },
+  {
+    "movie_id": "film-02",
+    "year": 2023,
+    "duration_minutes": 96
+  },
+  {
+    "movie_id": "film-03",
+    "year": 2020,
+    "duration_minutes": 82
+  },
+  {
+    "movie_id": "film-04",
+    "year": 2022,
+    "duration_minutes": 88
+  },
+  {
+    "movie_id": "film-05",
+    "year": 2024,
+    "duration_minutes": 74
+  },
+  {
+    "movie_id": "film-06",
+    "year": 2019,
+    "duration_minutes": 104
+  },
+  {
+    "movie_id": "film-07",
+    "year": 2018,
+    "duration_minutes": 67
+  },
+  {
+    "movie_id": "film-08",
+    "year": 2025,
+    "duration_minutes": 91
+  },
+  {
+    "movie_id": "film-09",
+    "year": 2022,
+    "duration_minutes": 52
+  },
+  {
+    "movie_id": "film-10",
+    "year": 2021,
+    "duration_minutes": 85
+  },
+  {
+    "movie_id": "film-11",
+    "year": 2020,
+    "duration_minutes": 89
+  },
+  {
+    "movie_id": "film-12",
+    "year": 2023,
+    "duration_minutes": 63
+  },
+  {
+    "movie_id": "film-33",
+    "year": 1990,
+    "duration_minutes": 101
+  },
+  {
+    "movie_id": "film-34",
+    "year": 1991,
+    "duration_minutes": 86
+  },
+  {
+    "movie_id": "film-35",
+    "year": 1992,
+    "duration_minutes": 79
+  },
+  {
+    "movie_id": "film-36",
+    "year": 1993,
+    "duration_minutes": 88
+  },
+  {
+    "movie_id": "film-37",
+    "year": 1994,
+    "duration_minutes": 94
+  },
+  {
+    "movie_id": "film-38",
+    "year": 1995,
+    "duration_minutes": 54
+  },
+  {
+    "movie_id": "film-39",
+    "year": 1996,
+    "duration_minutes": 103
+  },
+  {
+    "movie_id": "film-40",
+    "year": 2000,
+    "duration_minutes": 62
+  }
+]

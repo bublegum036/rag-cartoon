@@ -1,0 +1,14 @@
+{
+  "semantic_query": "",
+  "intent": "search",
+  "filters": {
+    "duration_minutes_lt": null,
+    "duration_minutes_lte": null,
+    "movie_ids": [],
+    "year_gte": null,
+    "year_lte": null
+  },
+  "time_budget_minutes": null,
+  "early_status": "insufficient",
+  "early_text": "В каталоге нет сведений об актёрах озвучивания."
+}

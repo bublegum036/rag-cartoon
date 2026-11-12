@@ -1,0 +1,95 @@
+[
+  {
+    "case_id": "year-original",
+    "state": "response",
+    "request_sha256": "706224bba1d51cb858c3d41c545d2138ec6470bada57997b5be65226f8bbb957",
+    "response_sha256": "1bed0ed08cacd786a6ea95f8c1cdcded01c7ef1f8186a995ace6574b1873621a",
+    "elapsed_seconds": 2.066
+  },
+  {
+    "case_id": "year-since",
+    "state": "response",
+    "request_sha256": "c57a610aa2657d22830a6009afdd1a6e76eb70d8491a44f092b305164f94ec00",
+    "response_sha256": "ef641587ba005f100a1bd2e48d4caac31398e2c042d1882f045b3355bc47f358",
+    "elapsed_seconds": 1.76
+  },
+  {
+    "case_id": "year-not-earlier",
+    "state": "response",
+    "request_sha256": "fa151c5bae313e570fcd786946673a8c95e4f269d1d2d84edd21347c36905be5",
+    "response_sha256": "1e0c79fd23dabbbae03de901c2c7c6dc7827012b1eff265c39eca06ccac17e9b",
+    "elapsed_seconds": 2.723
+  },
+  {
+    "case_id": "year-upper",
+    "state": "response",
+    "request_sha256": "6b7470a9390083e59919205cab4f39d9541bd9ceb96829efc614917c5ed33c75",
+    "response_sha256": "2342e641e3e4cd21e3c6524607bc95fc781a3aeb5192efb207b2ba7ff29145c7",
+    "elapsed_seconds": 2.237
+  },
+  {
+    "case_id": "year-after",
+    "state": "response",
+    "request_sha256": "fa80a6a5ec1c2f03b0f3f37a45684d81d27b2398e4a0fab03d28c8ef1314da2c",
+    "response_sha256": "a202511d22e1fb766418c49908e01587759c1d17b77142137f0e50e464f55f86",
+    "elapsed_seconds": 21.537
+  },
+  {
+    "case_id": "year-exact",
+    "state": "response",
+    "request_sha256": "25ae1e0fcb7ce883bad196021afbaa2aa2effa81efbce2333149e86a40449291",
+    "response_sha256": "890c136ccc402a102dc08370251514e93562c64d7037cb1b62f16e5cd66ce475",
+    "elapsed_seconds": 1.793
+  },
+  {
+    "case_id": "year-range-duration",
+    "state": "response",
+    "request_sha256": "2dc6f65b364ac6af75625601582c0101bcb08d037e68d47ce0638c7ad7bd9885",
+    "response_sha256": "7af05ec0889adc59bf687a09d3e978394c27c7b6b4fcc945e3dd5d362c2db60c",
+    "elapsed_seconds": 21.589
+  },
+  {
+    "case_id": "count-years",
+    "state": "error",
+    "request_sha256": "88f31912b147f5eef828da1c3e2a8a5deaa8a5543daddc710fffc14344615f21",
+    "type": "GenerationUnavailable",
+    "message": "Gemini request failed or returned invalid JSON",
+    "http_status": null,
+    "elapsed_seconds": 3.207
+  },
+  {
+    "case_id": "count-years-duration",
+    "state": "response",
+    "request_sha256": "ee0a9e9c6d4e21eb53f45145dfe4821f15b44ea16c4fcd1a5dde1c2f138fcd77",
+    "response_sha256": "8077c58bdd91acfea0f9f11207b9a49e87aa352a7690ba1a8069f7d2b96c1a8d",
+    "elapsed_seconds": 2.651
+  },
+  {
+    "case_id": "voice-missing",
+    "state": "response",
+    "request_sha256": "59d4d1bc21e135126332c88accc244931b98c933521c59192119a5a8b28f706a",
+    "response_sha256": "9d21d502098cdcd547c7b10a89d4e046f0f66eb7c889fc275daa91c212984338",
+    "elapsed_seconds": 1.804
+  },
+  {
+    "case_id": "movie-missing",
+    "state": "response",
+    "request_sha256": "96093d32f2c53930234862f6f00fac4da8190f415b58864b61c765731a207ffb",
+    "response_sha256": "dd8d3d4521e9319975145938acd5876f81e0c72d42ccb7af989d74a1c794671f",
+    "elapsed_seconds": 16.384
+  },
+  {
+    "case_id": "topic-count",
+    "state": "response",
+    "request_sha256": "5af37bb8fcaff692003f2ea1360dc2902765deb63f7aecf0cbf4e308ea8ffaa8",
+    "response_sha256": "ae42515cc6bdf3735b3754851648756e9c74048c7c665a04a1326430b47c3fce",
+    "elapsed_seconds": 1.777
+  },
+  {
+    "case_id": "year-reversed",
+    "state": "response",
+    "request_sha256": "a2a8c86c180d80ee50367c8cf3ce1f934dac3345f9457a88500216ba9835b164",
+    "response_sha256": "2d4440f8233706f94aaf969636e2ca9c58feb03c7ac8085936c3d1689a3cb238",
+    "elapsed_seconds": 2.929
+  }
+]
